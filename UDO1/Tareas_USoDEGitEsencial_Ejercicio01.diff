@@ -1,0 +1,8 @@
+diff --git a/tmp/otro.txt b/tmp/otro.txt
+index 329fce6..c2e52ed 100644
+--- a/tmp/otro.txt
++++ b/tmp/otro.txt
+@@ -1 +1,2 @@
+-Esto en otro archivo
++ Esto en otro archivo
++ME gustan los
