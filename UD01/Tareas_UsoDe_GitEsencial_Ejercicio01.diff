@@ -1,0 +1,28 @@
+diff --git a/tmp/diferente.txt b/tmp/diferente.txt
+index 66113b1..d9f4fe0 100644
+--- a/tmp/diferente.txt
++++ b/tmp/diferente.txt
+@@ -1 +1,2 @@
+ Esto en otro diferente
++Otro mas para la coleccion
+diff --git a/tmp/otro.txt b/tmp/otro.txt
+index 329fce6..2ee1f95 100644
+--- a/tmp/otro.txt
++++ b/tmp/otro.txt
+@@ -1 +1 @@
+-Esto en otro archivo
++Esto en otro archivo. Un archivo muy grande
+diff --git a/tmp/texto.txt b/tmp/texto.txt
+index 50f5693..ab96ee9 100644
+--- a/tmp/texto.txt
++++ b/tmp/texto.txt
+@@ -1 +1 @@
+-Texto Plano
++Texto Plano. hola
+diff --git a/tmp/ultimo.txt b/tmp/ultimo.txt
+index 52f57c7..ca5fb66 100644
+--- a/tmp/ultimo.txt
++++ b/tmp/ultimo.txt
+@@ -1 +1,2 @@
+ Y esto ultimo en otro
++hola
