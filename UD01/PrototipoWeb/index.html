@@ -7,21 +7,29 @@
     <title>JumpShop</title>
     
     <style>
+
         html{
-            background-color: #4D7A5E;
+            background-color: #ADE4FF;
         }
         header{
-            background-color: #41C773;
+            background-color: #2D68B3;
+
+
         }
-        header h1{
+        header img{
            
-            text-align: center;
+           margin-left: 43%;
+           
         }
 
         header form {
             float: right;
+            margin-top: 10%;
         }
 
+        nav{
+            background-color: #FFD78C;
+        }
         header nav li{
             
            display: inline-block;
@@ -30,18 +38,28 @@
            margin-right: 2%;
            
         }
-
         header ul {
-
             margin-left: 30%;
-
+        }
+        main{
+            float: left;
+            width: 100%;
+            background-color:#5AA6E8;
+        }
+         main section{
+            float: left;
+            margin-left:2%;
+        }
+        main article {
+            float: left;
+            margin-left:6%; 
+           margin-right: 6%;
+        }
+        footer{
+            background-color: #2D68B3;
+            clear: both;
         }
 
-        header nav {
-            margin-top:2%;
-            border-style: solid; 
-        }
-        
     </style>
 </head>
 
@@ -50,8 +68,8 @@
     <!---Aqui empieza el header--->
     <header>
 
-        <h1>JumpShop</h1> 
-         <img></img>
+        <img src="img/logo.png" alt="logo">
+         
         <form>
                 <input type="text" placeholder="Usuario">
                 <input type="password" placeholder="Contraseña">
@@ -67,7 +85,7 @@
                         <li><a href="#">Noticias</a></li> 
                         <li><a href="#">Contactos</a></li> 
                         <li><a href="#">Cuestionario de Satisfaccion</a></li> 
-                        <li><a href="#">Carrito</a></li> 
+                        <li><a href="#"><img src="img/carrito.png" alt="carrito"></a></li> 
         
                 </ul>    
         </nav>
@@ -76,7 +94,88 @@
 
     </header>
 
+    <main>    
+
+        <section>
+            <div>
+                <h2>Busqueda Productos por nombre <hr></h2>
+                
+                <form>
+                    <input type="search" placeholder="Buscar...">
+                    <button>Buscar</button>
+                </form>
+
+            </div> 
+
+            <div>
+                
+                <h2>Busqueda Avanzada<hr></h2>
+                
+                <form>
+                   <p><input type="checkbox" name="empresa" value="Nintendo"> Nintendo </p>
+                   <p> <input type="checkbox" name="empresa" value="Sony"> Sony</p>
+                   <p> <input type="checkbox" name="empresa" value="Microsoft"> Microsoft</p>
+                   <p> <input type="checkbox" name="launher" value="Steam">Steam</p>
+                   <p><input type="checkbox" name="launcher" value="EpicGames">Epic Games</p>
+                   <p> <input type="checkbox" name="launcher" value="Uplay">Uplay</p>
+                   <p><input type="checkbox" name="launcher" value="Battel.net">Battel.net </p>
+                   <p><input type="checkbox" name="empresa" value="Indie">Indie</p>
+
+                   <button>Busqueda Avanzada</button>
+                </form>
+
+            </div>
+
+        </section>
+
+       <article>
+
+           <h2> Información sobre la tienda <hr></h2>
+           
+           <p>Bienvenido a la <b>JumpShop</b>, una tienda online especializada en la venta de juegos plataformas.<br>
+             La cual ofrece muchas ofertas de tus juegos de plataformas favoritos cada semana. Además contamos<br> también con una página
+             de noticias sobre las últimas actulizaciones o salidas de juegos.
+            </p>
+            <p> 
+             En caso de tener algun problema durante la compra de alguno de nuestros productos, diríjase hacia el <br> apartado de <b>soporte</b>.
+             Allí le ayudaremos con cualquier problema que tenga.
+            </p>
+
+       </article>
+
+       <section>
+
+        <h2>Ofertas de la semana<hr></h2>
+        
+        <p>Observa nuestras ofertas de la semana</p>
+        
+            <div>
+
+                <a href="#"><img src="https://picsum.photos/200" alt="oferta"></a>
+
+            </div>
+
+            <div>  
+
+                <a href="#"><img src="https://picsum.photos/200" alt="oferta"></a>
+
+            </div>      
+
+       </section>
+
+    </main>
   
+    <footer>
+        
+        <p> 
+            Esta pagina pertenece a la empresa JumpShop &copy. 
+        </p>
+       <p>
+            Para mas información siganos
+            en nuestro <a href="https://twitter.com/?lang=es"  target="_blank">Twitter.</a>
+        </p> 
+    </footer>
+
 
 </body>
 
