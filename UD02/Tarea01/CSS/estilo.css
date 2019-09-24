@@ -1,25 +1,4 @@
 
-
-@media (min-width: 360px){
-
-
-    nav{
-        background-color:#FFD78C;
-    }
-    header nav li{
-        
-       display: inline-block;
-       text-align: center;
-       margin-left:2%;
-       margin-right: 2%;
-       
-    }
-    header ul {
-        margin-left: 30%;
-    }
-    
-}
-
 html{
     background-color: #ADE4FF;
 }
@@ -34,13 +13,9 @@ header img{
    
 }
 
-header form {
-    float: right;
-}
-
 nav{
     background-color: #FFD78C;
-    margin-top: 5%;
+   
 }
 header nav li{
     
@@ -59,6 +34,26 @@ header nav img {
 
 }
 
+@media (min-width: 360px){
+
+
+    nav{
+        background-color:#FFD78C;
+    }
+    
+    header nav li{
+        
+       display: inline-block;
+       text-align: center;
+       margin-left:2%;
+       margin-right: 2%;
+       
+    }
+    header ul {
+        margin-left: 30%;
+    }
+    
+}
 main{
     float: left;
     width: 100%;
