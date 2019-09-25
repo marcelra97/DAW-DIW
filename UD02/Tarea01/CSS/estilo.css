@@ -9,7 +9,7 @@ header{
 }
 header img{
    
-   margin-left: 43%;
+   margin-left: 20%;
    
 }
 
@@ -34,11 +34,11 @@ header nav img {
 
 }
 
-@media (min-width: 360px){
-
-
-    nav{
-        background-color:#FFD78C;
+/*Si la resolucion es de un minimo de 361 pixeles cambia el navegador y la posicion del logo*/
+@media (min-width: 361px){
+    
+    header img{
+        margin-left: 43%;
     }
     
     header nav li{
