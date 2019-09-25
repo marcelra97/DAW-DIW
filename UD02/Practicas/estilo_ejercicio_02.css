@@ -1,0 +1,50 @@
+body{
+    background-color: grey;
+    font-family: "Open Sans";
+}
+
+header h1 {
+
+text-align: center;
+
+}
+
+li{
+    display: inline-block;
+    margin-right:  10%;
+    margin-bottom: 10%;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+
+a[rel='alternate']:after{
+
+content: " Brexit";
+
+}
+
+a[rel='next']:before{
+
+    content: url("img/circulosuma.svg");
+
+}
+
+a[rel='tag']:before{
+
+    content: url("img/carrito.svg");
+
+}
+
+a[rel='bookmark']:before{
+
+    content: url("img/star.svg");
+
+}
+
+a[rel='help']:before{
+
+    content: url("img/pdf.svg");
+
+}
