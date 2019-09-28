@@ -1,0 +1,45 @@
+:root{
+
+    --h2--letras--color:#FF0162;
+    --h2--firstletras--color:red;
+}
+
+body {
+    font-family: "Open Sans" ;
+}
+
+h2::first-letter {
+
+    color: var(--h2--firstletras--color);
+
+
+}
+
+article h2:nth-of-type(1){
+color: var(--h2--letras--color);
+}
+
+article p::selection{
+
+    color: blueviolet;
+
+}
+
+ul{
+  
+    list-style: none;
+}
+
+ul li:nth-child(3){
+    color: #32FF0F;
+}
+
+ul li:nth-child(even):hover::after{
+
+    content: " Albado sea el Monstruo Espagetti Volador";
+}
+
+ul li:nth-child(odd):hover::before{
+
+    content: "Satan !";
+}
