@@ -1,0 +1,71 @@
+:root{
+    --input--background--validcolor: #45FF4E;
+    --input--background--invalidcolor: #FF1915;
+    --input--background--targetcolor:#63D8FF;
+}
+
+body {
+    font-family: "Grenze";
+}
+
+body{
+
+    width: 30%;
+
+}
+
+div{
+
+margin-bottom: 3%;
+
+}
+
+input[type="text"]:valid{
+
+    background-color: var(--input--background--validcolor);
+
+}
+
+input[type="text"]:invalid{
+
+    background-color: var(--input--background--invalidcolor);
+
+}
+
+
+select{
+
+    border-radius: 2em;
+
+}
+
+input[type="number"]:valid{
+
+    background-color: var(--input--background--validcolor);
+}
+
+input[type="number"]:invalid{
+
+    background-color: var(--input--background--invalidcolor);
+
+}
+
+input[type="submit"]{
+
+    background-color: var(--input--background--validcolor);
+    text-transform: uppercase;
+    border-radius: 2em;
+    border:none;
+    box-shadow:  0px 5px 25px grey;
+}
+
+p a {
+    text-decoration: none;
+    color:black;
+}
+
+input[type="text"]:target{
+
+    background-color: var(--input--background--targetcolor);
+
+}
