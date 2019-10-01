@@ -1,6 +1,6 @@
 :root{
-    --input--background--validcolor: #45FF4E;
-    --input--background--invalidcolor: #FF1915;
+    --input--background--validcolor: #FFCF5F;
+    --input--background--invalidcolor: #E85C23;
     --input--background--targetcolor:#63D8FF;
 }
 
@@ -51,12 +51,12 @@ input[type="number"]:invalid{
 }
 
 input[type="submit"]{
-
+    font-family: "Grenze";
     background-color: var(--input--background--validcolor);
     text-transform: uppercase;
     border-radius: 2em;
     border:none;
-    box-shadow:  0px 5px 25px grey;
+    box-shadow:  0px 5px 10px #E7DCDA;
 }
 
 p a {
@@ -68,4 +68,16 @@ input[type="text"]:target{
 
     background-color: var(--input--background--targetcolor);
 
+}
+
+input[type="checkbox"]:checked::after{
+
+background-image: url('cthulhu.svg');
+background-size: 50px 50px;
+display: inline-block;
+position: absolute;
+left: 8.5%;
+width: 50px;
+height: 50px;
+content: "";
 }
