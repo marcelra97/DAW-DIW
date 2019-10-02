@@ -1,0 +1,30 @@
+html {
+    font-family: "Amatic SC";
+    font-size: 110%;
+}
+
+header {
+    text-transform: uppercase;
+    background-color: #dcdada;
+}
+
+li {
+    list-style: none;
+    padding-bottom: 4%;
+}
+
+a {
+    text-decoration: none;
+    color: green;
+}
+
+.logo {
+    color: black;
+    font-weight: bold;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+article {
+    display: inline;
+}
