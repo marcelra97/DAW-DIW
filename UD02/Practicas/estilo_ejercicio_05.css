@@ -1,7 +1,5 @@
-:root{
-
-    --div--color:#dcdada;
-
+:root {
+    --div--color: #dcdada;
 }
 
 html {
@@ -11,23 +9,19 @@ html {
 
 header {
     text-transform: uppercase;
-    background: var(--div--color) ;
+    background: var(--div--color);
 }
 
 .menu-it {
     list-style: none;
     padding-bottom: 4%;
 }
-.activo::after{
-    background-image: url('cthulhu.svg');
-    background-size: 50px 50px;
-    display: inline-block;
-    position: fixed;
-    left: 22%;
-    width: 50px;
-    height: 50px;
-    content: "";
 
+.activo {
+    background-image: url('cthulhu.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 a {
@@ -42,54 +36,38 @@ a {
     margin-top: 2%;
 }
 
-article{
-
+article {
     margin-left: 5%;
-
 }
 
 .modulo {
     display: inline-block;
     width: 25%;
-    
 }
 
-.modulo:nth-child(even){
+.modulo:nth-child(even) {
     background: var(--div--color);
 }
 
-h2{
-
+h2 {
     text-align: center;
-
 }
 
-@media(min-width: 700px){
-
-    header{
-        height:110px;
-
+@media(min-width: 700px) {
+    header {
+        height: 110px;
     }
-
-    .header-right ul li{
-
+    .header-right ul li {
         display: inline;
         position: relative;
         left: 68%;
-
     }
-
-    .menu-it{
-
+    .menu-it {
         margin-left: 2%;
         padding-bottom: 2%;
     }
-    .modulo p{
-
-        width: 70%; 
+    .modulo p {
+        width: 70%;
         font-size: 130%;
     }
-
-
-
 }
