@@ -53,7 +53,7 @@ h1{
 
     text-align: center;
     margin-bottom: 2%;
-    
+
 }
 
 /* Each item in our grid will contain numbers */
@@ -84,10 +84,18 @@ background-color: var(--grey);
 }
 
 /*Divido la pagina en dos columnas de distinto tamaño */
+/*Lo he dividido en 4 columnas las impares 1fr y las pares 2fr*/
 .container{
 
-display: grid;
-grid-template-columns: 1fr 3fr 1fr 3fr;
-grid-gap: 10px 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
+    grid-gap: 10px 10px; 
+
+}
+
+/*Colocando el item2 para que ocupe desde la columna 2 hasta el final (la columna 5) */
+.item2{
+
+    grid-column: 2 / span 3;
 
 }
