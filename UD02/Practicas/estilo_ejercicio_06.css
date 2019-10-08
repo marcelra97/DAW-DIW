@@ -99,3 +99,16 @@ background-color: var(--grey);
     grid-column: 2 / span 3;
 
 }
+
+/*Si ponemos el raton encima a los items impares saldra la sombra*/
+.item:nth-child(odd):hover{
+
+    box-shadow: 6px 6px var(--black);
+}
+
+/*Si ponemos el raton encima de los items impares, saldra una sombra negra en los items pares */
+.item:nth-child(odd):hover + .item:nth-child(even){
+
+    box-shadow: 6px 6px var(--black);
+
+}
