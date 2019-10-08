@@ -112,3 +112,12 @@ background-color: var(--grey);
     box-shadow: 6px 6px var(--black);
 
 }
+
+#SealOfApproval{
+
+    content: url('cthulhu_approval.gif');
+    position: fixed;
+    left: 92%;
+    top: 80%;
+    
+}
