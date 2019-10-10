@@ -50,14 +50,6 @@ h6 {
 }
 
 
-/*Titulo puesto en el centro*/
-
-h1 {
-    text-align: center;
-    margin-bottom: 2%;
-}
-
-
 /* Each item in our grid will contain numbers */
 
 .item {
@@ -72,57 +64,6 @@ h1 {
     /* best colour */
 }
 
-
-/*Cambio el color a los items impares*/
-
-.item:nth-child(odd) {
-    background-color: var(--grey);
-}
-
 .item p {
     margin: 0 0 5px 0;
-}
-
-
-/*Divido la pagina en dos columnas de distinto tamaño */
-
-
-/*Lo he dividido en 4 columnas las impares 1fr y las pares 2fr*/
-
-.container {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr 2fr;
-    grid-gap: 10px 10px;
-}
-
-
-/*Colocando el item2 para que ocupe desde la columna 2 hasta el final (la columna 5) */
-
-.item2 {
-    grid-column: span 3;
-}
-
-
-/*Si ponemos el raton encima a los items impares saldra la sombra*/
-
-.item:nth-child(odd):hover {
-    box-shadow: 6px 6px var(--black);
-}
-
-
-/*Si ponemos el raton encima de los items impares, saldra una sombra negra en los items pares */
-
-.item:nth-child(odd):hover+.item:nth-child(even) {
-    box-shadow: 6px 6px var(--black);
-}
-
-#SealOfApproval:before {
-    background-image: url('cthulhu_approval.gif');
-    content: "";
-    background-size: 230px 230px;
-    bottom: 7px;
-    right: 7px;
-    position: fixed;
-    width: 135px;
-    height: 135px;
 }
