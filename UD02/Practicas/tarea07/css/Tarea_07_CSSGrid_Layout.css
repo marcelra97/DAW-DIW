@@ -1,0 +1,35 @@
+
+/*estructura de la pagina, con el grid-template-area le estoy dando una estructura a la pagina*/
+.pagina{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: "header header"
+                         "nav main"
+                         "nav footer";
+
+}
+
+/*Con cada grid area señalo donde va cada caja*/
+.pagina header{
+
+    grid-area: header;
+    
+}
+
+.pagina nav {
+
+    grid-area: nav;
+
+}
+
+.pagina main{
+
+    grid-area: main;
+
+}
+
+.pagina footer{
+
+    grid-area: footer;
+
+}
