@@ -1,6 +1,7 @@
 
 /*estructura de la pagina, con el grid-template-area le estoy dando una estructura a la pagina*/
 .pagina{
+
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-areas: "header header"
@@ -13,19 +14,29 @@
 .pagina header{
 
     grid-area: header;
-    
+    justify-self: center;
+    margin-bottom: 2%;
 }
 
 .pagina nav {
 
     grid-area: nav;
+    font-size: 170%;
 
 }
 
+nav ul li, a{
+
+    list-style: none;
+    text-decoration: none;
+
+}
+
+/*Dentro del main hay que poner otro grid para poder estructurar bien todas las fotos*/
 .pagina main{
-
+    display: grid;
     grid-area: main;
-
+    grid-template-columns:230px 230px 230px;
 }
 
 .pagina footer{
