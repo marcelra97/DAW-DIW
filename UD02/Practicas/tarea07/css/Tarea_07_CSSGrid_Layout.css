@@ -1,12 +1,19 @@
+:root {
+    --yellow: #ffc600;
+    --black: #272727;
+    --grey: #A1A1A1;
+}
 
 /*estructura de la pagina, con el grid-template-area le estoy dando una estructura a la pagina*/
 .pagina{
-
+   
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns:1fr 3fr;
     grid-template-areas: "header header"
                          "nav main"
                          "nav footer";
+    grid-gap: 10px;                     
+    font-size: 180%;
 
 }
 
@@ -21,8 +28,8 @@
 .pagina nav {
 
     grid-area: nav;
-    font-size: 170%;
-
+    
+     
 }
 
 nav ul li, a{
@@ -32,11 +39,33 @@ nav ul li, a{
 
 }
 
+li{
+
+    border: 1px solid black;
+
+}
+
 /*Dentro del main hay que poner otro grid para poder estructurar bien todas las fotos*/
 .pagina main{
     display: grid;
     grid-area: main;
-    grid-template-columns:230px 230px 230px;
+    grid-template-columns:235px 235px 235px;
+    grid-gap: 20px 0px;
+}
+
+.gallery__img{
+
+    border: 1px solid white;
+    box-shadow: 1px 1px 6px var(--yellow);
+
+}
+
+/*Cuando le des a un enlace la imagen correspondiente saldra con un borde en verde*/
+img:target{
+
+    border-bottom: 7px solid yellowgreen;
+    border-right: 3px solid yellowgreen;
+    
 }
 
 .pagina footer{
