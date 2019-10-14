@@ -1,0 +1,18 @@
+body {
+    display: grid;
+    grid-template-areas: "header header" "mapa mapa";
+}
+
+header {
+    grid-area: header;
+    justify-content: center;
+}
+
+.mapa {
+    display: grid;
+    grid-area: mapa;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    width: 1000px;
+    height: 1000px;
+}
