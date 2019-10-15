@@ -1,18 +1,34 @@
 body {
     display: grid;
     grid-template-areas: "header header" "mapa mapa";
+    justify-content: center;
 }
 
 header {
     grid-area: header;
-    justify-content: center;
+    text-align: center;
 }
 
-.mapa {
+#mapa {
     display: grid;
     grid-area: mapa;
-    grid-template-columns: repeat(20, 1fr);
-    grid-template-rows: repeat(12, 1fr);
-    width: 1000px;
-    height: 1000px;
+    grid-template-columns: repeat(21, 1fr);
+    grid-template-rows: repeat(14, 1fr);
+    width: 800px;
+    height: 600px;
+}
+
+.camino {
+    background-color: black
+}
+
+.pilar {
+    background-color: blueviolet;
+}
+
+.personaje {
+    background-image: url("../img/link.png");
+    background-size: 100% 100%;
+    background-color: black;
+    background-blend-mode: lighten, normal;
 }
