@@ -79,6 +79,7 @@ function cargarMapa() {
     console.table(arrayMapa);
 
 }
+
 /*Se esta creando otro mapa encima si le digo que vuelva a cargar el mapa en el movimiento
   hay que mirar como hacer que no me pinte otro mapa sino que me lo recargue
 */
@@ -96,19 +97,19 @@ function movimientoPersonaje(teclado) {
     if (teclado == "ArrowUp") {
 
 
-
+        moverArriba();
 
     }
 
     if (teclado == "ArrowRight") {
 
-
+        moverDerecha();
 
     }
 
     if (teclado == "ArrowLeft") {
 
-
+        moverIzquierda();
 
 
     }
@@ -119,14 +120,41 @@ function movimientoPersonaje(teclado) {
 /*Cuando me muevo hacia abajo me borro en la posicion anterior el personaje y le añado un camino*/
 function moverAbajo() {
 
+    arrayMapa[x][y].classList.remove("personaje");
+    arrayMapa[x][y].classList.add("huellas");
+    x++;
+    arrayMapa[x][y].classList.add("personaje");
+    arrayMapa[x][y].classList.remove("huellas");
+
+}
+/*Cuando me muevo hacia abajo me borro en la posicion anterior el personaje y le añado un camino*/
+function moverArriba() {
 
     arrayMapa[x][y].classList.remove("personaje");
-    arrayMapa[x][y].classList.remove("camino");
-
-
-    x++;
     arrayMapa[x][y].classList.add("huellas");
+    x--
     arrayMapa[x][y].classList.add("personaje");
+    arrayMapa[x][y].classList.remove("huellas");
+}
 
+/*Cuando me muevo hacia abajo me borro en la posicion anterior el personaje y le añado un camino*/
+function moverDerecha() {
+
+    arrayMapa[x][y].classList.remove("personaje");
+    arrayMapa[x][y].classList.add("huellas");
+    y++
+    arrayMapa[x][y].classList.add("personaje");
+    arrayMapa[x][y].classList.remove("huellas");
+}
+
+/*Cuando me muevo hacia abajo me borro en la posicion anterior el personaje y le añado un camino*/
+function moverIzquierda() {
+
+
+    arrayMapa[x][y].classList.remove("personaje");
+    arrayMapa[x][y].classList.add("huellas");
+    y--
+    arrayMapa[x][y].classList.add("personaje");
+    arrayMapa[x][y].classList.remove("huellas");
 
 }
