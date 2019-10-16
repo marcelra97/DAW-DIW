@@ -33,6 +33,34 @@ header {
     background-blend-mode: lighten, normal;
 }
 
+.personajeAbajo {
+    background-image: url("../img/link_abajo.gif");
+    background-size: 100% 100%;
+    background-color: black;
+    background-blend-mode: lighten, normal;
+}
+
+.personajeDerecha {
+    background-image: url("../img/link_walking.gif");
+    background-size: 100% 100%;
+    background-color: black;
+    background-blend-mode: lighten, normal;
+}
+
+.personajeIzquierda {
+    background-image: url("../img/link_izquierda.gif");
+    background-size: 100% 100%;
+    background-color: black;
+    background-blend-mode: lighten, normal;
+}
+
+.personajeArriba {
+    background-image: url("../img/link_arriba.gif");
+    background-size: 100% 100%;
+    background-color: black;
+    background-blend-mode: lighten, normal;
+}
+
 .momia {
     background-image: url("../img/gibdo.png");
     background-size: 100% 100%;
