@@ -26,12 +26,25 @@ header {
     background-color: blueviolet;
 }
 
+.muro {
+    background-color: yellow;
+}
+
+
+/******************SPRITES PERSONAJE************************/
+
+
+/*clase cuando el personaje esta en la posicion inicial*/
+
 .personaje {
     background-image: url("../img/link.png");
     background-size: 100% 100%;
     background-color: black;
     background-blend-mode: lighten, normal;
 }
+
+
+/*clase cuando el personaje se mueve hacia abajo*/
 
 .personajeAbajo {
     background-image: url("../img/link_abajo.gif");
@@ -40,12 +53,18 @@ header {
     background-blend-mode: lighten, normal;
 }
 
+
+/*clase cuando el personaje se mueve hacia la derecha*/
+
 .personajeDerecha {
     background-image: url("../img/link_walking.gif");
     background-size: 100% 100%;
     background-color: black;
     background-blend-mode: lighten, normal;
 }
+
+
+/*clase cuando el personaje se mueve hacia la izquierda*/
 
 .personajeIzquierda {
     background-image: url("../img/link_izquierda.gif");
@@ -54,12 +73,18 @@ header {
     background-blend-mode: lighten, normal;
 }
 
+
+/*clase cuando el personaje se mueve hacia la arriba*/
+
 .personajeArriba {
     background-image: url("../img/link_arriba.gif");
     background-size: 100% 100%;
     background-color: black;
     background-blend-mode: lighten, normal;
 }
+
+
+/*Sprite de la momia*/
 
 .momia {
     background-image: url("../img/gibdo.png");
@@ -68,9 +93,8 @@ header {
     background-blend-mode: lighten, normal;
 }
 
-.muro {
-    background-color: yellow;
-}
+
+/*Sprite de las huellas*/
 
 .huellas {
     background-image: url("../img/huellas.png");
