@@ -33,11 +33,20 @@ header {
     background-blend-mode: lighten, normal;
 }
 
-.momia{
-
+.momia {
     background-image: url("../img/gibdo.png");
     background-size: 100% 100%;
     background-color: black;
     background-blend-mode: lighten, normal;
+}
 
+.muro {
+    background-color: yellow;
+}
+
+.huellas {
+    background-image: url("../img/huellas.png");
+    background-size: 100% 100%;
+    background-color: black;
+    background-blend-mode: lighten, normal;
 }

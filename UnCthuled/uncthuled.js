@@ -1,5 +1,8 @@
 var arrayMapa = new Array();
 var hijo;
+
+
+
 window.onload = function() {
 
     cargarMapa()
@@ -8,12 +11,12 @@ window.onload = function() {
 
 window.addEventListener('keydown', function(evento) {
 
-   
+
     movimientoPersonaje(evento.key);
 
-},false);
+}, false);
 
- arrayMapa = [
+arrayMapa = [
     [7, 7, 7, 7, 7, 7, 7, 7, 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
@@ -30,77 +33,100 @@ window.addEventListener('keydown', function(evento) {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0]
 ];
 
+//Posicion Inicial
+var x = 0;
+var y = 8;
+
 function cargarMapa() {
 
-    alert(arrayMapa[0][8]);
-    //var padre = document.getElementById("mapa");
-    for (let x = 0; x < arrayMapa.length; x++) {
+    for (let filas = 0; filas < arrayMapa.length; filas++) {
 
-        for (let y = 0; y < arrayMapa[0].length; y++) {
+        for (let columnas = 0; columnas < arrayMapa[0].length; columnas++) {
 
             hijo = document.createElement("div");
 
-            if (arrayMapa[x][y] == 0) {
+            if (arrayMapa[filas][columnas] == 0) {
 
                 hijo.classList.add("camino");
 
             }
 
-            if (arrayMapa[x][y] == 1) {
+            if (arrayMapa[filas][columnas] == 1) {
 
                 hijo.classList.add("pilar");
             }
 
-            if (arrayMapa[x][y] == 2) {
+            if (arrayMapa[filas][columnas] == 2) {
 
                 hijo.classList.add("personaje");
             }
 
-            if(arrayMapa[x][y] == 3){
+            if (arrayMapa[filas][columnas] == 3) {
 
                 hijo.classList.add("momia");
             }
 
+            if (arrayMapa[filas][columnas] == 7) {
+
+                hijo.classList.add("muro");
+            }
+
             document.getElementById("mapa").appendChild(hijo);
+            arrayMapa[filas][columnas] = hijo;
         }
 
     }
+    console.table(arrayMapa);
 
 }
 /*Se esta creando otro mapa encima si le digo que vuelva a cargar el mapa en el movimiento
   hay que mirar como hacer que no me pinte otro mapa sino que me lo recargue
-*/ 
-function movimientoPersonaje(teclado){
+*/
+function movimientoPersonaje(teclado) {
 
     //ArrowDown, ArrowUp, ArrowRight, ArrowLeft
-        
-    
-    if(teclado == "ArrowDown"){
-        
-        arrayMapa[0][8] = 0;
-        arrayMapa[1][8] = 2;
+
+
+    if (teclado == "ArrowDown") {
+
+        moverAbajo();
 
     }
 
-    if(teclado == "ArrowUp"){
+    if (teclado == "ArrowUp") {
 
-      
-        
-        
+
+
+
     }
 
-    if(teclado == "ArrowRight"){
+    if (teclado == "ArrowRight") {
 
-     
-        
+
+
     }
 
-    if(teclado == "ArrowLeft"){
+    if (teclado == "ArrowLeft") {
 
-        
-        
-        
+
+
+
     }
-    
+
+
+}
+
+/*Cuando me muevo hacia abajo me borro en la posicion anterior el personaje y le añado un camino*/
+function moverAbajo() {
+
+
+    arrayMapa[x][y].classList.remove("personaje");
+    arrayMapa[x][y].classList.remove("camino");
+
+
+    x++;
+    arrayMapa[x][y].classList.add("huellas");
+    arrayMapa[x][y].classList.add("personaje");
+
 
 }
