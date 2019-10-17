@@ -22,9 +22,22 @@ header {
     background-color: black
 }
 
-.pilar {
-    background-color: blueviolet;
+
+/*****************************PILAR*******************************/
+
+.pilarLlave {
+    background-image: url("../img/key.gif");
+    background-size: 100% 100%;
+    background-color: black;
+    background-blend-mode: lighten, normal;
 }
+
+.pilar {
+    background: blueviolet;
+}
+
+
+/***************************MURO************************************/
 
 .muro {
     background-color: yellow;

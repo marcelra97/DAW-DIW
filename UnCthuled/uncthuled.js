@@ -37,9 +37,11 @@ arrayMapa = [
 var x = 0;
 var y = 8;
 
+//Para el grupo del pilar
 var pilarPar = 1;
 var pilarImpar = 1;
 
+//Contadores para poder agrupar el pilar
 var contadorPar = 0;
 var contadorImpar = 0;
 
@@ -60,6 +62,12 @@ function cargarMapa() {
             if (arrayMapa[filas][columnas] == 1) {
 
                 hijo.classList.add("pilar");
+
+                //La llave puesta en una posicion estatica
+                if (filas == 3 && columnas == 2) {
+
+                    hijo.classList.add("pilarLlave")
+                }
 
                 /*Me he creado una segunda clase para pilar, para asi poder trabajar con los grupos de pilares*/
 
@@ -118,7 +126,7 @@ function cargarMapa() {
 
 
     }
-    console.table(arrayMapa);
+
 
 }
 
@@ -133,25 +141,28 @@ function movimientoPersonaje(teclado) {
     if (teclado == "ArrowDown") {
 
         moverAbajo();
-
+        comprobarPilar(teclado);
     }
 
     if (teclado == "ArrowUp") {
 
 
         moverArriba();
+        comprobarPilar(teclado);
 
     }
 
     if (teclado == "ArrowRight") {
 
         moverDerecha();
+        comprobarPilar(teclado);
 
     }
 
     if (teclado == "ArrowLeft") {
 
         moverIzquierda();
+        comprobarPilar(teclado);
 
 
     }
@@ -235,4 +246,26 @@ function moverIzquierda() {
             arrayMapa[x][y].classList.remove("huellas");
         }
     }
+}
+
+function comprobarPilar(teclado) {
+
+    if (teclado == "ArrowUp" || teclado == "ArrowDown") {
+
+        //Derecha
+
+        arrayMapa[x][y + 1].classList.contains("pilar");
+        //Izquierda
+        arrayMapa[x][y - 1].classList.contains("pilar");
+
+    } else if (teclado == "ArrowRight" || teclado == "ArrowLeft") {
+
+        //arriba
+        console.log(arrayMapa[x - 1][y].classList.contains("pilar"));
+        arrayMapa[x - 1][y].classList.contains("pilar");
+        //abajo
+        arrayMapa[x + 1][y].classList.contains("pilar");
+
+    }
+
 }
