@@ -88,8 +88,6 @@ function movimientoPersonaje(teclado) {
     //ArrowDown, ArrowUp, ArrowRight, ArrowLeft
 
     //contains me comprueba dentro del array la clase que le digo que compruebe si esta
-    console.log(arrayMapa[x + 1][y].classList.contains("pilar"));
-
     if (teclado == "ArrowDown") {
 
         moverAbajo();
@@ -122,66 +120,77 @@ function movimientoPersonaje(teclado) {
 /*Cuando me muevo hacia abajo me borro en la posicion anterior el personaje y le añado un camino*/
 function moverAbajo() {
 
+    //Cuando llegue al fondo el personaje no puede moverse mas para abajo si el siguiente es la fila 14
+    if(x+1 != 14){
+
     /*Si lo que hay abajo del personaje contiene un pilar no puede avanzar hacia esa direccion */
-    if (!arrayMapa[x + 1][y].classList.contains("pilar")) {
+        if (!arrayMapa[x + 1][y].classList.contains("pilar")) {
 
-        arrayMapa[x][y].classList.remove("personajeAbajo");
-        arrayMapa[x][y].classList.remove("personajeDerecha");
-        arrayMapa[x][y].classList.remove("personajeIzquierda");
-        arrayMapa[x][y].classList.remove("personajeArriba");
-        arrayMapa[x][y].classList.add("huellas");
-        x++;
-        arrayMapa[x][y].classList.add("personajeAbajo");
-        arrayMapa[x][y].classList.remove("huellas");
+            arrayMapa[x][y].classList.remove("personajeAbajo");
+            arrayMapa[x][y].classList.remove("personajeDerecha");
+            arrayMapa[x][y].classList.remove("personajeIzquierda");
+            arrayMapa[x][y].classList.remove("personajeArriba");
+            arrayMapa[x][y].classList.add("huellas");
+            x++;
+            arrayMapa[x][y].classList.add("personajeAbajo");
+            arrayMapa[x][y].classList.remove("huellas");
+        }
     }
-
-
 }
 
 /*Cuando me muevo hacia arriba me borro en la posicion anterior el personaje y le añado un camino*/
 function moverArriba() {
 
-    if (!arrayMapa[x - 1][y].classList.contains("pilar")) {
+    if(x-1 != -1){
 
-        arrayMapa[x][y].classList.remove("personajeAbajo");
-        arrayMapa[x][y].classList.remove("personajeDerecha");
-        arrayMapa[x][y].classList.remove("personajeIzquierda");
-        arrayMapa[x][y].classList.remove("personajeArriba");
-        arrayMapa[x][y].classList.add("huellas");
-        x--
-        arrayMapa[x][y].classList.add("personajeArriba");
-        arrayMapa[x][y].classList.remove("huellas");
+        if (!arrayMapa[x - 1][y].classList.contains("pilar") && !arrayMapa[x-1][y].classList.contains("muro") ) {
+
+            arrayMapa[x][y].classList.remove("personajeAbajo");
+            arrayMapa[x][y].classList.remove("personajeDerecha");
+            arrayMapa[x][y].classList.remove("personajeIzquierda");
+            arrayMapa[x][y].classList.remove("personajeArriba");
+            arrayMapa[x][y].classList.add("huellas");
+            x--
+            arrayMapa[x][y].classList.add("personajeArriba");
+            arrayMapa[x][y].classList.remove("huellas");
+        }
     }
 }
 
 /*Cuando me muevo hacia derecha me borro en la posicion anterior el personaje y le añado un camino*/
 function moverDerecha() {
+    
+   if(y+1 != 21){ 
 
-    if (!arrayMapa[x][y + 1].classList.contains("pilar")) {
+        if (!arrayMapa[x][y + 1].classList.contains("pilar") && !arrayMapa[x][y + 1].classList.contains("muro") ) {
 
-        arrayMapa[x][y].classList.remove("personajeAbajo");
-        arrayMapa[x][y].classList.remove("personajeDerecha");
-        arrayMapa[x][y].classList.remove("personajeIzquierda");
-        arrayMapa[x][y].classList.remove("personajeArriba");
-        arrayMapa[x][y].classList.add("huellas");
-        y++
-        arrayMapa[x][y].classList.add("personajeDerecha");
-        arrayMapa[x][y].classList.remove("huellas");
+            arrayMapa[x][y].classList.remove("personajeAbajo");
+            arrayMapa[x][y].classList.remove("personajeDerecha");
+            arrayMapa[x][y].classList.remove("personajeIzquierda");
+            arrayMapa[x][y].classList.remove("personajeArriba");
+            arrayMapa[x][y].classList.add("huellas");
+            y++
+            arrayMapa[x][y].classList.add("personajeDerecha");
+            arrayMapa[x][y].classList.remove("huellas");
+        }
     }
 }
 
 /*Cuando me muevo hacia izquierda me borro en la posicion anterior el personaje y le añado un camino*/
 function moverIzquierda() {
 
-    if (!arrayMapa[x][y - 1].classList.contains("pilar")) {
+    if(y-1 !=-1){  
 
-        arrayMapa[x][y].classList.remove("personajeAbajo");
-        arrayMapa[x][y].classList.remove("personajeDerecha");
-        arrayMapa[x][y].classList.remove("personajeIzquierda");
-        arrayMapa[x][y].classList.remove("personajeArriba");
-        arrayMapa[x][y].classList.add("huellas");
-        y--
-        arrayMapa[x][y].classList.add("personajeIzquierda");
-        arrayMapa[x][y].classList.remove("huellas");
+        if (!arrayMapa[x][y - 1].classList.contains("pilar") && !arrayMapa[x][y - 1].classList.contains("muro") ) {
+
+            arrayMapa[x][y].classList.remove("personajeAbajo");
+            arrayMapa[x][y].classList.remove("personajeDerecha");
+            arrayMapa[x][y].classList.remove("personajeIzquierda");
+            arrayMapa[x][y].classList.remove("personajeArriba");
+            arrayMapa[x][y].classList.add("huellas");
+            y--
+            arrayMapa[x][y].classList.add("personajeIzquierda");
+            arrayMapa[x][y].classList.remove("huellas");
+        }
     }
 }
