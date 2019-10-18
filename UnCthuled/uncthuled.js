@@ -51,24 +51,24 @@ var pilarY = 1;
 
 function cargarMapa() {
 
-    for (let filas = 0; filas < arrayMapa.length; filas++) {
+    for (let pilarX = 0; pilarX < arrayMapa.length; pilarX++) {
 
-        for (let columnas = 0; columnas < arrayMapa[0].length; columnas++) {
+        for (let pilarY = 0; pilarY < arrayMapa[0].length; pilarY++) {
 
             hijo = document.createElement("div");
 
-            if (arrayMapa[filas][columnas] == 0) {
+            if (arrayMapa[pilarX][pilarY] == 0) {
 
                 hijo.classList.add("camino");
 
             }
 
-            if (arrayMapa[filas][columnas] == 1) {
+            if (arrayMapa[pilarX][pilarY] == 1) {
 
                 hijo.classList.add("pilar");
 
                 //La llave puesta en una posicion estatica
-                if (filas == 3 && columnas == 2) {
+                if (pilarX == 3 && pilarY == 2) {
 
                     hijo.classList.add("pilarLlave")
                 }
@@ -76,7 +76,7 @@ function cargarMapa() {
                 /*Me he creado una segunda clase para pilar, para asi poder trabajar con los grupos de pilares*/
 
                 //Primero compruebo las partes pares y le cambio los tres divs de arriba al pilar y les añado una clase
-                if (filas % 2 == 0 && contadorPar < 3) {
+                if (pilarX % 2 == 0 && contadorPar < 3) {
 
                     //si lo es añado la clase pilar
                     hijo.classList.add("pilar" + pilarPar);
@@ -85,7 +85,7 @@ function cargarMapa() {
                     contadorPar++;
 
                     //Compruebo las partes impares y le cambio los tres divs de abajo al pilar y les añado una clase    
-                } else if (filas % 2 != 0 && contadorImpar < 3) {
+                } else if (pilarX % 2 != 0 && contadorImpar < 3) {
 
                     hijo.classList.add("pilar" + pilarImpar);
 
@@ -109,23 +109,23 @@ function cargarMapa() {
 
             }
 
-            if (arrayMapa[filas][columnas] == 2) {
+            if (arrayMapa[pilarX][pilarY] == 2) {
 
                 hijo.classList.add("personaje");
             }
 
-            if (arrayMapa[filas][columnas] == 3) {
+            if (arrayMapa[pilarX][pilarY] == 3) {
 
                 hijo.classList.add("momia");
             }
 
-            if (arrayMapa[filas][columnas] == 7) {
+            if (arrayMapa[pilarX][pilarY] == 7) {
 
                 hijo.classList.add("muro");
             }
 
             document.getElementById("mapa").appendChild(hijo);
-            arrayMapa[filas][columnas] = hijo;
+            arrayMapa[pilarX][pilarY] = hijo;
         }
 
 
@@ -255,38 +255,58 @@ function moverIzquierda() {
 function comprobarPilar() {
 
     //Comienza desde la esquina superior del primer pilar
-    for(let filas = 2; filas < arrayMapa.length; filas++ ){
+    for (pilarX = 2; pilarX < arrayMapa.length; pilarX++) {
 
-        for(let columnas = 1; columnas < arrayMapa[1].length; columnas++){
+        for (pilarY = 1; pilarY < arrayMapa[1].length; pilarY++) {
 
             //comprobar en la posicion que me encuentro del pilar
 
-            //si en la derecha y abajo hay otra clase pilar
-            if(arrayMapa[filas][columnas + 1].classList.contains("pilar") && arrayMapa[filas + 1][columnas].classList.contains("pilar")){
+            //para que no se salga del array cuando comprueba
+            if (pilarY + 1 != 21 && pilarX + 1 != 14) {
 
-                //miras si hay huellas a tu izquierda y arriba
-                if(arrayMapa[filas][columnas - 1].classList.contains("huella") && arrayMapa[filas - 1][columnas].classList.contains("pilar")){
 
-                    arrayMapa[filas][columnas ].classList.add("pepe");
+                //si en la derecha y abajo hay otra clase pilar
+                if (arrayMapa[pilarX][pilarY + 1].classList.contains("pilar") && arrayMapa[pilarX + 1][pilarY].classList.contains("pilar")) {
+
+                    //miras si hay huellas a tu izquierda y arriba
+                    if (arrayMapa[pilarX][pilarY - 1].classList.contains("huella") && arrayMapa[pilarX - 1][pilarY].classList.contains("pilar")) {
+
+                        arrayMapa[pilarX][pilarY].classList.add("activo");
+
+
+                    }
+
+                    //si en la izquierda, derecha y abajo hay otra clase pilar   
+                } else if (arrayMapa[pilarX][pilarY - 1].classList.contains("pilar") && arrayMapa[pilarX][pilarY + 1].classList.contains("pilar") && arrayMapa[pilarX + 1][pilarY].classList.contains("pilar")) {
+
+                    //miras si arriba hay huellas
+                    if (arrayMapa[pilarX - 1][pilarY].classList.contains("huellas")) {
+
+                        arrayMapa[pilarX][pilarY].classList.contains("activo");
+
+                    }
+
+                    //si abajo y izquierda hay otra clase pilar
+                } else if (arrayMapa[pilarX + 1][pilarY].classList.contains("pilar") && arrayMapa[pilarX][pilarY - 1].classList.contains("pilar")) {
+
+                    //arriba y a la derecha
+                    if (arrayMapa[pilarX - 1][pilarY].classList.contains("huellas") && arrayMapa[pilarX][pilarY + 1].classList.contains("huellas")) {
+
+                        arrayMapa[pilarX][pilarY].classList.contains("activo");
+                    }
+
+
+                    //si arriba  y izquierda hay una clase pilar    
+                } else if (arrayMapa[pilarX - 1][pilarY].classList.contains("pilar") && arrayMapa[pilarX][pilarY - 1].classList.contains("pilar")) {
+
+                    //si en la derecha, izquierda y arriba hay una clase pilar   
+                } else if (arrayMapa[pilarX][pilarY + 1].classList.contains("pilar") && arrayMapa[pilarX][pilarY - 1].classList.contains("pilar") && arrayMapa[pilarX - 1][pilarY].classList.contains("pilar")) {
+
+                    //si en la derecha y arriba hay una clase pilar   
+                } else if (arrayMapa[pilarX][pilarY + 1].classList.contains("pilar") && arrayMapa[pilarX + 1][pilarY].classList.contains("pilar")) {
+
                 }
-
-             //si en la izquierda, derecha y abajp hay otra clase pilar   
-            }else if(arrayMapa[filas][columnas - 1].classList.contains("pilar") && arrayMapa[filas][columnas + 1].classList.contains("pilar") && arrayMapa[filas + 1][columnas].classList.contains("pilar")){
-
-            //si abajo y izquierda hay otra clase pilar
-            }else if(arrayMapa[filas + 1][columnas].classList.contains("pilar") && arrayMapa[filas][columnas - 1].classList.contains("pilar")){
-
-            //si arriba  y izquierda hay una clase pilar    
-            }else if(arrayMapa[filas - 1][columnas].classList.contains("pilar") && arrayMapa[filas][columnas - 1].classList.contains("pilar")){
-
-             //si en la derecha, izquierda y arriba hay una clase pilar   
-            }else if(arrayMapa[filas][columnas + 1].classList.contains("pilar") && arrayMapa[filas][columnas - 1].classList.contains("pilar") && arrayMapa[filas - 1][columnas].classList.contains("pilar")){
-              
-             //si en la derecha y arriba hay una clase pilar   
-            }else if(arrayMapa[filas][columnas + 1].classList.contains("pilar") && arrayMapa[filas + 1][columnas].classList.contains("pilar")){
-
             }
-            console.log(arrayMapa[2][1].classList)
         }
 
     }
