@@ -45,6 +45,10 @@ var pilarImpar = 1;
 var contadorPar = 0;
 var contadorImpar = 0;
 
+//Comprobacion pilares
+var pilarX = 2;
+var pilarY = 1;
+
 function cargarMapa() {
 
     for (let filas = 0; filas < arrayMapa.length; filas++) {
@@ -141,28 +145,28 @@ function movimientoPersonaje(teclado) {
     if (teclado == "ArrowDown") {
 
         moverAbajo();
-        comprobarPilar(teclado);
+        comprobarPilar();
     }
 
     if (teclado == "ArrowUp") {
 
 
         moverArriba();
-        comprobarPilar(teclado);
+        comprobarPilar();
 
     }
 
     if (teclado == "ArrowRight") {
 
         moverDerecha();
-        comprobarPilar(teclado);
+        comprobarPilar();
 
     }
 
     if (teclado == "ArrowLeft") {
 
         moverIzquierda();
-        comprobarPilar(teclado);
+        comprobarPilar();
 
 
     }
@@ -248,24 +252,44 @@ function moverIzquierda() {
     }
 }
 
-function comprobarPilar(teclado) {
+function comprobarPilar() {
 
-    if (teclado == "ArrowUp" || teclado == "ArrowDown") {
+    //Comienza desde la esquina superior del primer pilar
+    for(let filas = 2; filas < arrayMapa.length; filas++ ){
 
-        //Derecha
+        for(let columnas = 1; columnas < arrayMapa[1].length; columnas++){
 
-        arrayMapa[x][y + 1].classList.contains("pilar");
-        //Izquierda
-        arrayMapa[x][y - 1].classList.contains("pilar");
+            //comprobar en la posicion que me encuentro del pilar
 
-    } else if (teclado == "ArrowRight" || teclado == "ArrowLeft") {
+            //si en la derecha y abajo hay otra clase pilar
+            if(arrayMapa[filas][columnas + 1].classList.contains("pilar") && arrayMapa[filas + 1][columnas].classList.contains("pilar")){
 
-        //arriba
-        console.log(arrayMapa[x - 1][y].classList.contains("pilar"));
-        arrayMapa[x - 1][y].classList.contains("pilar");
-        //abajo
-        arrayMapa[x + 1][y].classList.contains("pilar");
+                //miras si hay huellas a tu izquierda y arriba
+                if(arrayMapa[filas][columnas - 1].classList.contains("huella") && arrayMapa[filas - 1][columnas].classList.contains("pilar")){
+
+                    arrayMapa[filas][columnas ].classList.add("pepe");
+                }
+
+             //si en la izquierda, derecha y abajp hay otra clase pilar   
+            }else if(arrayMapa[filas][columnas - 1].classList.contains("pilar") && arrayMapa[filas][columnas + 1].classList.contains("pilar") && arrayMapa[filas + 1][columnas].classList.contains("pilar")){
+
+            //si abajo y izquierda hay otra clase pilar
+            }else if(arrayMapa[filas + 1][columnas].classList.contains("pilar") && arrayMapa[filas][columnas - 1].classList.contains("pilar")){
+
+            //si arriba  y izquierda hay una clase pilar    
+            }else if(arrayMapa[filas - 1][columnas].classList.contains("pilar") && arrayMapa[filas][columnas - 1].classList.contains("pilar")){
+
+             //si en la derecha, izquierda y arriba hay una clase pilar   
+            }else if(arrayMapa[filas][columnas + 1].classList.contains("pilar") && arrayMapa[filas][columnas - 1].classList.contains("pilar") && arrayMapa[filas - 1][columnas].classList.contains("pilar")){
+              
+             //si en la derecha y arriba hay una clase pilar   
+            }else if(arrayMapa[filas][columnas + 1].classList.contains("pilar") && arrayMapa[filas + 1][columnas].classList.contains("pilar")){
+
+            }
+            console.log(arrayMapa[2][1].classList)
+        }
 
     }
-
+    // si los seis que estan alrededor mio tienen una clase en especifico entonces les cambias el color
+    //para esto primero tengo que comprobar si alrededor de los pilares hay huellas. si tienen una huella al lado pues cambian de clase 
 }
