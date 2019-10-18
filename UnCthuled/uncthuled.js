@@ -273,6 +273,7 @@ function comprobarPilar() {
                         console.log("1");
                         arrayMapa[pilarX][pilarY].classList.add("activo");
 
+                        cambiarPilar();
 
                     }
 
@@ -285,8 +286,9 @@ function comprobarPilar() {
                     //miras si arriba hay huellas
                     if (arrayMapa[pilarX - 1][pilarY].classList.contains("huellas")) {
                         console.log("2");
-                        arrayMapa[pilarX][pilarY].classList.contains("activo");
+                        arrayMapa[pilarX][pilarY].classList.add("activo");
 
+                        cambiarPilar();
                     }
 
                 }
@@ -297,8 +299,9 @@ function comprobarPilar() {
                     //miras arriba y a la derecha
                     if (arrayMapa[pilarX - 1][pilarY].classList.contains("huellas") && arrayMapa[pilarX][pilarY + 1].classList.contains("huellas")) {
                         console.log("3");
-                        arrayMapa[pilarX][pilarY].classList.contains("activo");
+                        arrayMapa[pilarX][pilarY].classList.add("activo");
 
+                        cambiarPilar();
                     }
 
                 }
@@ -309,8 +312,9 @@ function comprobarPilar() {
                     //mirar derecha y abajo
                     if (arrayMapa[pilarX][pilarY + 1].classList.contains("huellas") && arrayMapa[pilarX + 1][pilarY].classList.contains("huellas")) {
                         console.log("4");
-                        arrayMapa[pilarX][pilarY].classList.contains("activo");
+                        arrayMapa[pilarX][pilarY].classList.add("activo");
 
+                        cambiarPilar();
                     }
 
 
@@ -322,8 +326,9 @@ function comprobarPilar() {
                     //mirar hacia abajo
                     if (arrayMapa[pilarX + 1][pilarY].classList.contains("huellas")) {
                         console.log("5");
-                        arrayMapa[pilarX][pilarY].classList.contains("activo");
+                        arrayMapa[pilarX][pilarY].classList.add("activo");
 
+                        cambiarPilar();
                     }
                 }
 
@@ -333,8 +338,9 @@ function comprobarPilar() {
                     //mirar izquierda y abajo
                     if (arrayMapa[pilarX][pilarY - 1].classList.contains("huellas") && arrayMapa[pilarX + 1][pilarY].classList.contains("huellas")) {
                         console.log("6");
-                        arrayMapa[pilarX][pilarY].classList.contains("activo");
+                        arrayMapa[pilarX][pilarY].classList.add("activo");
 
+                        cambiarPilar();
 
                     }
                 }
@@ -344,8 +350,29 @@ function comprobarPilar() {
         }
 
     }
-    // si los seis que estan alrededor mio tienen una clase en especifico entonces les cambias el color
-    //para esto primero tengo que comprobar si alrededor de los pilares hay huellas. si tienen una huella al lado pues cambian de clase
-    //comprobar para cada pilar si los seis suyos tuyos tienen 
+    console.table(arrayMapa);
+}
+
+function cambiarPilar() {
+
+    let numeroPilar = 1;
+
+    for (let i = 0; i < arrayMapa.length; i++) {
+
+        for (let j = 0; j < arrayMapa[0].length; j++) {
+
+            if (arrayMapa[i][j].classList.contains("pilar" + numeroPilar)) {
+
+                if (arrayMapa[i][j].classList.contains.("activo")) {
+
+                }
+
+            }
+
+        }
+    }
 
 }
+// si los seis que estan alrededor mio tienen una clase en especifico entonces les cambias el color
+//para esto primero tengo que comprobar si alrededor de los pilares hay huellas. si tienen una huella al lado pues cambian de clase
+//comprobar para cada pilar si los seis suyos tuyos tienen la clase activo, si lo tienen
