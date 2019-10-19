@@ -274,7 +274,6 @@ function comprobarPilar() {
                         arrayMapa[pilarX][pilarY].classList.add("activo");
 
                         
-
                     }
 
 
@@ -356,59 +355,44 @@ function comprobarPilar() {
 
 function cambiarPilar() {
 
-    let arribaPilar = 1;
-    let abajoPilar = 1;
-    let contadorArriba= 0;
-    let contadorAbajo= 0;
+    var pilarEntero;
+    var numeroPilar = 1;
+    var contadorActivo = 0;
+   
 
-    for (let i = 0; i < arrayMapa.length; i++) {
+    while(numeroPilar < 21){
 
-        for (let j = 0; j < arrayMapa[0].length; j++) {
-           
-            //mira todos los pilares con este if
-            if (arrayMapa[i][j].classList.contains("pilar" + arribaPilar) && i % 2 == 0) {
+        pilarEntero = document.getElementsByClassName("pilar" + numeroPilar);
+    
+        for(let i = 0; i < pilarEntero.length; i++){
 
+            if(pilarEntero[i].classList.contains("activo")){
+
+                contadorActivo ++;
                 
-                if (arrayMapa[i][j].classList.contains("activo")) {
+                if(contadorActivo == 6){
 
-                    arrayMapa[i][j].classList.add("pilarActivo");
-                    
+                    cambioColor(pilarEntero)
+                    contadorActivo = 0;
                 }
-
-                contadorArriba++;
-
-                if(contadorArriba == 3){
-                    arribaPilar ++;
-                    contadorArriba=0;
-                }
-                
-                
-               
-              
-            }else if(arrayMapa[i][j].classList.contains("pilar" + abajoPilar) && i % 2 !=0){
-
-                if (arrayMapa[i][j].classList.contains("activo")) {
-
-                    arrayMapa[i][j].classList.add("pilarActivo");
-
-                }
-
-                contadorAbajo++;
-                
-                if(contadorAbajo == 3){
-                    abajoPilar ++;
-                    contadorAbajo=0;
-                }
-
-               
-
-
+            
             }
 
         }
-        
+
+        contadorActivo = 0;
+        numeroPilar++;
     }
-   
+    
+}
+
+function cambioColor(pilarEntero){
+
+    for(let i = 0; i < pilarEntero.length; i++){
+
+        pilarEntero[i].classList.add("pilarActivo");
+    }
+    
 }
 // si los seis que estan alrededor mio tienen una clase en especifico entonces les cambias el color
 //para esto primero tengo que comprobar si alrededor de los pilares hay huellas. si tienen una huella al lado pues cambian de clase
