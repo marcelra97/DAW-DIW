@@ -35,6 +35,9 @@ header {
 .pilar {
     background: blueviolet;
 }
+.pilarActivo{
+    background: blue;
+}
 
 
 /***************************MURO************************************/
