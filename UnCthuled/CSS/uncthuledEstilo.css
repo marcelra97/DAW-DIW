@@ -25,18 +25,34 @@ header {
 
 /*****************************PILAR*******************************/
 
-.pilarLlave {
-    background-image: url("../img/key.gif");
-    background-size: 100% 100%;
-    background-color: black;
-    background-blend-mode: lighten, normal;
-}
 
 .pilar {
     background: blueviolet;
 }
+
 .pilarActivo{
     background: blue;
+}
+
+.pilarLlave {
+    background-image: url("../img/key.gif");
+    background-size: 100% 100%;
+    background-color: black;
+   
+}
+
+.pilarPergamino{
+    
+    background-image: url("../img/pergamino.gif");
+    background-size: 100% 100%;
+    background-color: black;
+}
+
+.pilarSarcofago{
+
+    background-image: url("../img/sarcofago.gif");
+    background-size: 100% 100%;
+    background-color: black;
 }
 
 
@@ -103,7 +119,7 @@ header {
 /*Sprite de la momia*/
 
 .momia {
-    background-image: url("../img/gibdo.png");
+    background-image: url("../img/Gibdo.gif");
     background-size: 100% 100%;
     background-color: black;
     background-blend-mode: lighten, normal;

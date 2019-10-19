@@ -67,11 +67,11 @@ function cargarMapa() {
 
                 hijo.classList.add("pilar");
 
-                //La llave puesta en una posicion estatica
-                if (pilarX == 3 && pilarY == 2) {
+                // //La llave puesta en una posicion estatica
+                // if (pilarX == 3 && pilarY == 2) {
 
-                    hijo.classList.add("pilarLlave")
-                }
+                //     hijo.classList.add("pilarLlave")
+                // }
 
                 /*Me he creado una segunda clase para pilar, para asi poder trabajar con los grupos de pilares*/
 
@@ -359,20 +359,25 @@ function cambiarPilar() {
     var numeroPilar = 1;
     var contadorActivo = 0;
    
-
+    // hace un bucle hasta que haya pasado por las 20 celdas
     while(numeroPilar < 21){
-
+        
+        //cojo el pilar completo con todos sus divs
         pilarEntero = document.getElementsByClassName("pilar" + numeroPilar);
-    
+        
+        //lo recorro
         for(let i = 0; i < pilarEntero.length; i++){
 
+            // y miro los que han sido rodeados por huellas
             if(pilarEntero[i].classList.contains("activo")){
 
+                //cuento los que han sido rodeados
                 contadorActivo ++;
                 
+                //si estan los seis los coloreo completamente
                 if(contadorActivo == 6){
 
-                    cambioColor(pilarEntero)
+                    cambioColor(pilarEntero, numeroPilar)
                     contadorActivo = 0;
                 }
             
@@ -386,16 +391,39 @@ function cambiarPilar() {
     
 }
 
-function cambioColor(pilarEntero){
+function cambioColor(pilarEntero, numeroPilar){
+
+    //posicion 4 es el medio del pilar
 
     for(let i = 0; i < pilarEntero.length; i++){
-
+        
         pilarEntero[i].classList.add("pilarActivo");
+        
+        //si es el pilar que indico aparece un objeto
+        if(numeroPilar == 1){
+           //pone la llave
+            pilarEntero[4].classList.add("pilarLlave");
+            pilarEntero[4].classList.remove("pilar");
+        }
+
+        if(numeroPilar == 13){
+            //pone el pergamino
+            pilarEntero[4].classList.add("pilarPergamino");
+            pilarEntero[4].classList.remove("pilar");
+        }
+
+        if(numeroPilar == 10){
+            //pone el sarcofago
+            pilarEntero[4].classList.add("pilarSarcofago");
+            pilarEntero[4].classList.remove("pilar");
+        }
+
+        if(numeroPilar == 17){
+            //pones la momia
+            pilarEntero[4].classList.add("momia");
+            pilarEntero[4].classList.remove("pilar");
+        }
     }
     
 }
-// si los seis que estan alrededor mio tienen una clase en especifico entonces les cambias el color
-//para esto primero tengo que comprobar si alrededor de los pilares hay huellas. si tienen una huella al lado pues cambian de clase
-//comprobar para cada pilar si los seis suyos tuyos tienen la clase activo, si lo tienen
- //si es par hace la parte de arriba
                
