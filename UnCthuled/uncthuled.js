@@ -67,11 +67,6 @@ function cargarMapa() {
 
                 hijo.classList.add("pilar");
 
-                // //La llave puesta en una posicion estatica
-                // if (pilarX == 3 && pilarY == 2) {
-
-                //     hijo.classList.add("pilarLlave")
-                // }
 
                 /*Me he creado una segunda clase para pilar, para asi poder trabajar con los grupos de pilares*/
 
@@ -270,10 +265,10 @@ function comprobarPilar() {
 
                     //miras si hay huellas a tu izquierda y arriba
                     if (arrayMapa[pilarX][pilarY - 1].classList.contains("huellas") && arrayMapa[pilarX - 1][pilarY].classList.contains("huellas")) {
-                        
+
                         arrayMapa[pilarX][pilarY].classList.add("activo");
 
-                        
+
                     }
 
 
@@ -284,10 +279,10 @@ function comprobarPilar() {
 
                     //miras si arriba hay huellas
                     if (arrayMapa[pilarX - 1][pilarY].classList.contains("huellas")) {
-                       
+
                         arrayMapa[pilarX][pilarY].classList.add("activo");
 
-                        
+
                     }
 
                 }
@@ -297,10 +292,10 @@ function comprobarPilar() {
 
                     //miras arriba y a la derecha
                     if (arrayMapa[pilarX - 1][pilarY].classList.contains("huellas") && arrayMapa[pilarX][pilarY + 1].classList.contains("huellas")) {
-                       
+
                         arrayMapa[pilarX][pilarY].classList.add("activo");
 
-                        
+
                     }
 
                 }
@@ -310,10 +305,10 @@ function comprobarPilar() {
 
                     //mirar derecha y abajo
                     if (arrayMapa[pilarX][pilarY + 1].classList.contains("huellas") && arrayMapa[pilarX + 1][pilarY].classList.contains("huellas")) {
-                        
+
                         arrayMapa[pilarX][pilarY].classList.add("activo");
 
-                        
+
                     }
 
 
@@ -324,10 +319,10 @@ function comprobarPilar() {
 
                     //mirar hacia abajo
                     if (arrayMapa[pilarX + 1][pilarY].classList.contains("huellas")) {
-                        
+
                         arrayMapa[pilarX][pilarY].classList.add("activo");
 
-                       
+
                     }
                 }
 
@@ -336,21 +331,21 @@ function comprobarPilar() {
 
                     //mirar izquierda y abajo
                     if (arrayMapa[pilarX][pilarY - 1].classList.contains("huellas") && arrayMapa[pilarX + 1][pilarY].classList.contains("huellas")) {
-                       
+
                         arrayMapa[pilarX][pilarY].classList.add("activo");
 
-                        
+
 
                     }
                 }
-                
+
                 cambiarPilar();
 
             }
         }
 
     }
-    
+
 }
 
 function cambiarPilar() {
@@ -358,29 +353,29 @@ function cambiarPilar() {
     var pilarEntero;
     var numeroPilar = 1;
     var contadorActivo = 0;
-   
+
     // hace un bucle hasta que haya pasado por las 20 celdas
-    while(numeroPilar < 21){
-        
+    while (numeroPilar < 21) {
+
         //cojo el pilar completo con todos sus divs
         pilarEntero = document.getElementsByClassName("pilar" + numeroPilar);
-        
+
         //lo recorro
-        for(let i = 0; i < pilarEntero.length; i++){
+        for (let i = 0; i < pilarEntero.length; i++) {
 
             // y miro los que han sido rodeados por huellas
-            if(pilarEntero[i].classList.contains("activo")){
+            if (pilarEntero[i].classList.contains("activo")) {
 
                 //cuento los que han sido rodeados
-                contadorActivo ++;
-                
+                contadorActivo++;
+
                 //si estan los seis los coloreo completamente
-                if(contadorActivo == 6){
+                if (contadorActivo == 6) {
 
                     cambioColor(pilarEntero, numeroPilar)
                     contadorActivo = 0;
                 }
-            
+
             }
 
         }
@@ -388,42 +383,41 @@ function cambiarPilar() {
         contadorActivo = 0;
         numeroPilar++;
     }
-    
+
 }
 
-function cambioColor(pilarEntero, numeroPilar){
+function cambioColor(pilarEntero, numeroPilar) {
 
     //posicion 4 es el medio del pilar
 
-    for(let i = 0; i < pilarEntero.length; i++){
-        
+    for (let i = 0; i < pilarEntero.length; i++) {
+
         pilarEntero[i].classList.add("pilarActivo");
-        
+
         //si es el pilar que indico aparece un objeto
-        if(numeroPilar == 1){
-           //pone la llave
+        if (numeroPilar == 1) {
+            //pone la llave
             pilarEntero[4].classList.add("pilarLlave");
             pilarEntero[4].classList.remove("pilar");
         }
 
-        if(numeroPilar == 13){
+        if (numeroPilar == 13) {
             //pone el pergamino
             pilarEntero[4].classList.add("pilarPergamino");
             pilarEntero[4].classList.remove("pilar");
         }
 
-        if(numeroPilar == 10){
+        if (numeroPilar == 10) {
             //pone el sarcofago
             pilarEntero[4].classList.add("pilarSarcofago");
             pilarEntero[4].classList.remove("pilar");
         }
 
-        if(numeroPilar == 17){
+        if (numeroPilar == 17) {
             //pones la momia
             pilarEntero[4].classList.add("momia");
             pilarEntero[4].classList.remove("pilar");
         }
     }
-    
+
 }
-               

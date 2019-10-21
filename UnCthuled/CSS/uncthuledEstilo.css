@@ -25,31 +25,31 @@ header {
 
 /*****************************PILAR*******************************/
 
-
 .pilar {
     background: blueviolet;
+    background-image: url("../img/pilar.png");
+    background-size: 100% 100%;
 }
 
-.pilarActivo{
+.pilarActivo {
     background: blue;
+    background-image: url("../img/sueloPilar.png");
+    background-size: 100% 100%;
 }
 
 .pilarLlave {
     background-image: url("../img/key.gif");
     background-size: 100% 100%;
     background-color: black;
-   
 }
 
-.pilarPergamino{
-    
+.pilarPergamino {
     background-image: url("../img/pergamino.gif");
     background-size: 100% 100%;
     background-color: black;
 }
 
-.pilarSarcofago{
-
+.pilarSarcofago {
     background-image: url("../img/sarcofago.gif");
     background-size: 100% 100%;
     background-color: black;
@@ -59,7 +59,7 @@ header {
 /***************************MURO************************************/
 
 .muro {
-    background-color: yellow;
+    background-color: green;
 }
 
 
