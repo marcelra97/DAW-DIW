@@ -389,6 +389,8 @@ function cambiarPilar() {
 function cambioColor(pilarEntero, numeroPilar) {
 
     //posicion 4 es el medio del pilar
+    //guardarme los numeros de los pilares en un array para poder meter la imagen en un pilar random
+    // hacer un contador segun el numero que salga
 
     for (let i = 0; i < pilarEntero.length; i++) {
 
