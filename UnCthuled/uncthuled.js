@@ -1,11 +1,10 @@
 var arrayMapa = new Array();
 var hijo;
 
-
-
 window.onload = function() {
 
     cargarMapa()
+
 
 };
 
@@ -15,6 +14,8 @@ window.addEventListener('keydown', function(evento) {
     movimientoPersonaje(evento.key);
 
 }, false);
+
+setInterval(moverMomia, 200);
 
 arrayMapa = [
     [7, 7, 7, 7, 7, 7, 7, 7, 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
@@ -30,7 +31,7 @@ arrayMapa = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
     [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0]
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
 
 //Posicion Inicial
@@ -48,6 +49,10 @@ var contadorImpar = 0;
 //Comprobacion pilares
 var pilarX = 2;
 var pilarY = 1;
+
+//Posicion inicial Momia
+var momiaX = 13;
+var momiaY = 0;
 
 function cargarMapa() {
 
@@ -108,15 +113,16 @@ function cargarMapa() {
 
                 hijo.classList.add("personaje");
             }
-
-            if (arrayMapa[pilarX][pilarY] == 3) {
-
-                hijo.classList.add("momia");
-            }
-
             if (arrayMapa[pilarX][pilarY] == 7) {
 
                 hijo.classList.add("muro");
+
+            }
+
+            if (pilarX == momiaX && pilarY == momiaY) {
+
+                hijo.classList.add("momia")
+
             }
 
             document.getElementById("mapa").appendChild(hijo);
@@ -125,6 +131,7 @@ function cargarMapa() {
 
 
     }
+
 
 
 }
@@ -277,7 +284,7 @@ function comprobarPilar() {
                 //si en la izquierda, derecha y abajo hay otra clase pilar  
                 if (arrayMapa[pilarX][pilarY - 1].classList.contains("pilar") && arrayMapa[pilarX][pilarY + 1].classList.contains("pilar") && arrayMapa[pilarX + 1][pilarY].classList.contains("pilar")) {
 
-                    //miras si arriba hay huellas
+                    //miras si arriba hay huellas.
                     if (arrayMapa[pilarX - 1][pilarY].classList.contains("huellas")) {
 
                         arrayMapa[pilarX][pilarY].classList.add("activo");
@@ -393,19 +400,19 @@ function cambioColor(pilarEntero, numeroPilar) {
     // hacer un contador segun el numero que salga
     //el radom de imagenes se tiene que hacer en otro lado
 
-    var seleccionPilar = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
-    
-    //creo un random
-    let random = Math.random();
+    // var seleccionPilar = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
 
-    //cojo el tamaño del array
-    let tamañoSeleccion = seleccionPilar.length;
-    
-    // despues cojo un tamaño indice random
-    let indiceRandom = Math.floor(random * tamañoSeleccion); 
+    // //creo un random
+    // let random = Math.random();
 
-    // y el que salga me lo guardo
-    let pilarRandom = seleccionPilar[indiceRandom];
+    // //cojo el tamaño del array
+    // let tamañoSeleccion = seleccionPilar.length;
+
+    // // despues cojo un tamaño indice random
+    // let indiceRandom = Math.floor(random * tamañoSeleccion); 
+
+    // // y el que salga me lo guardo
+    // let pilarRandom = seleccionPilar[indiceRandom];
 
     for (let i = 0; i < pilarEntero.length; i++) {
 
@@ -436,5 +443,29 @@ function cambioColor(pilarEntero, numeroPilar) {
             pilarEntero[4].classList.remove("pilar");
         }
     }
+
+}
+
+//movimiento de la momia
+function moverMomia() {
+
+    //si la momia llega abajo, arriba, derecha, izquierda no se pasa del array 
+    if (momiaX != 14 && (momiaX - 1) != -1 && (momiaY + 1) != 21 && (momiaY - 1) != -1) {
+        console.log("hola");
+
+        //si a la izquierda hay un camino o al otro
+        if (arrayMapa[momiaX][momiaY + 1].classList.contains("camino")) {
+
+
+            arrayMapa[momiaX][momiaY].classList.remove("momia");
+            momiaY++;
+            arrayMapa[momiaX][momiaY].classList.add("momia");
+
+        }
+
+
+    }
+
+
 
 }
