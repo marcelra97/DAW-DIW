@@ -391,6 +391,21 @@ function cambioColor(pilarEntero, numeroPilar) {
     //posicion 4 es el medio del pilar
     //guardarme los numeros de los pilares en un array para poder meter la imagen en un pilar random
     // hacer un contador segun el numero que salga
+    //el radom de imagenes se tiene que hacer en otro lado
+
+    var seleccionPilar = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+    
+    //creo un random
+    let random = Math.random();
+
+    //cojo el tamaño del array
+    let tamañoSeleccion = seleccionPilar.length;
+    
+    // despues cojo un tamaño indice random
+    let indiceRandom = Math.floor(random * tamañoSeleccion); 
+
+    // y el que salga me lo guardo
+    let pilarRandom = seleccionPilar[indiceRandom];
 
     for (let i = 0; i < pilarEntero.length; i++) {
 
