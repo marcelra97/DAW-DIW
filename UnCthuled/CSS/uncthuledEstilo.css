@@ -6,8 +6,31 @@ body {
 }
 
 header {
+    display: grid;
     grid-area: header;
     text-align: center;
+    margin-top: 8%;
+    grid-template-columns: 1fr 1fr;
+    font-size: 200%;
+}
+
+#vidas{
+
+    display: grid;
+    grid-template-columns: 80px 70px 70px 70px 70px;
+    text-align: center;
+
+}
+
+#vidas p{
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+.life{
+    background-image: url("../img/vidas.png");
+    background-size: 50% 80%;
+    background-repeat: no-repeat;
 }
 
 #mapa {
