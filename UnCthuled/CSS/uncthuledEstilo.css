@@ -117,20 +117,22 @@ header {
 }
 
 
-/*Sprite de la momia*/
 
-.momia {
-    background-image: url("../img/Gibdo.gif");
-    background-size: 100% 100%;
-    background-color: black;
-    background-blend-mode: lighten, normal;
-}
+
 
 
 /*Sprite de las huellas*/
 
 .huellas {
     background-image: url("../img/huellas.png");
+    background-size: 100% 100%;
+    background-color: black;
+    background-blend-mode: lighten, normal;
+}
+
+/*Sprite de la momia*/
+.momia {
+    background-image: url("../img/Gibdo.gif");
     background-size: 100% 100%;
     background-color: black;
     background-blend-mode: lighten, normal;

@@ -15,7 +15,7 @@ window.addEventListener('keydown', function(evento) {
 
 }, false);
 
-setInterval(moverMomia, 200);
+setInterval(moverMomia, 900);
 
 arrayMapa = [
     [7, 7, 7, 7, 7, 7, 7, 7, 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
@@ -52,7 +52,7 @@ var pilarY = 1;
 
 //Posicion inicial Momia
 var momiaX = 13;
-var momiaY = 0;
+var momiaY = 20;
 
 function cargarMapa() {
 
@@ -450,21 +450,75 @@ function cambioColor(pilarEntero, numeroPilar) {
 function moverMomia() {
 
     //si la momia llega abajo, arriba, derecha, izquierda no se pasa del array 
-    if (momiaX != 14 && (momiaX - 1) != -1 && (momiaY + 1) != 21 && (momiaY - 1) != -1) {
-        console.log("hola");
+    
+        // //si a la izquierda hay un camino 
+        // if (arrayMapa[momiaX][momiaY - 1].classList.contains("camino")) {
 
-        //si a la izquierda hay un camino o al otro
-        if (arrayMapa[momiaX][momiaY + 1].classList.contains("camino")) {
 
+        //     arrayMapa[momiaX][momiaY].classList.remove("momia");
+        //     momiaY--;
+        //     arrayMapa[momiaX][momiaY].classList.add("momia");
+
+        // }
+
+    //como evitar que la momia traspase los pilares seguramente sea con una condicion que lleve contains
+
+    //si la x de la momia es menor que la posicion del personaje esta se suma.
+    if(momiaX < x){
+
+        //si arriba hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
+        if(!arrayMapa[momiaX + 1][momiaY].classList.contains("pilar") && !arrayMapa[momiaX + 1][momiaY].classList.contains("pilarActivo")){
+
+            arrayMapa[momiaX][momiaY].classList.remove("momia");
+            momiaX++;
+            arrayMapa[momiaX][momiaY].classList.add("momia");
+        }
+        
+
+    //si es mayor esta se resta
+    }else if(momiaX> x){
+
+        //si abajo hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
+        if(!arrayMapa[momiaX - 1][momiaY].classList.contains("pilar") && !arrayMapa[momiaX - 1][momiaY].classList.contains("pilarActivo")){
+
+            arrayMapa[momiaX][momiaY].classList.remove("momia");
+            momiaX--;
+            arrayMapa[momiaX][momiaY].classList.add("momia");
+        }
+        
+
+    }
+    //si la posicion Y de la momia es menor de la Y del personaje se suma
+    if(momiaY < y){
+
+        //si a tu derecha hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
+        if(!arrayMapa[momiaX][momiaY + 1].classList.contains("pilar") && !arrayMapa[momiaX][momiaY + 1].classList.contains("pilarActivo")){
 
             arrayMapa[momiaX][momiaY].classList.remove("momia");
             momiaY++;
             arrayMapa[momiaX][momiaY].classList.add("momia");
 
         }
+        
 
+    //si es mayor esta se resta
+    }else if(momiaY > y){
+       
+        //si a tu izquierda hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
+        if(!arrayMapa[momiaX][momiaY - 1].classList.contains("pilar") && !arrayMapa[momiaX][momiaY - 1].classList.contains("pilarActivo")){
+            
+            arrayMapa[momiaX][momiaY].classList.remove("momia");
+            momiaY--;
+            arrayMapa[momiaX][momiaY].classList.add("momia");
+    
+        }
 
+     
     }
+
+
+    
+    
 
 
 
