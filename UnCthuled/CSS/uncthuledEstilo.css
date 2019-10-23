@@ -14,20 +14,18 @@ header {
     font-size: 200%;
 }
 
-#vidas{
-
+#vidas {
     display: grid;
     grid-template-columns: 80px 70px 70px 70px 70px;
     text-align: center;
-
 }
 
-#vidas p{
+#vidas p {
     margin-top: 0%;
     margin-bottom: 0%;
 }
 
-.life{
+.life {
     background-image: url("../img/vidas.png");
     background-size: 50% 80%;
     background-repeat: no-repeat;
@@ -47,13 +45,17 @@ header {
 }
 
 
-/*****************************PILAR*******************************/
+/*Sprite de las huellas*/
 
-.pilar {
-    background: blueviolet;
-    background-image: url("../img/pilar.png");
+.huellas {
+    background-image: url("../img/huellas.png");
     background-size: 100% 100%;
+    background-color: black;
+    background-blend-mode: lighten, normal;
 }
+
+
+/*****************************PILAR*******************************/
 
 .pilarActivo {
     background: blue;
@@ -77,6 +79,21 @@ header {
     background-image: url("../img/sarcofago.gif");
     background-size: 100% 100%;
     background-color: black;
+}
+
+
+/*Sprite de la momia*/
+
+.momia {
+    background-image: url("../img/Gibdo.gif");
+    background-size: 100% 100%;
+    background-color: black;
+    background-blend-mode: lighten, normal;
+}
+
+.pilar {
+    background-image: url("../img/pilar.png");
+    background-size: 100% 100%;
 }
 
 
@@ -134,28 +151,6 @@ header {
 
 .personajeArriba {
     background-image: url("../img/link_arriba.gif");
-    background-size: 100% 100%;
-    background-color: black;
-    background-blend-mode: lighten, normal;
-}
-
-
-
-
-
-
-/*Sprite de las huellas*/
-
-.huellas {
-    background-image: url("../img/huellas.png");
-    background-size: 100% 100%;
-    background-color: black;
-    background-blend-mode: lighten, normal;
-}
-
-/*Sprite de la momia*/
-.momia {
-    background-image: url("../img/Gibdo.gif");
     background-size: 100% 100%;
     background-color: black;
     background-blend-mode: lighten, normal;

@@ -1,6 +1,7 @@
 var arrayMapa = new Array();
 var hijo;
 
+
 window.onload = function() {
 
     cargarMapa()
@@ -53,6 +54,9 @@ var pilarY = 1;
 //Posicion inicial Momia
 var momiaX = 13;
 var momiaY = 20;
+
+//para poder hacer el random del objeto
+var seleccionPilar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
 function cargarMapa() {
 
@@ -127,11 +131,13 @@ function cargarMapa() {
 
             document.getElementById("mapa").appendChild(hijo);
             arrayMapa[pilarX][pilarY] = hijo;
+
+
         }
 
 
     }
-
+    objetosRandom();
 
 
 }
@@ -183,7 +189,7 @@ function moverAbajo() {
     if (x + 1 != 14) {
 
         /*Si lo que hay abajo del personaje contiene un pilar no puede avanzar hacia esa direccion */
-        if (!arrayMapa[x + 1][y].classList.contains("pilar")) {
+        if (!arrayMapa[x + 1][y].classList.contains("pilar") && !arrayMapa[x + 1][y].classList.contains("pilarActivo")) {
 
             arrayMapa[x][y].classList.remove("personajeAbajo");
             arrayMapa[x][y].classList.remove("personajeDerecha");
@@ -202,7 +208,7 @@ function moverArriba() {
 
     if (x - 1 != -1) {
 
-        if (!arrayMapa[x - 1][y].classList.contains("pilar") && !arrayMapa[x - 1][y].classList.contains("muro")) {
+        if (!arrayMapa[x - 1][y].classList.contains("pilar") && !arrayMapa[x - 1][y].classList.contains("muro") && !arrayMapa[x - 1][y].classList.contains("pilarActivo")) {
 
             arrayMapa[x][y].classList.remove("personajeAbajo");
             arrayMapa[x][y].classList.remove("personajeDerecha");
@@ -221,7 +227,7 @@ function moverDerecha() {
 
     if (y + 1 != 21) {
 
-        if (!arrayMapa[x][y + 1].classList.contains("pilar") && !arrayMapa[x][y + 1].classList.contains("muro")) {
+        if (!arrayMapa[x][y + 1].classList.contains("pilar") && !arrayMapa[x][y + 1].classList.contains("muro") && !arrayMapa[x][y + 1].classList.contains("pilarActivo")) {
 
             arrayMapa[x][y].classList.remove("personajeAbajo");
             arrayMapa[x][y].classList.remove("personajeDerecha");
@@ -240,7 +246,7 @@ function moverIzquierda() {
 
     if (y - 1 != -1) {
 
-        if (!arrayMapa[x][y - 1].classList.contains("pilar") && !arrayMapa[x][y - 1].classList.contains("muro")) {
+        if (!arrayMapa[x][y - 1].classList.contains("pilar") && !arrayMapa[x][y - 1].classList.contains("muro") && !arrayMapa[x][y - 1].classList.contains("pilarActivo")) {
 
             arrayMapa[x][y].classList.remove("personajeAbajo");
             arrayMapa[x][y].classList.remove("personajeDerecha");
@@ -397,128 +403,167 @@ function cambioColor(pilarEntero, numeroPilar) {
 
     //posicion 4 es el medio del pilar
     //guardarme los numeros de los pilares en un array para poder meter la imagen en un pilar random
-    // hacer un contador segun el numero que salga
-    //el radom de imagenes se tiene que hacer en otro lado
 
-    // var seleccionPilar = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
 
-    // //creo un random
-    // let random = Math.random();
-
-    // //cojo el tamaño del array
-    // let tamañoSeleccion = seleccionPilar.length;
-
-    // // despues cojo un tamaño indice random
-    // let indiceRandom = Math.floor(random * tamañoSeleccion); 
-
-    // // y el que salga me lo guardo
-    // let pilarRandom = seleccionPilar[indiceRandom];
 
     for (let i = 0; i < pilarEntero.length; i++) {
 
         pilarEntero[i].classList.add("pilarActivo");
+        pilarEntero[i].classList.remove("pilar");
+        // //si es el pilar que indico aparece un objeto
+        // if (numeroPilar == 1) {
+        //     //pone la llave
+        //     pilarEntero[4].classList.add("pilarLlave");
+        //     pilarEntero[4].classList.remove("pilar");
+        // }
 
-        //si es el pilar que indico aparece un objeto
-        if (numeroPilar == 1) {
-            //pone la llave
-            pilarEntero[4].classList.add("pilarLlave");
-            pilarEntero[4].classList.remove("pilar");
-        }
+        // if (numeroPilar == 13) {
+        //     //pone el pergamino
+        //     pilarEntero[4].classList.add("pilarPergamino");
+        //     pilarEntero[4].classList.remove("pilar");
+        // }
 
-        if (numeroPilar == 13) {
-            //pone el pergamino
-            pilarEntero[4].classList.add("pilarPergamino");
-            pilarEntero[4].classList.remove("pilar");
-        }
+        // if (numeroPilar == 10) {
+        //     //pone el sarcofago
+        //     pilarEntero[4].classList.add("pilarSarcofago");
+        //     pilarEntero[4].classList.remove("pilar");
+        // }
 
-        if (numeroPilar == 10) {
-            //pone el sarcofago
-            pilarEntero[4].classList.add("pilarSarcofago");
-            pilarEntero[4].classList.remove("pilar");
-        }
-
-        if (numeroPilar == 17) {
-            //pones la momia
-            pilarEntero[4].classList.add("momia");
-            pilarEntero[4].classList.remove("pilar");
-        }
+        // if (numeroPilar == 17) {
+        //     //pones la momia
+        //     pilarEntero[4].classList.add("momia");
+        //     pilarEntero[4].classList.remove("pilar");
+        // }
     }
+
+}
+
+function objetosRandom() {
+
+    let contadorObjetos = 1;
+    let contador = 0;
+
+    while (contador < 20) {
+
+        //creo un random
+        let random = Math.random();
+
+        //cojo el tamaño del array
+        let tamañoSeleccion = seleccionPilar.length;
+
+        // despues cojo un tamaño indice random
+        let indiceRandom = Math.floor(random * tamañoSeleccion);
+
+        // y el que salga me lo guardo, elimino del array ese numero tambien
+        let pilarRandom = seleccionPilar.splice(indiceRandom, "1");
+
+        console.log(pilarRandom);
+        let pilarCompleto = document.getElementsByClassName("pilar" + pilarRandom);
+
+        for (let i = 0; i < pilarCompleto.length; i++) {
+
+            //si es el primer objeto que indico aparece la llave en el pilar
+            if (contadorObjetos == 1) {
+
+                pilarCompleto[4].classList.add("pilarLlave");
+
+
+            }
+
+            //si es el segundo objeto que indico aparece el pergamino en el pilar
+            if (contadorObjetos == 2) {
+                //pone el pergamino
+                pilarCompleto[4].classList.add("pilarPergamino");
+
+            }
+
+            //si es el tercer objeto que indico aparece el sarcofago en el pilar
+            if (contadorObjetos == 3) {
+                //pone el pergamino
+                pilarCompleto[4].classList.add("pilarSarcofago");
+
+            }
+
+            //si es el cuarto objeto que indico aparece la momia en el pilar
+            if (contadorObjetos == 4) {
+
+                //pone el pergamino
+                pilarCompleto[4].classList.add("momia");
+
+            }
+
+
+
+        }
+        contadorObjetos++;
+        contador++;
+    }
+
+
 
 }
 
 //movimiento de la momia
 function moverMomia() {
 
-    //si la momia llega abajo, arriba, derecha, izquierda no se pasa del array 
-    
-        // //si a la izquierda hay un camino 
-        // if (arrayMapa[momiaX][momiaY - 1].classList.contains("camino")) {
-
-
-        //     arrayMapa[momiaX][momiaY].classList.remove("momia");
-        //     momiaY--;
-        //     arrayMapa[momiaX][momiaY].classList.add("momia");
-
-        // }
-
     //como evitar que la momia traspase los pilares seguramente sea con una condicion que lleve contains
 
     //si la x de la momia es menor que la posicion del personaje esta se suma.
-    if(momiaX < x){
+    if (momiaX < x) {
 
         //si arriba hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
-        if(!arrayMapa[momiaX + 1][momiaY].classList.contains("pilar") && !arrayMapa[momiaX + 1][momiaY].classList.contains("pilarActivo")){
+        if (!arrayMapa[momiaX + 1][momiaY].classList.contains("pilar") && !arrayMapa[momiaX + 1][momiaY].classList.contains("pilarActivo")) {
 
             arrayMapa[momiaX][momiaY].classList.remove("momia");
             momiaX++;
             arrayMapa[momiaX][momiaY].classList.add("momia");
         }
-        
 
-    //si es mayor esta se resta
-    }else if(momiaX> x){
+
+        //si es mayor esta se resta
+    } else if (momiaX > x) {
 
         //si abajo hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
-        if(!arrayMapa[momiaX - 1][momiaY].classList.contains("pilar") && !arrayMapa[momiaX - 1][momiaY].classList.contains("pilarActivo")){
+        if (!arrayMapa[momiaX - 1][momiaY].classList.contains("pilar") && !arrayMapa[momiaX - 1][momiaY].classList.contains("pilarActivo")) {
 
             arrayMapa[momiaX][momiaY].classList.remove("momia");
             momiaX--;
             arrayMapa[momiaX][momiaY].classList.add("momia");
         }
-        
+
 
     }
     //si la posicion Y de la momia es menor de la Y del personaje se suma
-    if(momiaY < y){
+    if (momiaY < y) {
 
         //si a tu derecha hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
-        if(!arrayMapa[momiaX][momiaY + 1].classList.contains("pilar") && !arrayMapa[momiaX][momiaY + 1].classList.contains("pilarActivo")){
+        if (!arrayMapa[momiaX][momiaY + 1].classList.contains("pilar") && !arrayMapa[momiaX][momiaY + 1].classList.contains("pilarActivo")) {
 
             arrayMapa[momiaX][momiaY].classList.remove("momia");
             momiaY++;
             arrayMapa[momiaX][momiaY].classList.add("momia");
 
         }
-        
 
-    //si es mayor esta se resta
-    }else if(momiaY > y){
-       
+
+        //si es mayor esta se resta
+    } else if (momiaY > y) {
+
         //si a tu izquierda hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
-        if(!arrayMapa[momiaX][momiaY - 1].classList.contains("pilar") && !arrayMapa[momiaX][momiaY - 1].classList.contains("pilarActivo")){
-            
+        if (!arrayMapa[momiaX][momiaY - 1].classList.contains("pilar") && !arrayMapa[momiaX][momiaY - 1].classList.contains("pilarActivo")) {
+
             arrayMapa[momiaX][momiaY].classList.remove("momia");
             momiaY--;
             arrayMapa[momiaX][momiaY].classList.add("momia");
-    
+
         }
 
-     
+
     }
 
 
-    
-    
+
+
 
 
 
