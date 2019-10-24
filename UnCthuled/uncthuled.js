@@ -55,6 +55,8 @@ var pilarY = 1;
 var momiaX = 13;
 var momiaY = 20;
 
+//Vidas del Jugador 
+var vidas = 4;
 //para poder hacer el random del objeto
 var seleccionPilar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
@@ -179,6 +181,10 @@ function movimientoPersonaje(teclado) {
 
     }
 
+    if (momiaX == x && momiaY == y) {
+
+        quitarVida();
+    }
 
 }
 
@@ -258,6 +264,8 @@ function moverIzquierda() {
             arrayMapa[x][y].classList.remove("huellas");
         }
     }
+    console.log(x);
+    console.log(y);
 }
 
 function comprobarPilar() {
@@ -405,35 +413,11 @@ function cambioColor(pilarEntero, numeroPilar) {
     //guardarme los numeros de los pilares en un array para poder meter la imagen en un pilar random
 
 
-
     for (let i = 0; i < pilarEntero.length; i++) {
 
         pilarEntero[i].classList.add("pilarActivo");
         pilarEntero[i].classList.remove("pilar");
-        // //si es el pilar que indico aparece un objeto
-        // if (numeroPilar == 1) {
-        //     //pone la llave
-        //     pilarEntero[4].classList.add("pilarLlave");
-        //     pilarEntero[4].classList.remove("pilar");
-        // }
 
-        // if (numeroPilar == 13) {
-        //     //pone el pergamino
-        //     pilarEntero[4].classList.add("pilarPergamino");
-        //     pilarEntero[4].classList.remove("pilar");
-        // }
-
-        // if (numeroPilar == 10) {
-        //     //pone el sarcofago
-        //     pilarEntero[4].classList.add("pilarSarcofago");
-        //     pilarEntero[4].classList.remove("pilar");
-        // }
-
-        // if (numeroPilar == 17) {
-        //     //pones la momia
-        //     pilarEntero[4].classList.add("momia");
-        //     pilarEntero[4].classList.remove("pilar");
-        // }
     }
 
 }
@@ -457,7 +441,7 @@ function objetosRandom() {
         // y el que salga me lo guardo, elimino del array ese numero tambien
         let pilarRandom = seleccionPilar.splice(indiceRandom, "1");
 
-        console.log(pilarRandom);
+
         let pilarCompleto = document.getElementsByClassName("pilar" + pilarRandom);
 
         for (let i = 0; i < pilarCompleto.length; i++) {
@@ -561,10 +545,52 @@ function moverMomia() {
 
     }
 
+    if (momiaX == x && momiaY == y) {
+
+        quitarVida();
+
+    }
+
+}
+
+//Funcion para quitar vidas
+function quitarVida() {
+
+    let arrayVidas = new Array();
+
+    //me cojo en un array las clases life  
+    arrayVidas = document.getElementsByClassName("life");
+
+    //si las vidas no son 0
+    if (vidas != 0) {
+
+        //quitas la clase life a ese div y restas las vidas
+        arrayVidas[0].classList.remove("life");
+        vidas--;
+
+        arrayMapa[x][y].classList.remove("personajeAbajo");
+        arrayMapa[x][y].classList.remove("personajeArriba");
+        arrayMapa[x][y].classList.remove("personajeDerecha");
+        arrayMapa[x][y].classList.remove("personajeIzquierda");
+
+        arrayMapa[momiaX][momiaY].classList.remove("momia");
+
+        //pongo todo en la posicion del principio
+        x = 0;
+        y = 8;
+        arrayMapa[x][y].classList.add("personaje");
+        arrayMapa[x][y].classList.remove("huellas");
+
+        //pongo la momia en las posiciones
+        momiaX = 13;
+        momiaY = 20;
+
+    } else {
+
+        alert("Perdistes WEEYYYYY!!! pulsa F5 para continuar");
 
 
-
-
+    }
 
 
 }
