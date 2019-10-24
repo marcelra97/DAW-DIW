@@ -44,7 +44,9 @@ header {
     background-color: black
 }
 
+
 /******************SPRITES PERSONAJE************************/
+
 
 /*clase cuando el personaje esta en la posicion inicial*/
 
@@ -94,6 +96,7 @@ header {
     background-color: black;
     background-blend-mode: lighten, normal;
 }
+
 
 /*Sprite de las huellas*/
 
@@ -150,10 +153,5 @@ header {
 /***************************MURO************************************/
 
 .muro {
-    background-color: green;
+    background: green;
 }
-
-
-
-
-

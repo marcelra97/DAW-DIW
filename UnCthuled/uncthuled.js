@@ -16,7 +16,7 @@ window.addEventListener('keydown', function(evento) {
 
 }, false);
 
-setInterval(moverMomia, 900);
+setInterval(moverMomia, 800);
 
 arrayMapa = [
     [7, 7, 7, 7, 7, 7, 7, 7, 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
@@ -62,6 +62,9 @@ var seleccionPilar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
 
 //Inventario
 var inventario = new Array();
+
+//
+var salida = false;
 
 function cargarMapa() {
 
@@ -184,6 +187,8 @@ function movimientoPersonaje(teclado) {
 
     }
 
+    comprobarInventario();
+
     if (momiaX == x && momiaY == y) {
 
         quitarVida();
@@ -199,6 +204,12 @@ function moverAbajo() {
 
         /*Si lo que hay abajo del personaje contiene un pilar no puede avanzar hacia esa direccion */
         if (!arrayMapa[x + 1][y].classList.contains("pilar") && !arrayMapa[x + 1][y].classList.contains("pilarActivo")) {
+
+            if (!salida) {
+
+                salida = true;
+                arrayMapa[0][8].classList.add("muro");
+            }
 
             arrayMapa[x][y].classList.remove("personajeAbajo");
             arrayMapa[x][y].classList.remove("personajeDerecha");
@@ -425,13 +436,13 @@ function cambioColor(pilarEntero) {
             //mete la llave
             inventario[0] = "llave";
 
-        } else if (pilarEntero[4].classList.contains("pilarPergamino")) {
-            //mete el pergamino
-            inventario[1] = "pergamino";
-
         } else if (pilarEntero[4].classList.contains("pilarSarcofago")) {
             //mete el sarcofago
-            inventario[2] = "sarcofago";
+            inventario[1] = "sarcofago";
+
+        } else if (pilarEntero[4].classList.contains("pilarPergamino")) {
+            //mete el pergamino
+            inventario[2] = "pergamino";
         }
     }
 
@@ -593,8 +604,10 @@ function quitarVida() {
         //pongo todo en la posicion del principio
         x = 0;
         y = 8;
+        salida = false;
         arrayMapa[x][y].classList.add("personaje");
         arrayMapa[x][y].classList.remove("huellas");
+        arrayMapa[x][y].classList.remove("muro");
 
         //pongo la momia en las posiciones
         momiaX = 13;
@@ -606,6 +619,17 @@ function quitarVida() {
 
 
     }
+}
 
+function comprobarInventario() {
 
+    for (let i = 0; i < inventario.length; i++) {
+
+        if (inventario[0] == "llave" && inventario[1] == "sarcofago") {
+
+            arrayMapa[0][8].classList.remove("muro");
+
+        }
+
+    }
 }
