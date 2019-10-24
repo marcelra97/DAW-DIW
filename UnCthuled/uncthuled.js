@@ -60,6 +60,9 @@ var vidas = 4;
 //para poder hacer el random del objeto
 var seleccionPilar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
+//Inventario
+var inventario = new Array();
+
 function cargarMapa() {
 
     for (let pilarX = 0; pilarX < arrayMapa.length; pilarX++) {
@@ -264,8 +267,7 @@ function moverIzquierda() {
             arrayMapa[x][y].classList.remove("huellas");
         }
     }
-    console.log(x);
-    console.log(y);
+
 }
 
 function comprobarPilar() {
@@ -393,7 +395,7 @@ function cambiarPilar() {
                 //si estan los seis los coloreo completamente
                 if (contadorActivo == 6) {
 
-                    cambioColor(pilarEntero, numeroPilar)
+                    cambioColor(pilarEntero)
                     contadorActivo = 0;
                 }
 
@@ -407,7 +409,7 @@ function cambiarPilar() {
 
 }
 
-function cambioColor(pilarEntero, numeroPilar) {
+function cambioColor(pilarEntero) {
 
     //posicion 4 es el medio del pilar
     //guardarme los numeros de los pilares en un array para poder meter la imagen en un pilar random
@@ -418,6 +420,19 @@ function cambioColor(pilarEntero, numeroPilar) {
         pilarEntero[i].classList.add("pilarActivo");
         pilarEntero[i].classList.remove("pilar");
 
+        //esto es para poner en el inventario
+        if (pilarEntero[4].classList.contains("pilarLlave")) {
+            //mete la llave
+            inventario[0] = "llave";
+
+        } else if (pilarEntero[4].classList.contains("pilarPergamino")) {
+            //mete el pergamino
+            inventario[1] = "pergamino";
+
+        } else if (pilarEntero[4].classList.contains("pilarSarcofago")) {
+            //mete el sarcofago
+            inventario[2] = "sarcofago";
+        }
     }
 
 }
