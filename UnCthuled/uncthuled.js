@@ -51,9 +51,8 @@ var contadorImpar = 0;
 var pilarX = 2;
 var pilarY = 1;
 
-//Posicion inicial Momia
-var momiaX = 13;
-var momiaY = 20;
+//Nivel
+var nivel = 2;
 
 //Vidas del Jugador 
 var vidas = 4;
@@ -63,8 +62,11 @@ var seleccionPilar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
 //Inventario
 var inventario = new Array();
 
-//
+//la salida
 var salida = false;
+
+//array de momias
+var momias = new Array();
 
 function cargarMapa() {
 
@@ -130,13 +132,6 @@ function cargarMapa() {
                 hijo.classList.add("muro");
 
             }
-
-            if (pilarX == momiaX && pilarY == momiaY) {
-
-                hijo.classList.add("momia")
-
-            }
-
             document.getElementById("mapa").appendChild(hijo);
             arrayMapa[pilarX][pilarY] = hijo;
 
@@ -146,7 +141,7 @@ function cargarMapa() {
 
     }
     objetosRandom();
-
+    anyadirMomias();
 
 }
 
@@ -189,10 +184,15 @@ function movimientoPersonaje(teclado) {
 
     comprobarInventario();
 
-    if (momiaX == x && momiaY == y) {
+    for (let i = 0; i < momias.length; i++) {
 
-        quitarVida();
+        if (momias[i].momiaX == x && momias[i].momiaY == y) {
+
+            quitarVida(momias[i].momiaX, momias[i].momiaY);
+        }
+
     }
+
 
 }
 
@@ -443,7 +443,14 @@ function cambioColor(pilarEntero) {
         } else if (pilarEntero[4].classList.contains("pilarPergamino")) {
             //mete el pergamino
             inventario[2] = "pergamino";
+
+        } else if (pilarEntero[4].classList.contains("momia")) {
+            //sacar la momia en el mapa
+
+            // anyadirMomia();
+
         }
+
     }
 
 }
@@ -513,74 +520,113 @@ function objetosRandom() {
 
 }
 
-//movimiento de la momia
-function moverMomia() {
+//objeto momia
+function Momia(momiaX = 0, momiaY = 0) {
 
-    //como evitar que la momia traspase los pilares seguramente sea con una condicion que lleve contains
+    this.momiaX = momiaX;
+    this.momiaY = momiaY;
 
-    //si la x de la momia es menor que la posicion del personaje esta se suma.
-    if (momiaX < x) {
+}
 
-        //si arriba hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
-        if (!arrayMapa[momiaX + 1][momiaY].classList.contains("pilar") && !arrayMapa[momiaX + 1][momiaY].classList.contains("pilarActivo")) {
+//crear la momia
+function crearMomia(x, y) {
 
-            arrayMapa[momiaX][momiaY].classList.remove("momia");
-            momiaX++;
-            arrayMapa[momiaX][momiaY].classList.add("momia");
-        }
+    let momia = new Momia(x, y);
 
+    return momia;
 
-        //si es mayor esta se resta
-    } else if (momiaX > x) {
+}
 
-        //si abajo hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
-        if (!arrayMapa[momiaX - 1][momiaY].classList.contains("pilar") && !arrayMapa[momiaX - 1][momiaY].classList.contains("pilarActivo")) {
+//anyado momias segun el nivel
+function anyadirMomias() {
 
-            arrayMapa[momiaX][momiaY].classList.remove("momia");
-            momiaX--;
-            arrayMapa[momiaX][momiaY].classList.add("momia");
-        }
+    for (let i = 0; i < nivel; i++) {
 
-
-    }
-    //si la posicion Y de la momia es menor de la Y del personaje se suma
-    if (momiaY < y) {
-
-        //si a tu derecha hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
-        if (!arrayMapa[momiaX][momiaY + 1].classList.contains("pilar") && !arrayMapa[momiaX][momiaY + 1].classList.contains("pilarActivo")) {
-
-            arrayMapa[momiaX][momiaY].classList.remove("momia");
-            momiaY++;
-            arrayMapa[momiaX][momiaY].classList.add("momia");
-
-        }
-
-
-        //si es mayor esta se resta
-    } else if (momiaY > y) {
-
-        //si a tu izquierda hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
-        if (!arrayMapa[momiaX][momiaY - 1].classList.contains("pilar") && !arrayMapa[momiaX][momiaY - 1].classList.contains("pilarActivo")) {
-
-            arrayMapa[momiaX][momiaY].classList.remove("momia");
-            momiaY--;
-            arrayMapa[momiaX][momiaY].classList.add("momia");
-
-        }
-
-
-    }
-
-    if (momiaX == x && momiaY == y) {
-
-        quitarVida();
-
+        momias[i] = crearMomia(13, Math.floor(Math.random() * (13 - 8)) + 8);
     }
 
 }
 
+//movimiento de la momia
+function moverMomia() {
+
+
+    //como evitar que la momia traspase los pilares seguramente sea con una condicion que lleve contains
+    if (salida) {
+
+
+        for (let i = 0; i < momias.length; i++) {
+
+
+            //si la x de la momia es menor que la posicion del personaje esta se suma.
+            if (momias[i].momiaX < x) {
+
+                //si arriba hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
+                if (!arrayMapa[momias[i].momiaX + 1][momias[i].momiaY].classList.contains("pilar") && !arrayMapa[momias[i].momiaX + 1][momias[i].momiaY].classList.contains("pilarActivo")) {
+
+                    arrayMapa[momias[i].momiaX][momias[i].momiaY].classList.remove("momia");
+                    momias[i].momiaX++;
+                    arrayMapa[momias[i].momiaX][momias[i].momiaY].classList.add("momia");
+                }
+
+
+                //si es mayor esta se resta
+            } else if (momias[i].momiaX > x) {
+
+                //si abajo hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
+                if (!arrayMapa[momias[i].momiaX - 1][momias[i].momiaY].classList.contains("pilar") && !arrayMapa[momias[i].momiaX - 1][momias[i].momiaY].classList.contains("pilarActivo")) {
+
+                    arrayMapa[momias[i].momiaX][momias[i].momiaY].classList.remove("momia");
+                    momias[i].momiaX--;
+                    arrayMapa[momias[i].momiaX][momias[i].momiaY].classList.add("momia");
+                }
+
+
+            }
+            //si la posicion Y de la momia es menor de la Y del personaje se suma
+            if (momias[i].momiaY < y) {
+
+                //si a tu derecha hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
+                if (!arrayMapa[momias[i].momiaX][momias[i].momiaY + 1].classList.contains("pilar") && !arrayMapa[momias[i].momiaX][momias[i].momiaY + 1].classList.contains("pilarActivo")) {
+
+                    arrayMapa[momias[i].momiaX][momias[i].momiaY].classList.remove("momia");
+                    momias[i].momiaY++;
+                    arrayMapa[momias[i].momiaX][momias[i].momiaY].classList.add("momia");
+
+                }
+
+
+                //si es mayor esta se resta
+            } else if (momias[i].momiaY > y) {
+
+                //si a tu izquierda hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
+                if (!arrayMapa[momias[i].momiaX][momias[i].momiaY - 1].classList.contains("pilar") && !arrayMapa[momias[i].momiaX][momias[i].momiaY - 1].classList.contains("pilarActivo")) {
+
+                    arrayMapa[momias[i].momiaX][momias[i].momiaY].classList.remove("momia");
+                    momias[i].momiaY--;
+                    arrayMapa[momias[i].momiaX][momias[i].momiaY].classList.add("momia");
+
+                }
+
+
+            }
+
+            if (momias[i].momiaX == x && momias[i].momiaY == y) {
+
+                quitarVida(momias[i].momiaX, momias[i].momiaY);
+
+            }
+        }
+
+
+    }
+
+
+
+}
+
 //Funcion para quitar vidas
-function quitarVida() {
+function quitarVida(posX, posY) {
 
     let arrayVidas = new Array();
 
@@ -599,7 +645,7 @@ function quitarVida() {
         arrayMapa[x][y].classList.remove("personajeDerecha");
         arrayMapa[x][y].classList.remove("personajeIzquierda");
 
-        arrayMapa[momiaX][momiaY].classList.remove("momia");
+        arrayMapa[posX][posY].classList.remove("momia");
 
         //pongo todo en la posicion del principio
         x = 0;
@@ -609,14 +655,7 @@ function quitarVida() {
         arrayMapa[x][y].classList.remove("huellas");
         arrayMapa[x][y].classList.remove("muro");
 
-        //pongo la momia en las posiciones
-        momiaX = 13;
-        momiaY = 20;
-
-    } else {
-
-        alert("Perdistes WEEYYYYY!!! pulsa F5 para continuar");
-
+        eliminarMomias(posX, posY);
 
     }
 }
@@ -632,4 +671,17 @@ function comprobarInventario() {
         }
 
     }
+}
+
+function eliminarMomias(posX, posY) {
+
+    // for (let i = 0; i < momias.length; i++) {
+
+    //     if (momias[i].momiaY == posY && momias[i].momiaX == posX) {
+
+    //         momias[i].splice(i, 0);
+    //     }
+
+    // }
+
 }
