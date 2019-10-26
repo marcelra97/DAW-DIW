@@ -573,21 +573,24 @@ function anyadirMomias() {
     for (let i = 0; i < numeroMomias; i++) {
 
         momias[i] = crearMomia(13, Math.floor(Math.random() * (13 - 8)) + 8);
+
+        arrayMapa[momias[i].momiaX][momias[i].momiaY].classList.add("momia");
     }
+    
 
 }
 
 //movimiento de la momia
 function moverMomia() {
 
-
+   
     //como evitar que la momia traspase los pilares seguramente sea con una condicion que lleve contains
     if (salida) {
 
 
         for (let i = 0; i < momias.length; i++) {
 
-
+            
             //si la x de la momia es menor que la posicion del personaje esta se suma.
             if (momias[i].momiaX < x) {
 
@@ -685,7 +688,7 @@ function quitarVida(posX, posY) {
         arrayMapa[x][y].classList.remove("huellas");
         arrayMapa[x][y].classList.remove("muro");
 
-        //eliminarMomias(posX, posY);
+        eliminarMomias(posX, posY);
 
     }
 }
@@ -703,15 +706,16 @@ function comprobarInventario() {
     }
 }
 
+//Elimina las momias
 function eliminarMomias(posX, posY) {
 
+    
      for (let i = 0; i < momias.length; i++) {
-
+        
          if (momias[i].momiaY == posY && momias[i].momiaX == posX) {
-
-             momias.splice(i, 0);
-
-             
+            
+             momias.splice(i, 1);
+        
         }
 
      }
