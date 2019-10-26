@@ -52,7 +52,7 @@ var pilarX = 2;
 var pilarY = 1;
 
 //Nivel
-var nivel = 2;
+var nivel = 1;
 
 //Vidas del Jugador 
 var vidas = 4;
@@ -67,6 +67,12 @@ var salida = false;
 
 //array de momias
 var momias = new Array();
+
+//Numero de momias
+var numeroMomias = 1;
+
+//si la momia ha salido en de la caja
+var momiacaja = true;
 
 function cargarMapa() {
 
@@ -447,11 +453,34 @@ function cambioColor(pilarEntero) {
         } else if (pilarEntero[4].classList.contains("momia")) {
             //sacar la momia en el mapa
 
-            // anyadirMomia();
+                cajaMomia();
 
         }
 
     }
+
+}
+
+// crea una momia cuando aparezca en el pilar
+function cajaMomia(){
+
+    for(let i = 0; i < arrayMapa.length; i++){
+
+        for(let j = 0; j < arrayMapa[0].length; j++){
+
+            if(arrayMapa[i][j].classList.contains("momia") && arrayMapa[i][j].classList.contains("pilarActivo")){
+                
+                if(momiacaja){
+
+                    momias.push(crearMomia(i+1,j));
+                    momiacaja =false; 
+                }
+                    
+            }
+
+        }
+    }
+
 
 }
 
@@ -540,7 +569,8 @@ function crearMomia(x, y) {
 //anyado momias segun el nivel
 function anyadirMomias() {
 
-    for (let i = 0; i < nivel; i++) {
+   
+    for (let i = 0; i < numeroMomias; i++) {
 
         momias[i] = crearMomia(13, Math.floor(Math.random() * (13 - 8)) + 8);
     }
@@ -655,7 +685,7 @@ function quitarVida(posX, posY) {
         arrayMapa[x][y].classList.remove("huellas");
         arrayMapa[x][y].classList.remove("muro");
 
-        eliminarMomias(posX, posY);
+        //eliminarMomias(posX, posY);
 
     }
 }
@@ -675,13 +705,15 @@ function comprobarInventario() {
 
 function eliminarMomias(posX, posY) {
 
-    // for (let i = 0; i < momias.length; i++) {
+     for (let i = 0; i < momias.length; i++) {
 
-    //     if (momias[i].momiaY == posY && momias[i].momiaX == posX) {
+         if (momias[i].momiaY == posY && momias[i].momiaX == posX) {
 
-    //         momias[i].splice(i, 0);
-    //     }
+             momias.splice(i, 0);
 
-    // }
+             
+        }
+
+     }
 
 }
