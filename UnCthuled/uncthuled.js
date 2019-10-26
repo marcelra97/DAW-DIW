@@ -74,6 +74,10 @@ var numeroMomias = 1;
 //si la momia ha salido en de la caja
 var momiacaja = true;
 
+//tienes el pergamino
+var pergamino = false;
+var utilizacion = true;
+
 function cargarMapa() {
 
     for (let pilarX = 0; pilarX < arrayMapa.length; pilarX++) {
@@ -192,9 +196,13 @@ function movimientoPersonaje(teclado) {
 
     for (let i = 0; i < momias.length; i++) {
 
-        if (momias[i].momiaX == x && momias[i].momiaY == y) {
+        if (momias[i].momiaX == x && momias[i].momiaY == y && !pergamino) {
 
             quitarVida(momias[i].momiaX, momias[i].momiaY);
+        
+        }else if(momias[i].momiaX == x && momias[i].momiaY == y && pergamino){
+
+            matarPergamino(momias[i].momiaX, momias[i].momiaY);
         }
 
     }
@@ -225,6 +233,7 @@ function moverAbajo() {
             x++;
             arrayMapa[x][y].classList.add("personajeAbajo");
             arrayMapa[x][y].classList.remove("huellas");
+            
         }
     }
 }
@@ -244,6 +253,7 @@ function moverArriba() {
             x--
             arrayMapa[x][y].classList.add("personajeArriba");
             arrayMapa[x][y].classList.remove("huellas");
+           
         }
     }
 }
@@ -263,6 +273,7 @@ function moverDerecha() {
             y++
             arrayMapa[x][y].classList.add("personajeDerecha");
             arrayMapa[x][y].classList.remove("huellas");
+            
         }
     }
 }
@@ -282,6 +293,7 @@ function moverIzquierda() {
             y--
             arrayMapa[x][y].classList.add("personajeIzquierda");
             arrayMapa[x][y].classList.remove("huellas");
+            
         }
     }
 
@@ -685,7 +697,7 @@ function quitarVida(posX, posY) {
         y = 8;
         salida = false;
         arrayMapa[x][y].classList.add("personaje");
-        arrayMapa[x][y].classList.remove("huellas");
+        arrayMapa[x][y].classList.remove("huellas"); 
         arrayMapa[x][y].classList.remove("muro");
 
         eliminarMomias(posX, posY);
@@ -700,10 +712,25 @@ function comprobarInventario() {
         if (inventario[0] == "llave" && inventario[1] == "sarcofago") {
 
             arrayMapa[0][8].classList.remove("muro");
+            
 
         }
 
+        if(inventario[2] == "pergamino" && utilizacion){
+
+           pergamino = true;
+           
+        }
+
     }
+}
+
+function matarPergamino(posMomX, posMomY){
+
+    arrayMapa[posMomX][posMomY].classList.remove("momia");
+    eliminarMomias(posMomX, posMomY);
+    pergamino = false;
+    utilizacion = false;
 }
 
 //Elimina las momias
