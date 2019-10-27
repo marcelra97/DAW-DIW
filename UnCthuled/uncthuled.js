@@ -194,6 +194,7 @@ function movimientoPersonaje(teclado) {
 
     comprobarInventario();
 
+
     for (let i = 0; i < momias.length; i++) {
 
         if (momias[i].momiaX == x && momias[i].momiaY == y && !pergamino) {
@@ -713,7 +714,11 @@ function comprobarInventario() {
 
             arrayMapa[0][8].classList.remove("muro");
             
-
+            //si el jugador se encuentra en la posicion de salida
+            if(x == 0 && y == 8){
+                cambiarNivel();
+            }
+           
         }
 
         if(inventario[2] == "pergamino" && utilizacion){
@@ -725,6 +730,60 @@ function comprobarInventario() {
     }
 }
 
+function cambiarNivel(){
+
+    let mapa = document.getElementById("mapa");
+    
+    while (mapa.firstChild) {
+
+        mapa.removeChild(mapa.firstChild);
+
+      }
+
+
+    restearValores();
+    cargarMapa();
+    
+}
+
+function restearValores(){
+
+x = 0;
+y = 8;
+pilarPar = 1;
+pilarImpar = 1;
+contadorPar = 0;
+contadorImpar = 0;
+pilarX = 2;
+pilarY = 1;
+seleccionPilar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+inventario = new Array();
+salida = false;
+momias = new Array();
+momiacaja = true;
+pergamino = false;
+utilizacion = true;
+
+arrayMapa = [
+    [7, 7, 7, 7, 7, 7, 7, 7, 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+    [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+    [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+    [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+    [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+];
+
+}
+
+//matas a una momia si tienes el pergamino
 function matarPergamino(posMomX, posMomY){
 
     arrayMapa[posMomX][posMomY].classList.remove("momia");
