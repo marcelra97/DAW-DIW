@@ -1,33 +1,41 @@
 body {
     display: grid;
-    grid-template-areas: "header header" "mapa mapa";
+    grid-template-areas: "header header"
+                         "mapa mapa";
     justify-content: center;
     background: #9EE889;
+    font-family: "Turret Road";
 }
 
 header {
     display: grid;
     grid-area: header;
     text-align: center;
-    margin-top: 8%;
+    margin-top: 2%;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr;
     font-size: 200%;
 }
 
-#vidas {
-    display: grid;
-    grid-template-columns: 80px 70px 70px 70px 70px;
-    text-align: center;
+#nivel{
+
+grid-column: 1 / span 2;
+
 }
 
-#vidas p {
-    margin-top: 0%;
-    margin-bottom: 0%;
+#vidas{
+    display: grid;
+    grid-template-columns: 70px 70px 70px 70px 70px;
+    justify-self: center;
+    background: black;
+    width: 65%;
+    height: 110%;
+    border: solid 1px white;
 }
 
 .life {
-    background-image: url("../img/vidas.png");
-    background-size: 50% 80%;
+    background-image: url("../img/vida.gif");
+    background-size: 60% 90%;
     background-repeat: no-repeat;
 }
 
@@ -38,6 +46,7 @@ header {
     grid-template-rows: repeat(14, 1fr);
     width: 800px;
     height: 600px;
+    margin-top: 1%;
 }
 
 .camino {

@@ -4,6 +4,7 @@ var hijo;
 
 window.onload = function() {
 
+    ponerNivel();
     cargarMapa()
 
 
@@ -201,6 +202,7 @@ function movimientoPersonaje(teclado) {
 
             quitarVida(momias[i].momiaX, momias[i].momiaY);
         
+        //si concidien en la misma posicion la momia y el perosnaje, pero tiene el pergamino
         }else if(momias[i].momiaX == x && momias[i].momiaY == y && pergamino){
 
             matarPergamino(momias[i].momiaX, momias[i].momiaY);
@@ -487,6 +489,7 @@ function cajaMomia(){
 
                     momias.push(crearMomia(i+1,j));
                     momiacaja =false; 
+                    numeroMomias++;
                 }
                     
             }
@@ -657,10 +660,13 @@ function moverMomia() {
 
             }
 
-            if (momias[i].momiaX == x && momias[i].momiaY == y) {
+            if (momias[i].momiaX == x && momias[i].momiaY == y && !pergamino) {
 
                 quitarVida(momias[i].momiaX, momias[i].momiaY);
 
+            }else if(momias[i].momiaX == x && momias[i].momiaY == y && pergamino){
+                
+                matarPergamino(momias[i].momiaX, momias[i].momiaY);
             }
         }
 
@@ -703,6 +709,8 @@ function quitarVida(posX, posY) {
 
         eliminarMomias(posX, posY);
 
+    }else{
+        alert("GAME OVER!!! PARA VOLVER A JUGAR PULSA F5");
     }
 }
 
@@ -720,7 +728,8 @@ function comprobarInventario() {
             }
            
         }
-
+        
+        //el pergamino solo se puede utilizar una vez por nivel
         if(inventario[2] == "pergamino" && utilizacion){
 
            pergamino = true;
@@ -742,8 +751,22 @@ function cambiarNivel(){
 
 
     restearValores();
+    //cada vez que pases el nivel aumenta
+    nivel ++;
+    numeroMomias ++;
+    ponerNivel();
     cargarMapa();
     
+}
+
+
+function ponerNivel(){
+
+    let divNivel = document.getElementById("nivel");
+    let texto = document.createTextNode("LEVEL " + nivel);
+    divNivel.innerText= "";
+    divNivel.appendChild(texto);
+
 }
 
 function restearValores(){
@@ -801,7 +824,7 @@ function eliminarMomias(posX, posY) {
          if (momias[i].momiaY == posY && momias[i].momiaX == posX) {
             
              momias.splice(i, 1);
-        
+             numeroMomias --;   
         }
 
      }
