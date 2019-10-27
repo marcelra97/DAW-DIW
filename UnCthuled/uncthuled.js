@@ -79,6 +79,11 @@ var momiacaja = true;
 var pergamino = false;
 var utilizacion = true;
 
+//puntuacion
+var puntuacion = 0
+var puntosNivel = 1000;
+var puntosMatar= 250;
+
 function cargarMapa() {
 
     for (let pilarX = 0; pilarX < arrayMapa.length; pilarX++) {
@@ -153,6 +158,7 @@ function cargarMapa() {
     }
     objetosRandom();
     anyadirMomias();
+    actualizarPuntuacion();
 
 }
 
@@ -225,7 +231,7 @@ function moverAbajo() {
             if (!salida) {
 
                 salida = true;
-                arrayMapa[0][8].classList.add("muro");
+                arrayMapa[0][8].classList.add("puerta");
             }
 
             arrayMapa[x][y].classList.remove("personajeAbajo");
@@ -474,7 +480,12 @@ function cambioColor(pilarEntero) {
 
     }
 
+    
+    
+
+
 }
+
 
 // crea una momia cuando aparezca en el pilar
 function cajaMomia(){
@@ -705,7 +716,7 @@ function quitarVida(posX, posY) {
         salida = false;
         arrayMapa[x][y].classList.add("personaje");
         arrayMapa[x][y].classList.remove("huellas"); 
-        arrayMapa[x][y].classList.remove("muro");
+        arrayMapa[x][y].classList.remove("puerta");
 
         eliminarMomias(posX, posY);
 
@@ -720,7 +731,7 @@ function comprobarInventario() {
 
         if (inventario[0] == "llave" && inventario[1] == "sarcofago") {
 
-            arrayMapa[0][8].classList.remove("muro");
+            arrayMapa[0][8].classList.remove("puerta");
             
             //si el jugador se encuentra en la posicion de salida
             if(x == 0 && y == 8){
@@ -755,6 +766,7 @@ function cambiarNivel(){
     nivel ++;
     numeroMomias ++;
     ponerNivel();
+    sumarPuntuacion(puntosNivel);
     cargarMapa();
     
 }
@@ -811,6 +823,8 @@ function matarPergamino(posMomX, posMomY){
 
     arrayMapa[posMomX][posMomY].classList.remove("momia");
     eliminarMomias(posMomX, posMomY);
+    sumarPuntuacion(puntosMatar);
+    actualizarPuntuacion();
     pergamino = false;
     utilizacion = false;
 }
@@ -829,4 +843,14 @@ function eliminarMomias(posX, posY) {
 
      }
 
+}
+
+function sumarPuntuacion(puntos){
+
+    puntuacion = puntuacion + puntos;
+}
+
+function actualizarPuntuacion() {
+
+    let divPuntos = document.getElementById("puntuacion").innerText = "Puntos " + puntuacion;
 }
