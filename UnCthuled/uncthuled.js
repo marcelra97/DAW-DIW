@@ -17,7 +17,7 @@ window.addEventListener('keydown', function(evento) {
 
 }, false);
 
-setInterval(moverMomia, 800);
+setInterval(moverMomia, 650);
 
 arrayMapa = [
     [7, 7, 7, 7, 7, 7, 7, 7, 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
@@ -82,7 +82,7 @@ var utilizacion = true;
 //puntuacion
 var puntuacion = 0
 var puntosNivel = 1000;
-var puntosMatar= 250;
+var puntosMatar = 250;
 
 function cargarMapa() {
 
@@ -207,9 +207,9 @@ function movimientoPersonaje(teclado) {
         if (momias[i].momiaX == x && momias[i].momiaY == y && !pergamino) {
 
             quitarVida(momias[i].momiaX, momias[i].momiaY);
-        
-        //si concidien en la misma posicion la momia y el perosnaje, pero tiene el pergamino
-        }else if(momias[i].momiaX == x && momias[i].momiaY == y && pergamino){
+
+            //si concidien en la misma posicion la momia y el perosnaje, pero tiene el pergamino
+        } else if (momias[i].momiaX == x && momias[i].momiaY == y && pergamino) {
 
             matarPergamino(momias[i].momiaX, momias[i].momiaY);
         }
@@ -242,7 +242,7 @@ function moverAbajo() {
             x++;
             arrayMapa[x][y].classList.add("personajeAbajo");
             arrayMapa[x][y].classList.remove("huellas");
-            
+
         }
     }
 }
@@ -252,7 +252,7 @@ function moverArriba() {
 
     if (x - 1 != -1) {
 
-        if (!arrayMapa[x - 1][y].classList.contains("pilar") && !arrayMapa[x - 1][y].classList.contains("muro") && !arrayMapa[x - 1][y].classList.contains("pilarActivo")) {
+        if (!arrayMapa[x - 1][y].classList.contains("pilar") && !arrayMapa[x - 1][y].classList.contains("muro") && !arrayMapa[x - 1][y].classList.contains("pilarActivo") && !arrayMapa[x - 1][y].classList.contains("puerta")) {
 
             arrayMapa[x][y].classList.remove("personajeAbajo");
             arrayMapa[x][y].classList.remove("personajeDerecha");
@@ -262,7 +262,7 @@ function moverArriba() {
             x--
             arrayMapa[x][y].classList.add("personajeArriba");
             arrayMapa[x][y].classList.remove("huellas");
-           
+
         }
     }
 }
@@ -282,7 +282,7 @@ function moverDerecha() {
             y++
             arrayMapa[x][y].classList.add("personajeDerecha");
             arrayMapa[x][y].classList.remove("huellas");
-            
+
         }
     }
 }
@@ -302,7 +302,7 @@ function moverIzquierda() {
             y--
             arrayMapa[x][y].classList.add("personajeIzquierda");
             arrayMapa[x][y].classList.remove("huellas");
-            
+
         }
     }
 
@@ -323,8 +323,8 @@ function comprobarPilar() {
 
                 //si en la derecha y abajo hay otra clase pilar
                 if (arrayMapa[pilarX][pilarY + 1].classList.contains("pilar") && arrayMapa[pilarX + 1][pilarY].classList.contains("pilar")) {
-
-                    //miras si hay huellas a tu izquierda y arriba
+                    !arrayMapa[x - 1][y].classList.contains("pilarActivo")
+                        //miras si hay huellas a tu izquierda y arriba
                     if (arrayMapa[pilarX][pilarY - 1].classList.contains("huellas") && arrayMapa[pilarX - 1][pilarY].classList.contains("huellas")) {
 
                         arrayMapa[pilarX][pilarY].classList.add("activo");
@@ -474,40 +474,39 @@ function cambioColor(pilarEntero) {
         } else if (pilarEntero[4].classList.contains("momia")) {
             //sacar la momia en el mapa
 
-                cajaMomia();
+            cajaMomia();
 
         }
 
     }
 
-    
-    
+
+
 
 
 }
 
 
 // crea una momia cuando aparezca en el pilar
-function cajaMomia(){
+function cajaMomia() {
 
-    for(let i = 0; i < arrayMapa.length; i++){
+    for (let i = 0; i < arrayMapa.length; i++) {
 
-        for(let j = 0; j < arrayMapa[0].length; j++){
+        for (let j = 0; j < arrayMapa[0].length; j++) {
 
-            if(arrayMapa[i][j].classList.contains("momia") && arrayMapa[i][j].classList.contains("pilarActivo")){
-                
-                if(momiacaja){
+            if (arrayMapa[i][j].classList.contains("momia") && arrayMapa[i][j].classList.contains("pilarActivo")) {
 
-                    momias.push(crearMomia(i+1,j));
-                    momiacaja =false; 
+                if (momiacaja) {
+
+                    momias.push(crearMomia(i + 1, j));
+                    momiacaja = false;
                     numeroMomias++;
                 }
-                    
+
             }
 
         }
     }
-
 
 }
 
@@ -596,28 +595,28 @@ function crearMomia(x, y) {
 //anyado momias segun el nivel
 function anyadirMomias() {
 
-   
+
     for (let i = 0; i < numeroMomias; i++) {
 
         momias[i] = crearMomia(13, Math.floor(Math.random() * (13 - 8)) + 8);
 
         arrayMapa[momias[i].momiaX][momias[i].momiaY].classList.add("momia");
     }
-    
+
 
 }
 
 //movimiento de la momia
 function moverMomia() {
 
-   
+
     //como evitar que la momia traspase los pilares seguramente sea con una condicion que lleve contains
     if (salida) {
 
 
         for (let i = 0; i < momias.length; i++) {
 
-            
+
             //si la x de la momia es menor que la posicion del personaje esta se suma.
             if (momias[i].momiaX < x) {
 
@@ -675,8 +674,8 @@ function moverMomia() {
 
                 quitarVida(momias[i].momiaX, momias[i].momiaY);
 
-            }else if(momias[i].momiaX == x && momias[i].momiaY == y && pergamino){
-                
+            } else if (momias[i].momiaX == x && momias[i].momiaY == y && pergamino) {
+
                 matarPergamino(momias[i].momiaX, momias[i].momiaY);
             }
         }
@@ -715,12 +714,12 @@ function quitarVida(posX, posY) {
         y = 8;
         salida = false;
         arrayMapa[x][y].classList.add("personaje");
-        arrayMapa[x][y].classList.remove("huellas"); 
+        arrayMapa[x][y].classList.remove("huellas");
         arrayMapa[x][y].classList.remove("puerta");
 
         eliminarMomias(posX, posY);
 
-    }else{
+    } else {
         alert("GAME OVER!!! PARA VOLVER A JUGAR PULSA F5");
     }
 }
@@ -732,94 +731,97 @@ function comprobarInventario() {
         if (inventario[0] == "llave" && inventario[1] == "sarcofago") {
 
             arrayMapa[0][8].classList.remove("puerta");
-            
+            arrayMapa[0][8].classList.add("camino");
+            arrayMapa[1][8].classList.add("flecha");
+            arrayMapa[0][8].classList.remove("personaje");
+            arrayMapa[0][8].classList.remove("huellas");
             //si el jugador se encuentra en la posicion de salida
-            if(x == 0 && y == 8){
+            if (x == 0 && y == 8) {
                 cambiarNivel();
             }
-           
-        }
-        
-        //el pergamino solo se puede utilizar una vez por nivel
-        if(inventario[2] == "pergamino" && utilizacion){
 
-           pergamino = true;
-           
+        }
+
+        //el pergamino solo se puede utilizar una vez por nivel
+        if (inventario[2] == "pergamino" && utilizacion) {
+
+            pergamino = true;
+
         }
 
     }
 }
 
-function cambiarNivel(){
+function cambiarNivel() {
 
     let mapa = document.getElementById("mapa");
-    
+
     while (mapa.firstChild) {
 
         mapa.removeChild(mapa.firstChild);
 
-      }
+    }
 
 
     restearValores();
     //cada vez que pases el nivel aumenta
-    nivel ++;
-    numeroMomias ++;
+    nivel++;
+    numeroMomias++;
     ponerNivel();
     sumarPuntuacion(puntosNivel);
     cargarMapa();
-    
+
 }
 
 
-function ponerNivel(){
+function ponerNivel() {
 
     let divNivel = document.getElementById("nivel");
     let texto = document.createTextNode("LEVEL " + nivel);
-    divNivel.innerText= "";
+    divNivel.innerText = "";
     divNivel.appendChild(texto);
 
 }
 
-function restearValores(){
+function restearValores() {
 
-x = 0;
-y = 8;
-pilarPar = 1;
-pilarImpar = 1;
-contadorPar = 0;
-contadorImpar = 0;
-pilarX = 2;
-pilarY = 1;
-seleccionPilar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-inventario = new Array();
-salida = false;
-momias = new Array();
-momiacaja = true;
-pergamino = false;
-utilizacion = true;
+    x = 0;
+    y = 8;
+    pilarPar = 1;
+    pilarImpar = 1;
+    contadorPar = 0;
+    contadorImpar = 0;
+    pilarX = 2;
+    pilarY = 1;
+    seleccionPilar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+    inventario = new Array();
+    salida = false;
+    momias = new Array();
+    momiacaja = true;
+    pergamino = false;
+    utilizacion = true;
 
-arrayMapa = [
-    [7, 7, 7, 7, 7, 7, 7, 7, 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
-    [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
-    [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
-    [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
-    [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-];
+    arrayMapa = [
+        [7, 7, 7, 7, 7, 7, 7, 7, 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+        [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+        [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+        [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+        [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ];
 
 }
 
 //matas a una momia si tienes el pergamino
-function matarPergamino(posMomX, posMomY){
+function matarPergamino(posMomX, posMomY) {
 
     arrayMapa[posMomX][posMomY].classList.remove("momia");
     eliminarMomias(posMomX, posMomY);
@@ -832,20 +834,20 @@ function matarPergamino(posMomX, posMomY){
 //Elimina las momias
 function eliminarMomias(posX, posY) {
 
-    
-     for (let i = 0; i < momias.length; i++) {
-        
-         if (momias[i].momiaY == posY && momias[i].momiaX == posX) {
-            
-             momias.splice(i, 1);
-             numeroMomias --;   
+
+    for (let i = 0; i < momias.length; i++) {
+
+        if (momias[i].momiaY == posY && momias[i].momiaX == posX) {
+
+            momias.splice(i, 1);
+            numeroMomias--;
         }
 
-     }
+    }
 
 }
 
-function sumarPuntuacion(puntos){
+function sumarPuntuacion(puntos) {
 
     puntuacion = puntuacion + puntos;
 }
