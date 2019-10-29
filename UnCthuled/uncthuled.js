@@ -323,7 +323,7 @@ function comprobarPilar() {
 
                 //si en la derecha y abajo hay otra clase pilar
                 if (arrayMapa[pilarX][pilarY + 1].classList.contains("pilar") && arrayMapa[pilarX + 1][pilarY].classList.contains("pilar")) {
-                    !arrayMapa[x - 1][y].classList.contains("pilarActivo")
+                   
                         //miras si hay huellas a tu izquierda y arriba
                     if (arrayMapa[pilarX][pilarY - 1].classList.contains("huellas") && arrayMapa[pilarX - 1][pilarY].classList.contains("huellas")) {
 
@@ -737,6 +737,7 @@ function comprobarInventario() {
             arrayMapa[0][8].classList.remove("huellas");
             //si el jugador se encuentra en la posicion de salida
             if (x == 0 && y == 8) {
+                
                 cambiarNivel();
             }
 
