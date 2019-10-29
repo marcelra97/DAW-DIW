@@ -1,21 +1,15 @@
-
-html{
-
+html {
     width: 100%;
     height: 100%;
-
 }
 
-body{
-    
+body {
     background-image: url("../img/fondo.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    
 }
 
-.principal{
-    
+.principal {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -26,8 +20,7 @@ body{
     height: 200px;
 }
 
-.boton{
-
+.boton {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,15 +30,13 @@ body{
     border: solid black 3px;
     color: black;
     background: rgba(255, 255, 255, 0.5);
-    
+    scale: ;
 }
 
-kbd{
-
+kbd {
     font-size: 150%;
-
 }
 
-.boton p{
+.boton p {
     font-size: 120%;
 }
