@@ -30,7 +30,18 @@ body {
     border: solid black 3px;
     color: black;
     background: rgba(255, 255, 255, 0.5);
-    scale: ;
+   
+}
+
+/* Esta es la clase que hace la transicion */
+.transicion{
+
+    transform: scale(1.12);
+    color: yellow;
+    border: solid yellow 3px;
+    box-shadow: 2px 2px 10px yellow;
+    transition: 0.07s;
+
 }
 
 kbd {
