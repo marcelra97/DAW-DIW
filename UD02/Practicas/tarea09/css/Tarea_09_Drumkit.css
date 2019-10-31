@@ -24,10 +24,11 @@ body {
     justify-content: center;
     align-items: center;
     border: solid black 3px;
+    border-radius: 8%;
     padding: 1%;
     text-align: center;
     background: rgba(255, 255, 255, 0.5);
-    transition: 0.07s;
+    transition: all 0.07s;
 }
 
 
@@ -38,7 +39,6 @@ body {
     color: yellow;
     border: solid yellow 3px;
     box-shadow: 2px 2px 10px yellow;
-    transition: 0.07s;
 }
 
 kbd {

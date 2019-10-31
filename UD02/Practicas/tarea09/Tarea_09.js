@@ -7,36 +7,36 @@ window.addEventListener('keydown', function(e) {
 
 }, false);
 
+
+
 function pulsarTecla(evento) {
-    
+
     //me coge los divs del boton
     let boton = document.getElementById(evento);
 
-     boton.classList.add("transicion");
-        
-     quitarAnimacion(evento);
+    boton.classList.add("transicion");
 
+    quitarAnimacion(evento);
 
-    let audio =document.querySelector(`audio[data-key="${evento}"]`);
-    
-    audio.pause();
-    
+    let audio = document.querySelector(`audio[data-key="${evento}"]`);
+    if (!audio) return;
+
+    audio.currentTime = 0;
+
     audio.play();
-    
+
 
 }
 
-function quitarAnimacion(evento){
+function quitarAnimacion(evento) {
 
     let caja = document.getElementById(evento);
 
-    caja.addEventListener("transitionend", function(event){
+    caja.addEventListener('transitionend', function(event) {
 
         caja.classList.remove("transicion");
 
-    },  false);
+    }, false);
 
 
 }
-
-
