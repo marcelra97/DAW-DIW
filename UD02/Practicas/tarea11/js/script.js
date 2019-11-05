@@ -1,0 +1,1 @@
+window.onload=function(){document.querySelector("button").addEventListener("click", function(){document.querySelectorAll(".caja").forEach(caja => caja.classList.toggle("movimiento"))})};
