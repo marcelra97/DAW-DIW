@@ -1,7 +1,7 @@
 section {
     border-radius: 5%;
     border: 1px dotted black;
-    width: 20%;
+    width: 15%;
     margin-top: 0.5%;
 }
 
@@ -10,16 +10,32 @@ p {
 }
 
 .caja {
-    background-image: url("../img/cthulhu.svg");
-    background-size: 100% 100%;
+    content: url("cthulhu.svg");
+    width: 10%;
+    height: 10%;
+    border: 1px solid black;
 }
 
-.linear {}
+.movimiento{
+    transform: translateX(827%);
+}
 
-.ease-in {}
+.linear {
+    transition: 3s linear transform;
+}
 
-.ease-out {}
+.ease-in {
+    transition: 3s ease-in transform;
+}
 
-.ease {}
+.ease-out {
+    transition: 3s ease-out transform;
+}
 
-.ease-in-out {}
+.ease {
+    transition: 3s ease transform;
+}
+
+.ease-in-out {
+    transition: 3s ease-in-out transform;
+}

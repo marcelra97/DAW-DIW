@@ -1,0 +1,2 @@
+//cojo el boton y le añado un evento click que llama a una funcion que coje todas las clases de las cajas y hago un for each para ponerles a todas las cajas la clase movimiento
+window.onload=function(){document.querySelector("button").addEventListener("click", function(){document.querySelectorAll(".caja").forEach(caja => caja.classList.toggle("movimiento"))})};
