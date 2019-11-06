@@ -1,4 +1,3 @@
-
 window.onload= function(){
     //llamo a la funcion
     pulsarBoton();
@@ -11,7 +10,6 @@ function pulsarBoton(){
 }
 
 function transicionImagen(){
-
     //me guardo en un array todos los elementos que tenga la clase caja
     const keys = document.querySelectorAll(".caja")
     
