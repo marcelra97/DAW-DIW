@@ -34,9 +34,9 @@ p {
 }
 
 .ease {
-    transition: 3s cubic-bezier(0.2932,0.4627,0.7915,0.4119) transform;
+    transition: 3s cubic-bezier(0.0627,0.1746,0.6559,0.9102) transform;
 }
 
 .ease-in-out {
-    transition: 3s ease-in-out transform;
+    transition: 3s cubic-bezier(0.4797,0.0153,0.5203,0.9746) transform;
 }
