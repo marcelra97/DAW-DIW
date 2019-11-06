@@ -1,2 +1,20 @@
-//cojo el boton y le añado un evento click que llama a una funcion que coje todas las clases de las cajas y hago un for each para ponerles a todas las cajas la clase movimiento
-window.onload=function(){document.querySelector("button").addEventListener("click", function(){document.querySelectorAll(".caja").forEach(caja => caja.classList.toggle("movimiento"))})};
+
+window.onload= function(){
+    //llamo a la funcion
+    pulsarBoton();
+}
+
+function pulsarBoton(){
+    //hago un querySelector del boton y le añado un eventListener que llama a la transicion
+    document.querySelector("button").addEventListener("click", transicionImagen);
+
+}
+
+function transicionImagen(){
+
+    //me guardo en un array todos los elementos que tenga la clase caja
+    const keys = document.querySelectorAll(".caja")
+    
+    //y hago un foreach para recorer cada una y les añado o les quito las clase movimiento
+    keys.forEach(caja => caja.classList.toggle("movimiento"));
+}
