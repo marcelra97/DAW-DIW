@@ -4,7 +4,7 @@ function init() {
     
     document.querySelector('.rodar').addEventListener('click', efectoRodar);
 
-    document.addEventListener('.rebotar').addEventListener('click', efectoRebote);
+    document.querySelector('.rebotar').addEventListener('click', efectoRebote);
     
 }
 
@@ -43,10 +43,13 @@ function desplazarCaja(e) {
 
 function efectoRodar(){
 
+    
+
 }
 
 function efectoRebote(){
 
+    
 
 }
 
