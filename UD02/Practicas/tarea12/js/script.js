@@ -15,31 +15,28 @@ function crearCaja() {
 }
 
 function desplazarCaja(e) {
-
+    
     let caja = e.target;
 
-    caja.classList.add('evoluciona');
+    if(!caja.classList.contains('evoluciona') && !caja.classList.contains('desevoluciona') && !caja.classList.contains('ultimate') ){
+        
+        caja.classList.add("evoluciona");
+       
+    }else if(!caja.classList.contains('desevoluciona') && caja.classList.contains('evoluciona')){
 
+        caja.classList.remove("evoluciona");
+        caja.classList.add("desevoluciona");
 
-    caja.addEventListener('click', vuelveCaja);
+    }else if(caja.classList.contains('desevoluciona')){
+
+        caja.classList.remove('desevoluciona');
+        caja.classList.add('ultimate');
+        caja.classList.add('ultimate:hover');
+    }
+
 
 }
 
-function vuelveCaja(e) {
 
-    e.taget.classList.remove('evoluciona');
-
-    e.target.classList.add('desevoluciona');
-
-    caja.addEventListener('click', apareceSedefkar);
-
-}
-
-function apareceSedefkar(e) {
-
-
-    e.target.classList.add('ultimate');
-
-}
 
 window.onload = init;

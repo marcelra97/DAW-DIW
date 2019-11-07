@@ -33,7 +33,7 @@ box {
 }
 
 .desevoluciona {
-    background-color: #10e;
+    background-color: #1e0;
     transform: translateX(0%);
     /* 
  
@@ -46,12 +46,10 @@ box {
     background-color: #441155;
     background-image: url("../img/cthulhu.svg");
     background-size: 100% 100%;
+    
 }
 
 .ultimate:hover {
-    /* 
- 
-    ^(;,;)^ : Fragmento perdido
 
-   */
+    transform: scale(1.1);
 }
