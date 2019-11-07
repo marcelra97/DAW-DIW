@@ -1,0 +1,74 @@
+body {
+    background-color: grey;
+    padding: 3rem;
+}
+
+header{
+    display: grid;
+    grid-template-columns: 250px 2fr;
+
+}
+
+.simbolos{
+    display: grid;
+    grid-template-columns:  repeat(2, 100px);
+    grid-template-rows: repeat(1, 100px);
+
+}
+
+.rodar{
+    background-image: url("../img/rodar.png");
+    background-size: 100% 100%;
+ 
+}
+
+.rebotar{
+    background-image: url("../img/rebotar.png");
+    background-size: 100% 100%;
+}
+
+container {
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 2%;
+    width: 900px;
+    height: 700px;
+}
+
+button {
+    border: 3px solid darkgrey;
+}
+
+box {
+    background-color: #1e0;
+    border: 3px solid #AABBAA;
+    transition-duration: 1s;
+    border-radius: 10px;
+}
+
+.evoluciona {
+    background-color: #e10;
+    transform: translateX(110%);
+    transition-property: background-color, transform;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+}
+
+.desevoluciona {
+    background-color: #1e0;
+    transform: translateX(0%);
+}
+
+.ultimate {
+    background-color: #441155;
+    background-image: url("../img/cthulhu.svg");
+    background-size: 100% 100%;
+    
+}
+
+.ultimate:hover {
+
+    transform: scale(1.1);
+}
