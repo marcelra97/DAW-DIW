@@ -15,23 +15,23 @@ function crearCaja() {
 }
 
 function desplazarCaja(e) {
-    
+
     let caja = e.target;
 
-    if(!caja.classList.contains('evoluciona') && !caja.classList.contains('desevoluciona') && !caja.classList.contains('ultimate') ){
-        
+    if (!caja.classList.contains('evoluciona') && !caja.classList.contains('desevoluciona') && !caja.classList.contains('ultimate')) {
+
         caja.classList.add("evoluciona");
-       
-    }else if(!caja.classList.contains('desevoluciona') && caja.classList.contains('evoluciona')){
 
-        caja.classList.remove("evoluciona");
-        caja.classList.add("desevoluciona");
+    } else if (!caja.classList.contains('desevoluciona') && caja.classList.contains('evoluciona')) {
 
-    }else if(caja.classList.contains('desevoluciona')){
+        caja.classList = 'desevoluciona';
 
-        caja.classList.remove('desevoluciona');
-        caja.classList.add('ultimate');
-        caja.classList.add('ultimate:hover');
+
+    } else if (caja.classList.contains('desevoluciona')) {
+
+        caja.classList = 'ultimate';
+
+
     }
 
 

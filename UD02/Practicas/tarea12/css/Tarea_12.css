@@ -46,10 +46,9 @@ box {
     background-color: #441155;
     background-image: url("../img/cthulhu.svg");
     background-size: 100% 100%;
-    
+    transition-duration: 0s;
 }
 
 .ultimate:hover {
-
     transform: scale(1.1);
 }
