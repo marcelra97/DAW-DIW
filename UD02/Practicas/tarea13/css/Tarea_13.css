@@ -1,113 +1,113 @@
-body {
-    background-color: grey;
-    padding: 3rem;
-}
-
-header {
-    display: grid;
-    grid-template-columns: 2fr repeat(2, 1fr);
-    height: 100px;
-    width: 800px;
-}
-
-.sedefkarRodar {
-    background-image: url("../img/rodar.png");
-    background-size: 100% 100%;
-}
-
-.sedefkarRebotar {
-    background-image: url("../img/rebotar.png");
-    background-size: 100% 100%;
-}
-
-container {
-    margin: 1rem;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-gap: 2%;
-    width: 900px;
-    height: 700px;
-}
-
-button {
-    border: 3px solid darkgrey;
-}
-
-box {
-    background-color: #1e0;
-    border: 3px solid #AABBAA;
-    transition-duration: 1s;
-    border-radius: 10px;
-}
-
-.evoluciona {
-    background-color: #e10;
-    transform: translateX(110%);
-    transition-property: background-color, transform;
-    transition-duration: 1s;
-    transition-timing-function: ease-in-out;
-}
-
-.desevoluciona {
-    background-color: #1e0;
-    transform: translateX(0%);
-}
-
-.ultimate {
-    background-color: #441155;
-    background-image: url("../img/cthulhu.svg");
-    background-size: 100% 100%;
-    transition-duration: 1s;
-}
-
-.ultimate:hover {
-    transform: scale(1.1);
-}
-
-.rodar {
-    animation-name: rotacion;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-.rebotar {
-    position: relative;
-    animation-name: rebotacion;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-@keyframes rotacion {
-    0% {
-        transform: rotate(0);
+    body {
+        background-color: grey;
+        padding: 3rem;
     }
-    100% {
-        transform: rotate(360deg);
+    
+    header {
+        display: grid;
+        grid-template-columns: 2fr repeat(2, 100px);
+        height: 100px;
+        width: 800px;
     }
-}
-
-@keyframes rebotacion {
-    0% {
-        top: 0px;
-        left: 0px;
+    
+    .sedefkarRodar {
+        content: url("../img/rodar.png");
+        object-fit: cover;
     }
-    25% {
-        top: 50px;
-        left: 50px;
+    
+    .sedefkarRebotar {
+        content: url("../img/rebotar.png");
+        object-fit: cover;
     }
-    50% {
-        top: 0px;
-        left: 100px;
+    
+    container {
+        margin: 1rem;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        grid-gap: 2%;
+        width: 900px;
+        height: 700px;
     }
-    75% {
-        top: 50px;
-        left: 50px;
+    
+    button {
+        border: 3px solid darkgrey;
     }
-    100% {
-        top: 0px;
-        left: 0px;
+    
+    box {
+        background-color: #1e0;
+        border: 3px solid #AABBAA;
+        transition-duration: 1s;
+        border-radius: 10px;
     }
-}
+    
+    .evoluciona {
+        background-color: #e10;
+        transform: translateX(110%);
+        transition-property: background-color, transform;
+        transition-duration: 1s;
+        transition-timing-function: ease-in-out;
+    }
+    
+    .desevoluciona {
+        background-color: #1e0;
+        transform: translateX(0%);
+    }
+    
+    .ultimate {
+        background-color: #441155;
+        background-image: url("../img/cthulhu.svg");
+        background-size: 100% 100%;
+        transition-duration: 1s;
+    }
+    
+    .ultimate:hover {
+        transform: scale(1.1);
+    }
+    
+    .rodar {
+        animation-name: rotacion;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    
+    .rebotar {
+        position: relative;
+        animation-name: rebotacion;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    
+    @keyframes rotacion {
+        0% {
+            transform: rotate(0);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    
+    @keyframes rebotacion {
+        0% {
+            top: 0px;
+            left: 0px;
+        }
+        25% {
+            top: 50px;
+            left: 50px;
+        }
+        50% {
+            top: 0px;
+            left: 100px;
+        }
+        75% {
+            top: 50px;
+            left: 50px;
+        }
+        100% {
+            top: 0px;
+            left: 0px;
+        }
+    }
