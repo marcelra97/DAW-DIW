@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <container>
+
+    </container>
+
+    <result>
+
+    </result>
+
+
+    <script>
+        window.addEventListener("keypress", pulsarBoton);
+
+        function init() {
+
+            for (let i = 0; i < 10; i++) {
+
+                let botonsito = document.createElement("button");
+
+                document.querySelector('container').appendChild(botonsito);
+
+                botonsito.value = i;
+                botonsito.innerText = i;
+
+                botonsito.addEventListener("click", clickarBoton);
+
+            }
+
+
+        }
+
+        function clickarBoton() {
+
+            let resultado = document.querySelector('result');
+            resultado.innerText += this.value;
+        }
+
+        function pulsarBoton(e) {
+
+            document.querySelector('result').innerText += e.key;
+
+
+        }
+
+        window.onload = init;
+    </script>
+</body>
+
+</html>
