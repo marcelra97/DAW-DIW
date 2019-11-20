@@ -10,42 +10,41 @@ email : <berlanas_ang@gva.es>
 
 
 // function avanzaBarra(progreso){
-   
+
 //     let value = progreso.getAttribute("value");
-    
+
 //     console.log(value);
 
 // }
 
 function hacerProcesos(progreso) {
-    
-   progreso.classList.remove("oculto");
-   progreso.classList.add("estabaEscondido");
+
+
+    progreso.classList.add("estabaEscondido");
+
+
 
 }
 
-function startMigration(){
+function startMigration() {
 
     let step = document.querySelectorAll('[data-step]');
-    
-    step.forEach(progreso => {
+
+    for (let i = 0; i < step.length; i++) {
+
+        hacerProcesos[i];
+    }
 
 
-        hacerProcesos(progreso);
-    });
 
 }
 
-function init(){
+function init() {
     console.info(" * Init envirnoment ");
 
-    let etiquetas = document.querySelectorAll('[data-step]')
-
-    etiquetas.forEach(etiqueta => etiqueta.classList.add("oculto"));
-
     // Set click function on button
-    document.querySelector("button").addEventListener("click",startMigration);
+    document.querySelector("button").addEventListener("click", startMigration);
 }
 
 // Init the environment when all is ready
-window.onload=init;
+window.onload = init;

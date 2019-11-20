@@ -32,42 +32,33 @@ body {
 */
 
 content {
-    height: 100%;
-
-    
+    height: 85%;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 3%;
 }
 
 items {
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
-
 }
 
 item {
-    margin-top:5%;
+    margin-top: 5%;
     align-self: center;
-    
-
 }
 
-
 button {
-
     font-size: 22px;
     background-color: #6A2CE8;
     border: 1px solid black;
-    box-shadow: 2px 3px 4px 2px rgba(0,0,0,0.75);
+    box-shadow: 2px 3px 4px 2px rgba(0, 0, 0, 0.75);
     color: #FFEB1C;
-
+    border-radius: 8%;
 }
 
 button:hover {
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
+    transform: scale(1.1)
 }
 
 button:active {
@@ -87,10 +78,11 @@ button:active {
 */
 
 steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10%;
-  font-size: 1.3em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10%;
+    margin-left: 5%;
+    font-size: 1.3em;
 }
 
 
@@ -106,19 +98,12 @@ steps * {
      * Fragmentos perdidos 
      * ^(;,;)^
      */
-
-}
-
-.oculto{
-    visibility: hidden;
+    transition-duration: 1s;
+    transition-property: opacity;
     opacity: 0;
-    
 }
 
 .estabaEscondido {
-    transition-duration: 1s;
-    transition-property: visibility, opacity;
-    visibility: visible;
     opacity: 1;
 }
 
@@ -131,10 +116,7 @@ steps * {
 */
 
 progress {
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
+    background-color: whitesmoke;
 }
 
 finalmsg {
