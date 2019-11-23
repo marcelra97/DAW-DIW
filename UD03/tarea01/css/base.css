@@ -44,17 +44,19 @@ items {
 }
 
 item {
-    margin-top: 5%;
+    margin-top: 2%;
     align-self: center;
+    font-size: 100%;
 }
 
 button {
+    font-family: 'OuroborosRegular';
     font-size: 22px;
     background-color: #6A2CE8;
     border: 1px solid black;
     box-shadow: 2px 3px 4px 2px rgba(0, 0, 0, 0.75);
     color: #FFEB1C;
-    border-radius: 8%;
+    border-radius: 80px;
 }
 
 button:hover {
@@ -62,10 +64,7 @@ button:hover {
 }
 
 button:active {
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
+    box-shadow: inset 10px 10px 26px -12px rgba(0,0,0,0.75);
 }
 
 
@@ -94,10 +93,7 @@ steps {
 */
 
 steps * {
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
+    
     transition-duration: 1s;
     transition-property: opacity;
     opacity: 0;
@@ -120,15 +116,23 @@ progress {
 }
 
 finalmsg {
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
+
+    animation-name: neon;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
 @keyframes neon {
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
+    0%{
+        color: white;
+    }
+    50%{
+        color: yellow;
+        text-shadow:2px 2px 20px #FFFB0D;
+    }
+    100%{
+        color:white;
+
+    }
 }

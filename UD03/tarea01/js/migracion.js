@@ -1,46 +1,43 @@
-/*
 
-This Script is licensed under GPL v3 or higher
+function Promesa(x) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(x);
+        }, 50);
+    });
+}
 
-Author: Angel Berlanas Vicente
-email : <berlanas_ang@gva.es>
+async function startMigration() {
 
-*/
+    if (cont < listaStep.length) {
 
-
-
-// function avanzaBarra(progreso){
-
-//     let value = progreso.getAttribute("value");
-
-//     console.log(value);
-
-// }
-
-let listaStep;
-let contador = 0;
-
-function startMigration() {
-
-    if (contador < listaStep.length) {
-
-        listaStep[contador].classList.add("estabaEscondido");
+        listaStep[cont].classList.add("estabaEscondido");
 
         //en este if hacer la barra de progreso
-        if (listaStep[contador].localName == "progress") {
+        if (listaStep[cont].localName == "progress") {
 
-            //me coge el valor de la barra
-            //haz un .value para poder mover el value
-            let barra = listaStep[contador].getAttribute("value");
+            //recorro la barra del 0 al 100 para poder darle value y que avance
+            for(let i = 0; i <= 100; i++ ){
+                
+                listaStep[cont].value = i;
+                await Promesa(0);
+            }
 
+            //acaba la barra y le digo que pase al siguiente
+            cont++;
 
+            //y pulso otra vez el boton
+            document.querySelector('button').click();
+            
+
+        }else{
+            
+            //si no es la barra pues hago un transitionend y luego llama y aumento en 1 el contador
+            listaStep[cont].addEventListener('transitionend', startMigration);
+            cont++;
         }
-
-        listaStep[contador].addEventListener('transitionend', startMigration);
-        contador++;
+          
     }
-
-
 
 }
 
@@ -52,6 +49,9 @@ function init() {
     // Set click function on button
     document.querySelector("button").addEventListener("click", startMigration);
 }
+
+let listaStep;
+let cont = 0;
 
 // Init the environment when all is ready
 window.onload = init;
