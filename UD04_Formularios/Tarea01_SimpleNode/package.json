@@ -14,6 +14,8 @@
   "author": "DAW Para MiniServidores",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "node-sass": "^4.13.0",
+    "sass": "^1.23.7"
   }
 }

@@ -13,6 +13,7 @@ function filtro(listaMonumentos) {
 
 function busqueda (){
 
+  //me creo el ul para poner la lista
   let listado = document.createElement("ul");
 
   //no se como funciona fetch, solo se que hace cosas, preguntar a Angel como va esto o a mi lider natural Javi
@@ -25,18 +26,21 @@ function busqueda (){
     
     //recorro el array filtrado para poder mostrar todos los monumentos
     nombreMonumentos.forEach(monumentos => {
-
+      //me creo un li
       let lista = document.createElement("li");
-
+      
+      // y añado el nombre de cada monumento en la lista
       lista.innerHTML = monumentos.properties.nombre;
 
+      //y los añado al listado
       listado.appendChild(lista);
 
     });
   
-    document.querySelector('#resultado').appendChild(listado);
-
 });
+
+//añado la lista al resultado
+document.querySelector('#resultado').appendChild(listado);
 
 
 }
