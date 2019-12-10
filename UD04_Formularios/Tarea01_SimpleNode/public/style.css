@@ -1,0 +1,14 @@
+body {
+  background-color: #FFEC9D;
+}
+
+body h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+body ul li {
+  list-style: none;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-top: 1%;
+}
+
+/*# sourceMappingURL=style.css.map */

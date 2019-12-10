@@ -28,9 +28,9 @@ function busqueda (){
     nombreMonumentos.forEach(monumentos => {
       //me creo un li
       let lista = document.createElement("li");
-      
+      console.log(monumentos);
       // y añado el nombre de cada monumento en la lista
-      lista.innerHTML = monumentos.properties.nombre;
+      lista.innerHTML = monumentos.properties.nombre +" -- coordenadas: ["+monumentos.geometry.coordinates+"]";
 
       //y los añado al listado
       listado.appendChild(lista);
@@ -39,6 +39,7 @@ function busqueda (){
   
 });
 
+document.querySelector("#resultado").innerHTML="";
 //añado la lista al resultado
 document.querySelector('#resultado').appendChild(listado);
 

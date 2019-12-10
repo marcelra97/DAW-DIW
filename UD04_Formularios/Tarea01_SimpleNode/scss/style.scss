@@ -1,10 +1,18 @@
 body{
-    background-color: grey;
+    background-color: #FFEC9D;
 }
 
-ul{
-    li{
-        list-style: none;
-        font-family: 'Times New Roman', Times, serif;
+body{
+    h1{
+        font-family: Georgia, 'Times New Roman', Times, serif;
     }
+
+    ul{
+        li{
+            list-style: none;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin-top: 1%;
+        }
+    }
+    
 }
