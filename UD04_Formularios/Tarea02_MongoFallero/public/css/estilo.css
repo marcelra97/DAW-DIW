@@ -1,0 +1,21 @@
+#formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+#formulario #radios {
+    display: block;
+}
+
+#principal {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#principal img {
+    width: 300px;
+    height: 300px;
+}
+
+
+/*# sourceMappingURL=estilo.css.map */

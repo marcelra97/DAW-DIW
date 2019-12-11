@@ -1,0 +1,16 @@
+#formulario {
+    display: flex;
+    flex-direction: column;
+    #radios {
+        display: block;
+    }
+}
+
+#principal {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    img {
+        width: 300px;
+        height: 300px;
+    }
+}
