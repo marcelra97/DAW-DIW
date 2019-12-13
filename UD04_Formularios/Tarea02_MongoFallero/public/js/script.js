@@ -1,13 +1,83 @@
-function seleccionarFalla() {
+function comprobarAnyo() {
 
 }
 
+function quitarPalabras() {
+
+    this.value = "";
+
+}
+
+//cada vez que se crea una falla hace esta funcion
+function crearDivs(datosfallas) {
+
+    let divPrincipal = document.querySelector("#principal");
+
+    let divFalla = document.createElement("div");
+    let imagen = document.createElement("img");
+    let titulo = document.createElement("p");
+
+    if (seccionPrincipalActiva == true) {
+
+        imagen.setAttribute("src", datosfallas.properties.boceto);
+
+    } else {
+
+        imagen.setAttribute("src", datosfallas.properties.boceto_i);
+    }
+
+    titulo.innerHTML = datosfallas.properties.nombre;
+
+    divFalla.appendChild(imagen);
+    divFalla.appendChild(titulo);
+
+    divPrincipal.appendChild(divFalla);
+
+
+}
+
+// seleccionas la seccion que quieras de la falla
+function seleccionarFalla() {
+
+    let seccionFalla = this.value;
+
+    let divPrincipal = document.querySelector("#principal");
+    divPrincipal.innerHTML = "";
+
+    //recorro las fallas
+    datosJson.features.forEach(fallas => {
+
+        // si la principal es la seleccionada
+        if (seccionPrincipalActiva == true) {
+
+            //buscas la falla 
+            if (fallas.properties.seccion == seccionFalla) {
+
+                // y la pones
+                crearDivs(fallas);
+
+            }
+
+            // si la infantil es la seleccionada
+        } else {
+
+            //la buscas y la pones 
+            if (fallas.properties.seccion_i == seccionFalla) {
+
+                crearDivs(fallas);
+            }
+        }
+    });
+
+}
+
+// seleccion de las fallas infantiles
 function seleccionarInfantil() {
 
     let select = document.querySelector("select");
 
     select.innerHTML = "";
-
+    seccionPrincipalActiva = false;
     //me creo un array para hacer que no se repitan las secciones
     let arrayAux = new Array();
 
@@ -30,9 +100,10 @@ function seleccionarInfantil() {
 }
 
 
-
+// seleccion de las fallas principales
 function seleccionarPrincipal() {
 
+    seccionPrincipalActiva = true;
     let select = document.querySelector("select");
 
     //elimino lo que haya en el select
@@ -67,23 +138,10 @@ function obtenerJson() {
 
             datosJson = datos;
 
-            let divPrincipal = document.querySelector("#principal");
 
             datos.features.forEach(fallas => {
 
-                let divFalla = document.createElement("div");
-                let imagen = document.createElement("img");
-                let titulo = document.createElement("p");
-
-                imagen.setAttribute("src", fallas.properties.boceto);
-                titulo.innerHTML = fallas.properties.nombre;
-
-                divFalla.appendChild(imagen);
-                divFalla.appendChild(titulo);
-
-                divPrincipal.appendChild(divFalla);
-
-
+                crearDivs(fallas);
 
             });
 
@@ -97,12 +155,17 @@ function init() {
     obtenerJson();
 
     // Esto es para cuando tenga en secciones las fallas
-    document.querySelector('input[value="filtroSeccion"]').addEventListener('change', seleccionarFalla);
+    document.querySelector('select[name="filtroSeccion"]').addEventListener('change', seleccionarFalla);
     document.querySelector('input[value="principal"]').addEventListener('change', seleccionarPrincipal);
     document.querySelector('input[value="infantil"]').addEventListener('change', seleccionarInfantil);
+    document.querySelector('input[name="filtroAñoDesde"]').addEventListener('focus', quitarPalabras);
+    document.querySelector('input[name="filtroAñoHasta"]').addEventListener('focus', quitarPalabras);
+    document.querySelector('input[name="filtroAñoDesde"]').addEventListener('blur', comprobarAnyo);
+    document.querySelector('input[name="filtroAñoHasta"]').addEventListener('blur', comprobarAnyo);
 
 }
 
+let seccionPrincipalActiva = false;
 let datosJson;
 let busqueda = "http://mapas.valencia.es/lanzadera/opendata/Monumentos_falleros/JSON";
 window.onload = init;
