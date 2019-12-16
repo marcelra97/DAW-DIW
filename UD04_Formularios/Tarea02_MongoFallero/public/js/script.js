@@ -1,41 +1,58 @@
+function puntuacion() {
+
+    let url = '/api/puntuaciones';
+    let data = { idFalla: '', ip: '', puntuacion: '' };
+
+    fetch(url, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Success:', response));
+
+}
+
 function comprobarAnyo() {
-    
+
     let divPrincipal = document.querySelector("#principal");
 
     divPrincipal.innerHTML = "";
-    
+
     datosJson.features.forEach(fallas => {
-        
+
         //si es la seccion principal la que esta activa miras las fallas principales
-        if(seccionPrincipalActiva == true){
+        if (seccionPrincipalInfantil == true) {
 
             //Si has puesto algo en desde cogera todas las fallas desde ese año
-            if(anyoDesde == true && fallas.properties.anyo_fundacion > this.value ){
+            if (anyoDesde == true && fallas.properties.anyo_fundacion > this.value) {
 
                 crearDivs(fallas);
 
-            } 
-            
+            }
+
             //Si has puesto algo en hasta cogera todas las fallas hasta ese año
-            if(anyoHasta == true && fallas.properties.anyo_fundacion < this.value){
+            if (anyoHasta == true && fallas.properties.anyo_fundacion < this.value) {
 
                 crearDivs(fallas);
 
             }
 
 
-        //si es la infantil mira las infantiles    
-        }else{
+            //si es la infantil mira las infantiles    
+        } else {
 
-             //Si has puesto algo en desde cogera todas las fallas desde ese año
-             if(anyoDesde == true && fallas.properties.anyo_fundacion_i > this.value ){
+            //Si has puesto algo en desde cogera todas las fallas desde ese año
+            if (anyoDesde == true && fallas.properties.anyo_fundacion_i > this.value) {
 
                 crearDivs(fallas);
 
-            } 
-            
+            }
+
             //Si has puesto algo en hasta cogera todas las fallas hasta ese año
-            if(anyoHasta == true && fallas.properties.anyo_fundacion_i < this.value){
+            if (anyoHasta == true && fallas.properties.anyo_fundacion_i < this.value) {
 
                 crearDivs(fallas);
 
@@ -49,45 +66,75 @@ function comprobarAnyo() {
 
 
 function quitarPalabras() {
-    
+
     //si estas en el desde pone el booleando en true
-    if(this.name == "filtroAñoDesde"){
+    if (this.name == "filtroAñoDesde") {
 
         this.value = "";
         anyoDesde = true;
-    //si estas en el hasta pone el booleando en true
-    }else if(this.name == "filtroAñoHasta") {
+        //si estas en el hasta pone el booleando en true
+    } else if (this.name == "filtroAñoHasta") {
 
         this.value = "";
         anyoHasta = true;
     }
-    
+
 
 }
 
 //cada vez que se crea una falla hace esta funcion
 function crearDivs(datosfallas) {
 
+    //div principal
     let divPrincipal = document.querySelector("#principal");
 
+    //div que contiene la falla
     let divFalla = document.createElement("div");
+
+    // div de la imagen
+    let divImg = document.createElement("div");
+    divImg.classList.add("divImg");
     let imagen = document.createElement("img");
+
+    //div del titulo
     let titulo = document.createElement("p");
+    let divTitulo = document.createElement("div");
+    divTitulo.classList.add("divTitulo");
 
-    if (seccionPrincipalActiva == true) {
+    //div de la ubucacion y la puntuacion
+    let divPuntuacion = document.createElement("div");
+    divPuntuacion.classList.add("divPuntuacion");
+    let boton = document.createElement("button");
 
-        imagen.setAttribute("src", datosfallas.properties.boceto);
+
+    boton.setAttribute("value", "puntuacion");
+
+    //elige cual de las dos es si es la infantil o la principal
+    if (seccionPrincipalInfantil == true) {
+
+        imagen.setAttribute("src", datosfallas.properties.boceto_i);
 
     } else {
 
-        imagen.setAttribute("src", datosfallas.properties.boceto_i);
+        imagen.setAttribute("src", datosfallas.properties.boceto);
     }
 
     titulo.innerHTML = datosfallas.properties.nombre;
 
-    divFalla.appendChild(imagen);
-    divFalla.appendChild(titulo);
+    //relacionadolos con los padres
+    divImg.appendChild(imagen);
+    divFalla.appendChild(divImg);
 
+    divTitulo.appendChild(titulo);
+    divFalla.appendChild(divTitulo);
+
+
+    divPuntuacion.appendChild(boton);
+    //evento que se le da a todos los botones de las fallas, esto es provisional
+    boton.addEventListener('click', puntuacion);
+    divFalla.appendChild(divPuntuacion);
+
+    divFalla.classList.add("falla");
     divPrincipal.appendChild(divFalla);
 
 
@@ -105,10 +152,10 @@ function seleccionarFalla() {
     datosJson.features.forEach(fallas => {
 
         // si la principal es la seleccionada
-        if (seccionPrincipalActiva == true) {
+        if (seccionPrincipalInfantil == true) {
 
             //buscas la falla 
-            if (fallas.properties.seccion == seccionFalla) {
+            if (fallas.properties.seccion_i == seccionFalla) {
 
                 // y la pones
                 crearDivs(fallas);
@@ -119,7 +166,7 @@ function seleccionarFalla() {
         } else {
 
             //la buscas y la pones 
-            if (fallas.properties.seccion_i == seccionFalla) {
+            if (fallas.properties.seccion == seccionFalla) {
 
                 crearDivs(fallas);
             }
@@ -134,7 +181,7 @@ function seleccionarInfantil() {
     let select = document.querySelector("select");
 
     select.innerHTML = "";
-    seccionPrincipalActiva = false;
+    seccionPrincipalInfantil = true;
     //me creo un array para hacer que no se repitan las secciones
     let arrayAux = new Array();
 
@@ -160,7 +207,7 @@ function seleccionarInfantil() {
 // seleccion de las fallas principales
 function seleccionarPrincipal() {
 
-    seccionPrincipalActiva = true;
+    seccionPrincipalInfantil = false;
     let select = document.querySelector("select");
 
     //elimino lo que haya en el select
@@ -195,7 +242,6 @@ function obtenerJson() {
 
             datosJson = datos;
 
-
             datos.features.forEach(fallas => {
 
                 crearDivs(fallas);
@@ -206,7 +252,7 @@ function obtenerJson() {
 
         });
 
-        
+
 }
 
 function init() {
@@ -217,14 +263,22 @@ function init() {
     document.querySelector('select[name="filtroSeccion"]').addEventListener('change', seleccionarFalla);
     document.querySelector('input[value="principal"]').addEventListener('change', seleccionarPrincipal);
     document.querySelector('input[value="infantil"]').addEventListener('change', seleccionarInfantil);
+
     document.querySelector('input[name="filtroAñoDesde"]').addEventListener('focus', quitarPalabras);
     document.querySelector('input[name="filtroAñoHasta"]').addEventListener('focus', quitarPalabras);
     document.querySelector('input[name="filtroAñoDesde"]').addEventListener('blur', comprobarAnyo);
     document.querySelector('input[name="filtroAñoHasta"]').addEventListener('blur', comprobarAnyo);
 
+    /*
+    document.querySelectorAll('button[value="puntuacion"]').forEach(boton => {
+        console.log(boton);
+        boton.addEventListener('click', puntuacion);
+    });
+    */
+
 }
 
-let seccionPrincipalActiva = false;
+let seccionPrincipalInfantil = false;
 let datosJson;
 let anyoDesde = false;
 let anyoHasta = false;

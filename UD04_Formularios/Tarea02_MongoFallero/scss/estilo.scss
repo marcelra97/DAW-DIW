@@ -1,16 +1,43 @@
-#formulario {
-    display: flex;
-    flex-direction: column;
-    #radios {
-        display: block;
-    }
-}
-
-#principal {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    img {
-        width: 300px;
-        height: 300px;
+html {
+    background-color: #FEF0C8;
+    body {
+        width: 80%;
+        margin-left: 10%;
+        #formulario {
+            display: flex;
+            flex-direction: column;
+            #radios {
+                display: block;
+            }
+        }
+        #principal {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            .falla {
+                display: grid;
+                grid-template-rows: repeat(1, 1fr) 80px 100px;
+                justify-content: center;
+                grid-gap: 1%;
+                margin: 2%;
+                background-color: #FFC885;
+                border: 1px solid black;
+                box-shadow: 9px 6px 13px -6px rgba(0, 0, 0, 0.75);
+                .divImg {
+                    width: 550px;
+                    height: 550px;
+                    margin-top: 1%;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .divTitulo {
+                    font-size: medium;
+                    p {
+                        text-align: center;
+                    }
+                }
+            }
+        }
     }
 }
