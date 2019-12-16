@@ -1,10 +1,67 @@
 function comprobarAnyo() {
+    
+    let divPrincipal = document.querySelector("#principal");
 
+    divPrincipal.innerHTML = "";
+    
+    datosJson.features.forEach(fallas => {
+        
+        //si es la seccion principal la que esta activa miras las fallas principales
+        if(seccionPrincipalActiva == true){
+
+            //Si has puesto algo en desde cogera todas las fallas desde ese año
+            if(anyoDesde == true && fallas.properties.anyo_fundacion > this.value ){
+
+                crearDivs(fallas);
+
+            } 
+            
+            //Si has puesto algo en hasta cogera todas las fallas hasta ese año
+            if(anyoHasta == true && fallas.properties.anyo_fundacion < this.value){
+
+                crearDivs(fallas);
+
+            }
+
+
+        //si es la infantil mira las infantiles    
+        }else{
+
+             //Si has puesto algo en desde cogera todas las fallas desde ese año
+             if(anyoDesde == true && fallas.properties.anyo_fundacion_i > this.value ){
+
+                crearDivs(fallas);
+
+            } 
+            
+            //Si has puesto algo en hasta cogera todas las fallas hasta ese año
+            if(anyoHasta == true && fallas.properties.anyo_fundacion_i < this.value){
+
+                crearDivs(fallas);
+
+            }
+
+
+        }
+
+    });
 }
 
-function quitarPalabras() {
 
-    this.value = "";
+function quitarPalabras() {
+    
+    //si estas en el desde pone el booleando en true
+    if(this.name == "filtroAñoDesde"){
+
+        this.value = "";
+        anyoDesde = true;
+    //si estas en el hasta pone el booleando en true
+    }else if(this.name == "filtroAñoHasta") {
+
+        this.value = "";
+        anyoHasta = true;
+    }
+    
 
 }
 
@@ -148,6 +205,8 @@ function obtenerJson() {
 
 
         });
+
+        
 }
 
 function init() {
@@ -167,5 +226,7 @@ function init() {
 
 let seccionPrincipalActiva = false;
 let datosJson;
+let anyoDesde = false;
+let anyoHasta = false;
 let busqueda = "http://mapas.valencia.es/lanzadera/opendata/Monumentos_falleros/JSON";
 window.onload = init;
