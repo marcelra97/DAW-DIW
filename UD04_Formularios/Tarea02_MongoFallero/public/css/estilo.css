@@ -8,6 +8,11 @@ html body {
 html body #formulario {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+html body #formulario input[type=text] {
+  margin-bottom: 1%;
+  border-radius: 10px;
 }
 html body #formulario #radios {
   display: block;
@@ -20,11 +25,11 @@ html body #principal .falla {
   display: grid;
   grid-template-rows: 50px 1fr 100px;
   justify-content: center;
-  grid-gap: 1%;
   margin: 2%;
-  background-color: #ffc885;
+  background: linear-gradient(to bottom, #ffd321 0%, #ffd321 18%, #ff9421 42%, #ff8121 66%, #fa6c00 84%, #ff401f 100%);
   border: 1px solid black;
   box-shadow: 9px 6px 13px -6px rgba(0, 0, 0, 0.75);
+  border-radius: 20px;
 }
 html body #principal .falla .divTitulo {
   font-family: "Comic Sans MS", cursive, sans-serif;
@@ -97,6 +102,7 @@ html body #principal .falla .divPuntuacion form p label {
 html body #principal .falla .divPuntuacion form p label:hover,
 html body #principal .falla .divPuntuacion form p label:hover ~ label {
   color: orange;
+  cursor: pointer;
 }
 html body #principal .falla .divPuntuacion form p input[type=radio]:checked ~ label {
   color: orange;

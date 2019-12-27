@@ -109,7 +109,7 @@ function crearDivs(datosfallas) {
     boton.setAttribute("value", "ubicacion");
     boton.innerText = "Ubicación";
 
-    // creacion de las estrellas
+    // creacion de las estrellas con su puntuacion
     let formPuntuacion = document.createElement("form");
     let divClasificacion = document.createElement("p");
     divClasificacion.classList.add("clasificacion");
@@ -270,6 +270,7 @@ function obtenerJson() {
 
             datos.features.forEach(fallas => {
 
+                console.log(fallas);
                 crearDivs(fallas);
 
             });
