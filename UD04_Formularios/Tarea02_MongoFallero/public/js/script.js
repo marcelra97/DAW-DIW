@@ -90,25 +90,51 @@ function crearDivs(datosfallas) {
 
     //div que contiene la falla
     let divFalla = document.createElement("div");
+    
+    //div del titulo
+    let titulo = document.createElement("p");
+    let divTitulo = document.createElement("div");
+    divTitulo.classList.add("divTitulo");
 
     // div de la imagen
     let divImg = document.createElement("div");
     divImg.classList.add("divImg");
     let imagen = document.createElement("img");
 
-    //div del titulo
-    let titulo = document.createElement("p");
-    let divTitulo = document.createElement("div");
-    divTitulo.classList.add("divTitulo");
 
     //div de la ubucacion y la puntuacion
     let divPuntuacion = document.createElement("div");
     divPuntuacion.classList.add("divPuntuacion");
     let boton = document.createElement("button");
+    boton.setAttribute("value", "ubicacion");
+    boton.innerText = "Ubicación";
 
+    // creacion de las estrellas
+    let formPuntuacion = document.createElement("form");
+    let divClasificacion = document.createElement("p");
+    divClasificacion.classList.add("clasificacion");
+    
+    for (let x = idLabelPtos, y = 5; x < idLabelPtos + 5; x++ , y--) {
+        
+        let inputEstrellas = document.createElement("input");
+        inputEstrellas.setAttribute('id', 'radio' + x);
+        inputEstrellas.setAttribute('type', 'radio');
+        inputEstrellas.setAttribute('name', 'estrellas');
+        inputEstrellas.setAttribute('value', y);
+        divClasificacion.appendChild(inputEstrellas);
 
-    boton.setAttribute("value", "puntuacion");
+        let label = document.createElement('label');
+        label.setAttribute('for', 'radio' + x);
+        label.innerHTML = '★';
+        divClasificacion.appendChild(label);
 
+    }
+    /*Incrementamos la variable global en 5 para que sean distintas la siguiente tanda de estrellas
+    De no ser asi cuando pulsamos sobre una estrella con un id igual a otra aplica cambios a la que tiene
+    mismo id*/
+    idLabelPtos += 5;
+    formPuntuacion.appendChild(divClasificacion);
+    
     //elige cual de las dos es si es la infantil o la principal
     if (seccionPrincipalInfantil == true) {
 
@@ -122,16 +148,16 @@ function crearDivs(datosfallas) {
     titulo.innerHTML = datosfallas.properties.nombre;
 
     //relacionadolos con los padres
-    divImg.appendChild(imagen);
-    divFalla.appendChild(divImg);
-
     divTitulo.appendChild(titulo);
     divFalla.appendChild(divTitulo);
-
+    
+    divImg.appendChild(imagen);
+    divFalla.appendChild(divImg);
 
     divPuntuacion.appendChild(boton);
     //evento que se le da a todos los botones de las fallas, esto es provisional
     boton.addEventListener('click', puntuacion);
+    divPuntuacion.appendChild(formPuntuacion);
     divFalla.appendChild(divPuntuacion);
 
     divFalla.classList.add("falla");
@@ -269,15 +295,10 @@ function init() {
     document.querySelector('input[name="filtroAñoDesde"]').addEventListener('blur', comprobarAnyo);
     document.querySelector('input[name="filtroAñoHasta"]').addEventListener('blur', comprobarAnyo);
 
-    /*
-    document.querySelectorAll('button[value="puntuacion"]').forEach(boton => {
-        console.log(boton);
-        boton.addEventListener('click', puntuacion);
-    });
-    */
 
 }
 
+let idLabelPtos = 0;
 let seccionPrincipalInfantil = false;
 let datosJson;
 let anyoDesde = false;
