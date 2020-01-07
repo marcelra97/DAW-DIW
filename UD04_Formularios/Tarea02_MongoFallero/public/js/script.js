@@ -1,17 +1,37 @@
-function puntuacion() {
+// function puntuacion() {
+
+//     let url = '/api/puntuaciones';
+//     let data = { idFalla: '', ip: '', puntuacion: '' };
+
+//     fetch(url, {
+//             method: 'POST', // or 'PUT'
+//             body: JSON.stringify(data), // data can be `string` or {object}!
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             }
+//         }).then(res => res.json())
+//         .catch(error => console.error('Error:', error))
+//         .then(response => console.log('Success:', response));
+
+// }
+
+function anyadirPuntuacion() {
+    
+    let id =this.classList.value;
 
     let url = '/api/puntuaciones';
-    let data = { idFalla: '', ip: '', puntuacion: '' };
+    let data = { idFalla: id , ip: '', puntuacion: '' };
 
-    fetch(url, {
-            method: 'POST', // or 'PUT'
-            body: JSON.stringify(data), // data can be `string` or {object}!
-            headers: {
-                'Content-Type': 'application/json'
-            }
+     fetch(url, {
+             method: 'POST', // or 'PUT'
+             body: JSON.stringify(data), // data can be `string` or {object}!
+             headers: {
+                 'Content-Type': 'application/json'
+             }
         }).then(res => res.json())
-        .catch(error => console.error('Error:', error))
-        .then(response => console.log('Success:', response));
+         .catch(error => console.error('Error:', error))
+         .then(response => console.log('Success:', response));
+
 
 }
 
@@ -121,19 +141,19 @@ function crearDivs(datosfallas) {
         inputEstrellas.setAttribute('type', 'radio');
         inputEstrellas.setAttribute('name', 'estrellas');
         inputEstrellas.setAttribute('value', y);
+        inputEstrellas.classList.add(datosfallas.properties.id);
         divClasificacion.appendChild(inputEstrellas);
 
         let label = document.createElement('label');
         label.setAttribute('for', 'radio' + x);
         label.innerHTML = '★';
         divClasificacion.appendChild(label);
-
+       
     }
-    /*Incrementamos la variable global en 5 para que sean distintas la siguiente tanda de estrellas
-    De no ser asi cuando pulsamos sobre una estrella con un id igual a otra aplica cambios a la que tiene
-    mismo id*/
+
     idLabelPtos += 5;
     formPuntuacion.appendChild(divClasificacion);
+    
     
     //elige cual de las dos es si es la infantil o la principal
     if (seccionPrincipalInfantil == true) {
@@ -156,13 +176,17 @@ function crearDivs(datosfallas) {
 
     divPuntuacion.appendChild(boton);
     //evento que se le da a todos los botones de las fallas, esto es provisional
-    boton.addEventListener('click', puntuacion);
     divPuntuacion.appendChild(formPuntuacion);
     divFalla.appendChild(divPuntuacion);
 
     divFalla.classList.add("falla");
     divPrincipal.appendChild(divFalla);
+    
+    //anyado a los eventos 
+    document.querySelectorAll('input[name="estrellas"]').forEach(estrella => {
 
+        estrella.addEventListener('click', anyadirPuntuacion);
+    })
 
 }
 
@@ -295,7 +319,6 @@ function init() {
     document.querySelector('input[name="filtroAñoHasta"]').addEventListener('focus', quitarPalabras);
     document.querySelector('input[name="filtroAñoDesde"]').addEventListener('blur', comprobarAnyo);
     document.querySelector('input[name="filtroAñoHasta"]').addEventListener('blur', comprobarAnyo);
-
 
 }
 
