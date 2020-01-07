@@ -1,142 +1,204 @@
-html {
-  background-color: #fef0c8;
+//linear-gradient(to bottom, rgba(255, 211, 33, 1) 0%, rgba(255, 211, 33, 1) 18%, rgba(255, 148, 33, 1) 42%, rgba(255, 129, 33, 1) 66%, rgba(250, 108, 0, 1) 84%, rgba(255, 64, 31, 1) 100%);
+$logo: evil;
+$backgroundColorFondo: #fef0c8;
+$img_logo: "";
+$backgrundColorFalla: red;
 
-  body {
+@if ($logo==evil) {
+
+    $backgroundColorFondo: #B23430;
+    $img_logo: "../img/evilcorp.png";
+    $backgrundColorFalla: white;
+
+}@else {
+
+    $backgroundColorFondo: #3BB34D;
+    $img_logo: "../img/cthulhu.jpg";
+    $backgrundColorFalla: white;
+
+}
+
+
+html {
+
+    background-color: $backgroundColorFondo;
     width: 80%;
     margin-left: 10%;
 
-    //la parte del formulario de arriba
-    #formulario {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    body {
 
-      input[type="text"]{
+        #logo {
 
-        margin-bottom: 1%;
-        border-radius: 10px;
-
-      }
-
-      #radios {
-        display: block;
-      }
-    }
-
-    //donde se encuentran las fotos de las fallas junto a sus ubicaciones
-    #principal {
-      display: grid;
-      grid-template-columns: repeat(3, 2fr);
-
-      //el contenedor que tiene lo que hay en cada falla
-      .falla {
-        display: grid;
-        grid-template-rows: 50px 1fr 100px;
-        justify-content: center;
-        margin: 2%;
-        //el linear gradient hace que el color vaya cambiando gradualmente, por eso tienes que utilizar los porcentajes
-        background: linear-gradient(to bottom, rgba(255,211,33,1) 0%, rgba(255,211,33,1) 18%, rgba(255,148,33,1) 42%, rgba(255,129,33,1) 66%, rgba(250,108,0,1) 84%, rgba(255,64,31,1) 100%);
-        border: 1px solid black;
-        box-shadow: 9px 6px 13px -6px rgba(0, 0, 0, 0.75);
-        border-radius: 20px;
-
-
-        //el apartado del titulo
-        .divTitulo {
-          font-family: "Comic Sans MS", cursive, sans-serif;
-          font-size: 15px;
-          font-weight: 700;
-          text-decoration: rgb(68, 68, 68);
-          font-style: italic;
-          font-variant: small-caps;
-          text-transform: uppercase;
-          text-shadow: 3px 3px 1px rgba(150, 150, 150, 1);
-
-          p {
-            text-align: center;
-          }
+            background-image: url($img_logo);
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 200px;
+            height: 200px;
         }
 
-        //la parte de la imagen
-        .divImg {
-          width: 500px;
-          height: 500px;
-          margin-top: 1%;
+        //la parte del formulario de arriba
+        #formulario {
 
-          img {
-            width: 100%;
-            height: 100%;
-          }
-        }
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
-        //la parte de las puntuaciones
-        .divPuntuacion {
-          text-align: center;
+            input[type="text"] {
 
-          //el boton de la ubicacion
-          button {
-            box-shadow: 0px 1px 0px 0px #fff6af;
-            background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
-            background-color: #ffec64;
-            border-radius: 6px;
-            border: 1px solid #ffaa22;
-            display: inline-block;
-            cursor: pointer;
-            color: #333333;
-            font-family: Arial;
-            font-size: 15px;
-            font-weight: bold;
-            padding: 6px 24px;
-            text-decoration: none;
-            text-shadow: 0px 1px 0px #ffee66;
-          }
+                margin-bottom: 1%;
+                border-radius: 10px;
 
-          button:hover {
-            background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
-            background-color: #ffab23;
-          }
-
-          button:active {
-            position: relative;
-            top: 1px;
-          }
-
-          //la parte de las estrellas
-          form {
-            width: 250px;
-            margin: 0 auto;
-            height: 50px;
-
-            p {
-              text-align: center;
-              direction: rtl;
-              unicode-bidi: bidi-override;
-
-              label {
-                font-size: 20px;
-              }
-
-              input[type="radio"] {
-                display: none;
-              }
-
-              label {
-                color: grey;
-              }
-
-              label:hover,
-              label:hover ~ label {
-                color: orange;
-                cursor: pointer;
-              }
-
-              input[type="radio"]:checked ~ label {
-                color: orange;
-              }
             }
-          }
+
+            #radios {
+
+                display: block;
+
+            }
         }
-      }
+
+        //donde se encuentran las fotos de las fallas junto a sus ubicaciones
+        #principal {
+
+            display: grid;
+            grid-template-columns: repeat(3, 2fr);
+            //el contenedor que tiene lo que hay en cada falla
+
+            .falla {
+
+                display: grid;
+                grid-template-rows: 50px 1fr 100px;
+                justify-content: center;
+                margin: 2%;
+
+                //el linear gradient hace que el color vaya cambiando gradualmente, por eso tienes que utilizar los porcentajes
+                background-color:$backgrundColorFalla; 
+                border: 1px solid black;
+                box-shadow: 9px 6px 13px -6px rgba(0, 0, 0, 0.75);
+                border-radius: 20px;
+                
+                //el apartado del titulo
+                .divTitulo {
+
+                    font-family: "Comic Sans MS", cursive, sans-serif;
+                    font-size: 15px;
+                    font-weight: 700;
+                    text-decoration: rgb(68, 68, 68);
+                    font-style: italic;
+                    font-variant: small-caps;
+                    text-transform: uppercase;
+                    text-shadow: 3px 3px 1px rgba(150, 150, 150, 1);
+
+                    p {
+
+                        text-align: center;
+
+                    }
+
+                }
+
+                //la parte de la imagen
+                .divImg {
+
+                    width: 500px;
+                    height: 500px;
+                    margin-top: 1%;
+
+                    img {
+
+                        width: 100%;
+                        height: 100%;
+
+                    }
+
+                }
+
+                //la parte de las puntuaciones
+                .divPuntuacion {
+
+                    text-align: center;
+                    //el boton de la ubicacion
+
+                    button {
+
+                        box-shadow: 0px 1px 0px 0px #fff6af;
+                        background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+                        background-color: #ffec64;
+                        border-radius: 6px;
+                        border: 1px solid #ffaa22;
+                        display: inline-block;
+                        cursor: pointer;
+                        color: #333333;
+                        font-family: Arial;
+                        font-size: 15px;
+                        font-weight: bold;
+                        padding: 6px 24px;
+                        text-decoration: none;
+                        text-shadow: 0px 1px 0px #ffee66;
+
+                    }
+
+                    button:hover {
+
+                        background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+                        background-color: #ffab23;
+                         
+                    }
+
+                    button:active {
+
+                        position: relative;
+                        top: 1px;
+
+                    }
+
+                    //la parte de las estrellas
+                    form {
+                        
+                        width: 250px;
+                        margin: 0 auto;
+                        height: 50px;
+
+                        p {
+
+                            text-align: center;
+                            direction: rtl;
+                            unicode-bidi: bidi-override;
+
+                            label {
+
+                                font-size: 20px;
+
+                            }
+
+                            input[type="radio"] {
+
+                                display: none;
+                            }
+
+                            label {
+
+                                color: grey;
+
+                            }
+
+                            label:hover,
+                            label:hover~label {
+
+                                color: orange;
+                                cursor: pointer;
+
+                            }
+
+                            input[type="radio"]:checked~label {
+
+                                color: orange;
+                                
+                        }
+                    }
+                }
+            }
+        }
     }
-  }
+}
 }

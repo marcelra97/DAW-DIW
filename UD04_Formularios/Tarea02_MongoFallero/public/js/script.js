@@ -1,26 +1,35 @@
-// function puntuacion() {
 
-//     let url = '/api/puntuaciones';
-//     let data = { idFalla: '', ip: '', puntuacion: '' };
-
-//     fetch(url, {
-//             method: 'POST', // or 'PUT'
-//             body: JSON.stringify(data), // data can be `string` or {object}!
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             }
-//         }).then(res => res.json())
-//         .catch(error => console.error('Error:', error))
-//         .then(response => console.log('Success:', response));
-
-// }
-
-function anyadirPuntuacion() {
-    
-    let id =this.classList.value;
+//se supone  que aqui recojo todas las puntuaciones de las fallas
+function cogerPuntuacion(){
 
     let url = '/api/puntuaciones';
-    let data = { idFalla: id , ip: '', puntuacion: '' };
+    
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response =>  {
+
+        response.forEach( datoPuntuacion => {
+
+            puntuacionesFallas.push(datoPuntuacion);
+
+
+        })
+
+    });
+
+    console.log(puntuacionesFallas);
+}
+
+//añado la puntuacion
+function anyadirPuntuacion(id_falla, valor_puntuacion){
+
+    let url = '/api/puntuaciones';
+    let data = { idFalla: id_falla , ip: '', puntuacion: valor_puntuacion };
 
      fetch(url, {
              method: 'POST', // or 'PUT'
@@ -32,6 +41,16 @@ function anyadirPuntuacion() {
          .catch(error => console.error('Error:', error))
          .then(response => console.log('Success:', response));
 
+}
+
+//aqui recojo las puntuaciones
+function valorPuntuacion() {
+    
+    let id =this.classList.value;
+    let valor = this.value;
+    
+    //las añado
+    anyadirPuntuacion(id, valor);
 
 }
 
@@ -185,8 +204,10 @@ function crearDivs(datosfallas) {
     //anyado a los eventos 
     document.querySelectorAll('input[name="estrellas"]').forEach(estrella => {
 
-        estrella.addEventListener('click', anyadirPuntuacion);
+        estrella.addEventListener('click', valorPuntuacion);
     })
+
+    
 
 }
 
@@ -294,22 +315,23 @@ function obtenerJson() {
 
             datos.features.forEach(fallas => {
 
-                console.log(fallas);
+                //console.log(fallas);
                 crearDivs(fallas);
-
+                
             });
 
 
-
+            
         });
 
+        
 
 }
 
 function init() {
 
     obtenerJson();
-
+    cogerPuntuacion();
     // Esto es para cuando tenga en secciones las fallas
     document.querySelector('select[name="filtroSeccion"]').addEventListener('change', seleccionarFalla);
     document.querySelector('input[value="principal"]').addEventListener('change', seleccionarPrincipal);
@@ -322,6 +344,7 @@ function init() {
 
 }
 
+let puntuacionesFallas = new Array;
 let idLabelPtos = 0;
 let seccionPrincipalInfantil = false;
 let datosJson;
