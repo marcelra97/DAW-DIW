@@ -15,14 +15,20 @@ function cogerPuntuacion(){
 
         response.forEach( datoPuntuacion => {
 
-            puntuacionesFallas.push(datoPuntuacion);
+        
+            let divPuntado = document.getElementById(datoPuntuacion.idFalla);
 
+            let divPuntuar = divPuntado.childNodes[2].childNodes[1].childNodes[0];
+           console.log(divPuntuar);
+    
+            // console.log(divPuntado.getElementsByClassName("clasificacion"));
+           
 
         })
 
     });
 
-    console.log(puntuacionesFallas);
+   
 }
 
 //añado la puntuacion
@@ -129,6 +135,7 @@ function crearDivs(datosfallas) {
 
     //div que contiene la falla
     let divFalla = document.createElement("div");
+    divFalla.setAttribute("id", datosfallas.properties.id);
     
     //div del titulo
     let titulo = document.createElement("p");
@@ -319,7 +326,7 @@ function obtenerJson() {
                 crearDivs(fallas);
                 
             });
-
+            cogerPuntuacion();
 
             
         });
@@ -331,7 +338,9 @@ function obtenerJson() {
 function init() {
 
     obtenerJson();
-    cogerPuntuacion();
+
+    
+    
     // Esto es para cuando tenga en secciones las fallas
     document.querySelector('select[name="filtroSeccion"]').addEventListener('change', seleccionarFalla);
     document.querySelector('input[value="principal"]').addEventListener('change', seleccionarPrincipal);
