@@ -1,3 +1,12 @@
+function ubicacionFalla() {
+
+    let coordenadas = new Array;
+    coordenadas.push(this.getAttribute("x"));
+    coordenadas.push(this.getAttribute("y"));
+    
+    console.log(coordenadas);
+    
+}
 
 //se supone  que aqui recojo todas las puntuaciones de las fallas
 function cogerPuntuacion(){
@@ -15,15 +24,18 @@ function cogerPuntuacion(){
 
         response.forEach( datoPuntuacion => {
 
-        
-            let divPuntado = document.getElementById(datoPuntuacion.idFalla);
-
-            let divPuntuar = divPuntado.childNodes[2].childNodes[1].childNodes[0];
-           console.log(divPuntuar);
-    
-            // console.log(divPuntado.getElementsByClassName("clasificacion"));
+            //buscamos el formulario
+            let divPuntuar = document.getElementById(datoPuntuacion.idFalla).childNodes[2].childNodes[1].childNodes[0];
            
+            //cogemos solo los labels
+            let label = divPuntuar.getElementsByTagName("label");
 
+            //la resta es para coger el valor que le corresponde
+            let valor =  5 - datoPuntuacion.puntuacion;
+            
+            //cuando ya sabemos que puntuo anteriormente le ponemos marcadas las estrellas
+            label[valor].control.checked = true;    
+           
         })
 
     });
@@ -152,8 +164,10 @@ function crearDivs(datosfallas) {
     let divPuntuacion = document.createElement("div");
     divPuntuacion.classList.add("divPuntuacion");
     let boton = document.createElement("button");
-    boton.setAttribute("value", "ubicacion");
+    boton.setAttribute("x", datosfallas.geometry.coordinates[0]);
+    boton.setAttribute("y", datosfallas.geometry.coordinates[1]);
     boton.innerText = "Ubicación";
+    boton.addEventListener("click", ubicacionFalla);
 
     // creacion de las estrellas con su puntuacion
     let formPuntuacion = document.createElement("form");
@@ -201,7 +215,6 @@ function crearDivs(datosfallas) {
     divFalla.appendChild(divImg);
 
     divPuntuacion.appendChild(boton);
-    //evento que se le da a todos los botones de las fallas, esto es provisional
     divPuntuacion.appendChild(formPuntuacion);
     divFalla.appendChild(divPuntuacion);
 
@@ -212,9 +225,7 @@ function crearDivs(datosfallas) {
     document.querySelectorAll('input[name="estrellas"]').forEach(estrella => {
 
         estrella.addEventListener('click', valorPuntuacion);
-    })
-
-    
+    })   
 
 }
 
@@ -327,11 +338,8 @@ function obtenerJson() {
                 
             });
             cogerPuntuacion();
-
-            
+  
         });
-
-        
 
 }
 
@@ -339,8 +347,6 @@ function init() {
 
     obtenerJson();
 
-    
-    
     // Esto es para cuando tenga en secciones las fallas
     document.querySelector('select[name="filtroSeccion"]').addEventListener('change', seleccionarFalla);
     document.querySelector('input[value="principal"]').addEventListener('change', seleccionarPrincipal);
