@@ -23,8 +23,10 @@ function cogerPuntuacion(){
     .then(response =>  {
 
         response.forEach( datoPuntuacion => {
-
-            //buscamos el formulario
+           ipCliente = datoPuntuacion.ip;
+           
+            if(datoPuntuacion.ip == ipCliente){
+                //buscamos el formulario
             let divPuntuar = document.getElementById(datoPuntuacion.idFalla).childNodes[2].childNodes[1].childNodes[0];
            
             //cogemos solo los labels
@@ -36,6 +38,8 @@ function cogerPuntuacion(){
             //cuando ya sabemos que puntuo anteriormente le ponemos marcadas las estrellas
             label[valor].control.checked = true;    
            
+            }
+            
         })
 
     });
@@ -343,6 +347,8 @@ function obtenerJson() {
 
 }
 
+
+
 function init() {
 
     obtenerJson();
@@ -357,8 +363,10 @@ function init() {
     document.querySelector('input[name="filtroAñoDesde"]').addEventListener('blur', comprobarAnyo);
     document.querySelector('input[name="filtroAñoHasta"]').addEventListener('blur', comprobarAnyo);
 
+    
 }
 
+let ipCliente;
 let puntuacionesFallas = new Array;
 let idLabelPtos = 0;
 let seccionPrincipalInfantil = false;

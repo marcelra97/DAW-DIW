@@ -1,29 +1,31 @@
 //linear-gradient(to bottom, rgba(255, 211, 33, 1) 0%, rgba(255, 211, 33, 1) 18%, rgba(255, 148, 33, 1) 42%, rgba(255, 129, 33, 1) 66%, rgba(250, 108, 0, 1) 84%, rgba(255, 64, 31, 1) 100%);
-$logo: evil;
+$logo: evi;
 $backgroundColorFondo: #fef0c8;
 $img_logo: "";
 $backgrundColorFalla: red;
+$img_hamburguesa:"";
 
 @if ($logo==evil) {
 
     $backgroundColorFondo: #B23430;
     $img_logo: "../img/evilcorp.png";
     $backgrundColorFalla: white;
+    $img_hamburguesa: "../img/evilcorp.png";
 
 }@else {
 
     $backgroundColorFondo: #3BB34D;
     $img_logo: "../img/cthulhu.jpg";
     $backgrundColorFalla: white;
-
+    $img_hamburguesa: "../img/hamburguer.png";
 }
 
 
+//PARA MOVIL
 html {
 
     background-color: $backgroundColorFondo;
-    width: 80%;
-    margin-left: 10%;
+    margin-left: 5%;
 
     body {
 
@@ -32,8 +34,23 @@ html {
             background-image: url($img_logo);
             background-size: contain;
             background-repeat: no-repeat;
-            width: 200px;
-            height: 200px;
+            width: 100px;
+            height: 100px;
+        }
+
+
+        #hamburguesa{
+            background-image: url($img_hamburguesa);
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 50px;
+            width:50px;
+            margin-top: 5%;
+            
+        }
+
+        .esconderFormulario{
+            display: none;
         }
 
         //la parte del formulario de arriba
@@ -61,11 +78,13 @@ html {
         #principal {
 
             display: grid;
-            grid-template-columns: repeat(3, 2fr);
+            grid-template-columns: 1fr;
             //el contenedor que tiene lo que hay en cada falla
 
             .falla {
 
+                width: 400px;
+                height:600px;
                 display: grid;
                 grid-template-rows: 50px 1fr 100px;
                 justify-content: center;
@@ -100,8 +119,8 @@ html {
                 //la parte de la imagen
                 .divImg {
 
-                    width: 500px;
-                    height: 500px;
+                    width: 350px;
+                    height: 400px;
                     margin-top: 1%;
 
                     img {
@@ -118,7 +137,7 @@ html {
 
                     text-align: center;
                     //el boton de la ubicacion
-
+                
                     button {
 
                         box-shadow: 0px 1px 0px 0px #fff6af;
@@ -201,4 +220,71 @@ html {
         }
     }
 }
+}
+
+//****************Version Escritorio
+@media(min-width: 500px){
+
+    html {
+
+        background-color: $backgroundColorFondo;
+        width: 80%;
+        margin-left: 10%;
+    
+        body {
+    
+            #logo {
+    
+                background-image: url($img_logo);
+                background-size: contain;
+                background-repeat: no-repeat;
+                width: 200px;
+                height: 200px;
+            }
+    
+            //la parte del formulario de arriba
+            #formulario {
+    
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+    
+                input[type="text"] {
+    
+                    margin-bottom: 1%;
+                    border-radius: 10px;
+    
+                }
+    
+                #radios {
+    
+                    display: block;
+    
+                }
+            }
+
+             //donde se encuentran las fotos de las fallas junto a sus ubicaciones
+            #principal {
+
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                //el contenedor que tiene lo que hay en cada falla
+
+                .falla {
+
+                    display: grid;
+                    grid-template-rows: 50px 1fr 100px;
+                    justify-content: center;
+                    margin: 2%;
+
+                    //el linear gradient hace que el color vaya cambiando gradualmente, por eso tienes que utilizar los porcentajes
+                    background-color:$backgrundColorFalla; 
+                    border: 1px solid black;
+                    box-shadow: 9px 6px 13px -6px rgba(0, 0, 0, 0.75);
+                    border-radius: 20px;
+        
+                }
+            }
+        }
+   }
 }

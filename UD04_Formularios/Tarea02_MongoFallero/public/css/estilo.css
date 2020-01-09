@@ -1,13 +1,21 @@
 html {
-  background-color: #B23430;
-  width: 80%;
-  margin-left: 10%; }
+  background-color: #3BB34D;
+  margin-left: 5%; }
   html body #logo {
-    background-image: url("../img/evilcorp.png");
+    background-image: url("../img/cthulhu.jpg");
     background-size: contain;
     background-repeat: no-repeat;
-    width: 200px;
-    height: 200px; }
+    width: 100px;
+    height: 100px; }
+  html body #hamburguesa {
+    background-image: url("../img/hamburguer.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+    margin-top: 5%; }
+  html body .esconderFormulario {
+    display: none; }
   html body #formulario {
     display: flex;
     flex-direction: column;
@@ -19,8 +27,10 @@ html {
       display: block; }
   html body #principal {
     display: grid;
-    grid-template-columns: repeat(3, 2fr); }
+    grid-template-columns: 1fr; }
     html body #principal .falla {
+      width: 400px;
+      height: 600px;
       display: grid;
       grid-template-rows: 50px 1fr 100px;
       justify-content: center;
@@ -41,8 +51,8 @@ html {
         html body #principal .falla .divTitulo p {
           text-align: center; }
       html body #principal .falla .divImg {
-        width: 500px;
-        height: 500px;
+        width: 350px;
+        height: 400px;
         margin-top: 1%; }
         html body #principal .falla .divImg img {
           width: 100%;
@@ -90,5 +100,38 @@ html {
               cursor: pointer; }
             html body #principal .falla .divPuntuacion form p input[type="radio"]:checked ~ label {
               color: orange; }
+
+@media (min-width: 500px) {
+  html {
+    background-color: #3BB34D;
+    width: 80%;
+    margin-left: 10%; }
+    html body #logo {
+      background-image: url("../img/cthulhu.jpg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 200px;
+      height: 200px; }
+    html body #formulario {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      html body #formulario input[type="text"] {
+        margin-bottom: 1%;
+        border-radius: 10px; }
+      html body #formulario #radios {
+        display: block; }
+    html body #principal {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); }
+      html body #principal .falla {
+        display: grid;
+        grid-template-rows: 50px 1fr 100px;
+        justify-content: center;
+        margin: 2%;
+        background-color: white;
+        border: 1px solid black;
+        box-shadow: 9px 6px 13px -6px rgba(0, 0, 0, 0.75);
+        border-radius: 20px; } }
 
 /*# sourceMappingURL=estilo.css.map */

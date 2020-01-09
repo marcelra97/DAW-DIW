@@ -26,9 +26,10 @@ exports.create = (req, res) => {
         });
     }
 
+    console.log(req.connection.remoteAddress.split(":")[3])
     const puntuacion = new Puntuacion({
         idFalla: req.body.idFalla || "idFallaVacio",
-        ip: req.body.ip || "127.0.0.1",
+        ip: req.connection.remoteAddress.split(":")[3] || "127.0.0.1",
         puntuacion: req.body.puntuacion || 42
     })
 
