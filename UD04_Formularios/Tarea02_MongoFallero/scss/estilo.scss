@@ -1,5 +1,5 @@
 //linear-gradient(to bottom, rgba(255, 211, 33, 1) 0%, rgba(255, 211, 33, 1) 18%, rgba(255, 148, 33, 1) 42%, rgba(255, 129, 33, 1) 66%, rgba(250, 108, 0, 1) 84%, rgba(255, 64, 31, 1) 100%);
-$logo: evi;
+$logo: evil;
 $backgroundColorFondo: #fef0c8;
 $img_logo: "";
 $backgrundColorFalla: red;
@@ -17,7 +17,7 @@ $img_hamburguesa:"";
     $backgroundColorFondo: #3BB34D;
     $img_logo: "../img/cthulhu.jpg";
     $backgrundColorFalla: white;
-    $img_hamburguesa: "../img/hamburguer.png";
+    $img_hamburguesa: "../img/hamburger.png";
 }
 
 
@@ -46,20 +46,30 @@ html {
             height: 50px;
             width:50px;
             margin-top: 5%;
-            
+            margin-left: 45%;
         }
 
         .esconderFormulario{
-            display: none;
+            position: absolute;
+            opacity: 0;
+            height: 0px;
+
+            transition-property: height;
+            transition-duration: 3s ;
+            transition-timing-function: ease;
         }
+
+        .apareceFormulario{
+            transition-property:position, opacity, height;
+            transition-duration: 2s ;
+            transition-timing-function: ease;
+            height: 250px;
+        }
+    
 
         //la parte del formulario de arriba
         #formulario {
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
+            
             input[type="text"] {
 
                 margin-bottom: 1%;
@@ -241,7 +251,11 @@ html {
                 width: 200px;
                 height: 200px;
             }
-    
+
+            #hamburguesa{
+                display: none;
+            }
+
             //la parte del formulario de arriba
             #formulario {
     

@@ -1,3 +1,12 @@
+function desplegarMenu() {
+    
+    let divFormulario = document.querySelector('#formulario');
+    
+    divFormulario.classList.toggle("esconderFormulario");
+    divFormulario.classList.toggle("apareceFormulario");
+    
+}
+
 function ubicacionFalla() {
 
     let coordenadas = new Array;
@@ -362,6 +371,7 @@ function init() {
     document.querySelector('input[name="filtroAñoHasta"]').addEventListener('focus', quitarPalabras);
     document.querySelector('input[name="filtroAñoDesde"]').addEventListener('blur', comprobarAnyo);
     document.querySelector('input[name="filtroAñoHasta"]').addEventListener('blur', comprobarAnyo);
+    document.querySelector('#hamburguesa').addEventListener('click', desplegarMenu);
 
     
 }
