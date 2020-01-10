@@ -3,18 +3,34 @@ function desplegarMenu() {
     let divFormulario = document.querySelector('#formulario');
     
     divFormulario.classList.toggle("esconderFormulario");
-    divFormulario.classList.toggle("apareceFormulario");
+    //divFormulario.classList.toggle("apareceFormulario");
     
+}
+
+function mostrarMapa(posicion){
+
+    let ubicacionFalla = [posicion[1], posicion[0]];
+
+    let divMapa = document.createElement("div");
+
+    
+    console.log(ubicacionFalla);
 }
 
 function ubicacionFalla() {
 
     let coordenadas = new Array;
-    coordenadas.push(this.getAttribute("x"));
-    coordenadas.push(this.getAttribute("y"));
+    coordenadas[0] = parseFloat(this.getAttribute("x"));
+    coordenadas[1] = parseFloat(this.getAttribute("y"));
     
-    console.log(coordenadas);
     
+
+    var firstProjection = '+proj=utm +zone=30 +ellps=GRS80 +units=m +no_defs';
+    var secondProjection = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs';
+    //I'm not going to redefine those two in latter examples.
+    let ubicacion = proj4(firstProjection,secondProjection, coordenadas);
+    console.log(ubicacion);
+    mostrarMapa(ubicacion);
 }
 
 //se supone  que aqui recojo todas las puntuaciones de las fallas
