@@ -4,6 +4,9 @@ $backgroundColorFondo: #fef0c8;
 $img_logo: "";
 $backgrundColorFalla: red;
 $img_hamburguesa:"";
+$bordeEspecial:blue;
+$backgroundEspecial:white;
+$posicionCabecera:"";
 
 @if ($logo==evil) {
 
@@ -11,13 +14,17 @@ $img_hamburguesa:"";
     $img_logo: "../img/evilcorp.png";
     $backgrundColorFalla: white;
     $img_hamburguesa: "../img/evilcorp.png";
-
+    $bordeEspecial:#FF6B04;
+    $posicionCabecera:static;
 }@else {
 
-    $backgroundColorFondo: #3BB34D;
+    $backgroundColorFondo: #098108;
     $img_logo: "../img/cthulhu.jpg";
     $backgrundColorFalla: white;
     $img_hamburguesa: "../img/hamburger.png";
+    $bordeEspecial:#29B0B3;
+    $backgroundEspecial:#CEFEFF;
+    $posicionCabecera:fixed;
 }
 
 
@@ -85,6 +92,7 @@ html {
             display: grid;
             grid-template-columns: 1fr;
             //el contenedor que tiene lo que hay en cada falla
+           
 
             .falla {
 
@@ -97,7 +105,7 @@ html {
 
                 //el linear gradient hace que el color vaya cambiando gradualmente, por eso tienes que utilizar los porcentajes
                 background-color:$backgrundColorFalla; 
-                border: 1px solid black;
+                border: 2px solid black;
                 box-shadow: 9px 6px 13px -6px rgba(0, 0, 0, 0.75);
                 border-radius: 20px;
                 
@@ -223,6 +231,10 @@ html {
                 }
             }
         }
+        .puntuacionEspecial{
+            border: 2px double $bordeEspecial;
+            background-color: $backgroundEspecial;
+        }
     }
 }
 }
@@ -237,44 +249,58 @@ html {
         margin-left: 10%;
     
         body {
-    
-            #logo {
-    
-                background-image: url($img_logo);
-                background-size: contain;
-                background-repeat: no-repeat;
-                width: 200px;
-                height: 200px;
+
+            .scrollCabecera{
+                position: $posicionCabecera;
+                top:0;
             }
-            .esconderFormulario{
-                opacity: 1;
-            }
+
+            #cabecera{
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                width: 80%;
+                
+                background-color: $backgroundColorFondo;
             
-            #hamburguesa{
-                display: none;
-            }
-
-            //la parte del formulario de arriba
-            #formulario {
-    
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-    
-                input[type="text"] {
-    
-                    margin-bottom: 1%;
-                    border-radius: 10px;
-    
+                #logo {
+        
+                    background-image: url($img_logo);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    width: 200px;
+                    height: 200px;
                 }
-    
-                #radios {
-    
+               
+                
+                #hamburguesa{
+                    display: none;
+                }
+
+                //la parte del formulario de arriba
+                #formulario {
+        
                     display: block;
-    
+                    flex-direction: column;
+                    align-items: center;
+                    background-color: #EDEDED;
+                    border-radius: 5%;
+                    border: 2px solid black;
+                    box-shadow: 10px 10px 16px -9px rgba(0,0,0,0.75);;
+        
+                    input[type="text"] {
+        
+                        margin-bottom: 1%;
+                        border-radius: 10px;
+        
+                    }
+        
+                    #radios {
+        
+                        display: block;
+        
+                    }
                 }
-            }
-
+            }    
              //donde se encuentran las fotos de las fallas junto a sus ubicaciones
             #principal {
 
@@ -291,10 +317,15 @@ html {
 
                     //el linear gradient hace que el color vaya cambiando gradualmente, por eso tienes que utilizar los porcentajes
                     background-color:$backgrundColorFalla; 
-                    border: 1px solid black;
+                    border: 2px solid black;
                     box-shadow: 9px 6px 13px -6px rgba(0, 0, 0, 0.75);
                     border-radius: 20px;
         
+                }
+
+                .puntuacionEspecial{
+                    border: 2px double $bordeEspecial;
+                    background-color: $backgroundEspecial;
                 }
             }
         }

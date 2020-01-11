@@ -1,3 +1,9 @@
+function comprobarValorFalla(fallaPuntuada) {
+    
+    let divFalla = document.getElementById(fallaPuntuada);
+    divFalla.classList.add("puntuacionEspecial");
+}
+
 function desplegarMenu() {
     
     let divFormulario = document.querySelector('#formulario');
@@ -48,6 +54,7 @@ function cogerPuntuacion(){
     .then(response =>  {
 
         response.forEach( datoPuntuacion => {
+            
            ipCliente = datoPuntuacion.ip;
            
             if(datoPuntuacion.ip == ipCliente){
@@ -61,14 +68,21 @@ function cogerPuntuacion(){
             let valor =  5 - datoPuntuacion.puntuacion;
             
             //cuando ya sabemos que puntuo anteriormente le ponemos marcadas las estrellas
-            label[valor].control.checked = true;    
-           
+            label[valor].control.checked = true;
+
+            //comprobar si el valor es mayor de 4
+            if(datoPuntuacion.puntuacion >= 4){
+
+                comprobarValorFalla(datoPuntuacion.idFalla);
+            }    
+            
+
             }
             
         })
 
     });
-
+   
    
 }
 
@@ -87,7 +101,11 @@ function anyadirPuntuacion(id_falla, valor_puntuacion){
         }).then(res => res.json())
          .catch(error => console.error('Error:', error))
          .then(response => console.log('Success:', response));
-
+        
+        if(valor_puntuacion >= 4){
+            comprobarValorFalla(id_falla);
+        }
+         
 }
 
 //aqui recojo las puntuaciones
@@ -98,7 +116,7 @@ function valorPuntuacion() {
     
     //las añado
     anyadirPuntuacion(id, valor);
-
+    
 }
 
 function comprobarAnyo() {
@@ -401,3 +419,13 @@ let anyoDesde = false;
 let anyoHasta = false;
 let busqueda = "http://mapas.valencia.es/lanzadera/opendata/Monumentos_falleros/JSON";
 window.onload = init;
+
+//esto es para hacer que la cabecera haga el scroll
+window.addEventListener('scroll', () => {
+    const scroll = window.scrollY;
+    
+    if(scroll == 100){
+        document.querySelector('#cabecera').classList.toggle("scrollCabecera");
+    }
+    
+});

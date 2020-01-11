@@ -1,143 +1,195 @@
 html {
-  background-color: #3BB34D;
-  margin-left: 5%; }
-  html body #logo {
-    background-image: url("../img/cthulhu.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 100px;
-    height: 100px; }
-  html body #hamburguesa {
-    background-image: url("../img/hamburger.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 50px;
-    width: 50px;
-    margin-top: 5%;
-    margin-left: 45%; }
-  html body .esconderFormulario {
-    position: absolute;
-    opacity: 0;
-    height: 0px;
-    transition-property: height;
-    transition-duration: 3s;
-    transition-timing-function: ease; }
-  html body #formulario input[type="text"] {
-    margin-bottom: 1%;
-    border-radius: 10px; }
-  html body #formulario #radios {
-    display: block; }
-  html body #principal {
-    display: grid;
-    grid-template-columns: 1fr; }
-    html body #principal .falla {
-      width: 400px;
-      height: 600px;
-      display: grid;
-      grid-template-rows: 50px 1fr 100px;
-      justify-content: center;
-      margin: 2%;
-      background-color: white;
-      border: 1px solid black;
-      box-shadow: 9px 6px 13px -6px rgba(0, 0, 0, 0.75);
-      border-radius: 20px; }
-      html body #principal .falla .divTitulo {
-        font-family: "Comic Sans MS", cursive, sans-serif;
-        font-size: 15px;
-        font-weight: 700;
-        text-decoration: #444444;
-        font-style: italic;
-        font-variant: small-caps;
-        text-transform: uppercase;
-        text-shadow: 3px 3px 1px #969696; }
-        html body #principal .falla .divTitulo p {
-          text-align: center; }
-      html body #principal .falla .divImg {
-        width: 350px;
-        height: 400px;
-        margin-top: 1%; }
-        html body #principal .falla .divImg img {
-          width: 100%;
-          height: 100%; }
-      html body #principal .falla .divPuntuacion {
-        text-align: center; }
-        html body #principal .falla .divPuntuacion button {
-          box-shadow: 0px 1px 0px 0px #fff6af;
-          background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
-          background-color: #ffec64;
-          border-radius: 6px;
-          border: 1px solid #ffaa22;
-          display: inline-block;
-          cursor: pointer;
-          color: #333333;
-          font-family: Arial;
-          font-size: 15px;
-          font-weight: bold;
-          padding: 6px 24px;
-          text-decoration: none;
-          text-shadow: 0px 1px 0px #ffee66; }
-        html body #principal .falla .divPuntuacion button:hover {
-          background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
-          background-color: #ffab23; }
-        html body #principal .falla .divPuntuacion button:active {
-          position: relative;
-          top: 1px; }
-        html body #principal .falla .divPuntuacion form {
-          width: 250px;
-          margin: 0 auto;
-          height: 50px; }
-          html body #principal .falla .divPuntuacion form p {
-            text-align: center;
-            direction: rtl;
-            unicode-bidi: bidi-override; }
-            html body #principal .falla .divPuntuacion form p label {
-              font-size: 20px; }
-            html body #principal .falla .divPuntuacion form p input[type="radio"] {
-              display: none; }
-            html body #principal .falla .divPuntuacion form p label {
-              color: grey; }
-            html body #principal .falla .divPuntuacion form p label:hover,
-            html body #principal .falla .divPuntuacion form p label:hover ~ label {
-              color: orange;
-              cursor: pointer; }
-            html body #principal .falla .divPuntuacion form p input[type="radio"]:checked ~ label {
-              color: orange; }
+  background-color: #098108;
+  margin-left: 5%;
+}
+html body #logo {
+  background-image: url("../img/cthulhu.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+}
+html body #hamburguesa {
+  background-image: url("../img/hamburger.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 50px;
+  margin-top: 5%;
+  margin-left: 45%;
+}
+html body .esconderFormulario {
+  position: absolute;
+  opacity: 0;
+  height: 0px;
+  transition-property: height;
+  transition-duration: 3s;
+  transition-timing-function: ease;
+}
+html body #formulario input[type=text] {
+  margin-bottom: 1%;
+  border-radius: 10px;
+}
+html body #formulario #radios {
+  display: block;
+}
+html body #principal {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+html body #principal .falla {
+  width: 400px;
+  height: 600px;
+  display: grid;
+  grid-template-rows: 50px 1fr 100px;
+  justify-content: center;
+  margin: 2%;
+  background-color: white;
+  border: 2px solid black;
+  box-shadow: 9px 6px 13px -6px rgba(0, 0, 0, 0.75);
+  border-radius: 20px;
+}
+html body #principal .falla .divTitulo {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: #444444;
+  font-style: italic;
+  font-variant: small-caps;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 1px #969696;
+}
+html body #principal .falla .divTitulo p {
+  text-align: center;
+}
+html body #principal .falla .divImg {
+  width: 350px;
+  height: 400px;
+  margin-top: 1%;
+}
+html body #principal .falla .divImg img {
+  width: 100%;
+  height: 100%;
+}
+html body #principal .falla .divPuntuacion {
+  text-align: center;
+}
+html body #principal .falla .divPuntuacion button {
+  box-shadow: 0px 1px 0px 0px #fff6af;
+  background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+  background-color: #ffec64;
+  border-radius: 6px;
+  border: 1px solid #ffaa22;
+  display: inline-block;
+  cursor: pointer;
+  color: #333333;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffee66;
+}
+html body #principal .falla .divPuntuacion button:hover {
+  background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+  background-color: #ffab23;
+}
+html body #principal .falla .divPuntuacion button:active {
+  position: relative;
+  top: 1px;
+}
+html body #principal .falla .divPuntuacion form {
+  width: 250px;
+  margin: 0 auto;
+  height: 50px;
+}
+html body #principal .falla .divPuntuacion form p {
+  text-align: center;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+html body #principal .falla .divPuntuacion form p label {
+  font-size: 20px;
+}
+html body #principal .falla .divPuntuacion form p input[type=radio] {
+  display: none;
+}
+html body #principal .falla .divPuntuacion form p label {
+  color: grey;
+}
+html body #principal .falla .divPuntuacion form p label:hover,
+html body #principal .falla .divPuntuacion form p label:hover ~ label {
+  color: orange;
+  cursor: pointer;
+}
+html body #principal .falla .divPuntuacion form p input[type=radio]:checked ~ label {
+  color: orange;
+}
+html body #principal .puntuacionEspecial {
+  border: 2px double #29B0B3;
+  background-color: #CEFEFF;
+}
 
 @media (min-width: 500px) {
   html {
-    background-color: #3BB34D;
+    background-color: #098108;
     width: 80%;
-    margin-left: 10%; }
-    html body #logo {
-      background-image: url("../img/cthulhu.jpg");
-      background-size: contain;
-      background-repeat: no-repeat;
-      width: 200px;
-      height: 200px; }
-    html body .esconderFormulario {
-      opacity: 1; }
-    html body #hamburguesa {
-      display: none; }
-    html body #formulario {
-      display: flex;
-      flex-direction: column;
-      align-items: center; }
-      html body #formulario input[type="text"] {
-        margin-bottom: 1%;
-        border-radius: 10px; }
-      html body #formulario #radios {
-        display: block; }
-    html body #principal {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); }
-      html body #principal .falla {
-        display: grid;
-        grid-template-rows: 50px 1fr 100px;
-        justify-content: center;
-        margin: 2%;
-        background-color: white;
-        border: 1px solid black;
-        box-shadow: 9px 6px 13px -6px rgba(0, 0, 0, 0.75);
-        border-radius: 20px; } }
+    margin-left: 10%;
+  }
+  html body .scrollCabecera {
+    position: fixed;
+    top: 0;
+  }
+  html body #cabecera {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 80%;
+    background-color: #098108;
+  }
+  html body #cabecera #logo {
+    background-image: url("../img/cthulhu.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
+  }
+  html body #cabecera #hamburguesa {
+    display: none;
+  }
+  html body #cabecera #formulario {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    background-color: #EDEDED;
+    border-radius: 5%;
+    border: 2px solid black;
+    box-shadow: 10px 10px 16px -9px rgba(0, 0, 0, 0.75);
+  }
+  html body #cabecera #formulario input[type=text] {
+    margin-bottom: 1%;
+    border-radius: 10px;
+  }
+  html body #cabecera #formulario #radios {
+    display: block;
+  }
+  html body #principal {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  html body #principal .falla {
+    display: grid;
+    grid-template-rows: 50px 1fr 100px;
+    justify-content: center;
+    margin: 2%;
+    background-color: white;
+    border: 2px solid black;
+    box-shadow: 9px 6px 13px -6px rgba(0, 0, 0, 0.75);
+    border-radius: 20px;
+  }
+  html body #principal .puntuacionEspecial {
+    border: 2px double #29B0B3;
+    background-color: #CEFEFF;
+  }
+}
 
 /*# sourceMappingURL=estilo.css.map */
