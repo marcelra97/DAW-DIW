@@ -1,5 +1,5 @@
 //linear-gradient(to bottom, rgba(255, 211, 33, 1) 0%, rgba(255, 211, 33, 1) 18%, rgba(255, 148, 33, 1) 42%, rgba(255, 129, 33, 1) 66%, rgba(250, 108, 0, 1) 84%, rgba(255, 64, 31, 1) 100%);
-$logo: evi;
+$logo: evil;
 $backgroundColorFondo: #fef0c8;
 $img_logo: "";
 $backgrundColorFalla: red;
@@ -10,7 +10,7 @@ $posicionCabecera:"";
 
 @if ($logo==evil) {
 
-    $backgroundColorFondo: #B23430;
+    $backgroundColorFondo: #c61f46;
     $img_logo: "../img/evilcorp.png";
     $backgrundColorFalla: white;
     $img_hamburguesa: "../img/evilcorp.png";
@@ -18,7 +18,7 @@ $posicionCabecera:"";
     $posicionCabecera:static;
 }@else {
 
-    $backgroundColorFondo: #098108;
+    $backgroundColorFondo: #2e6d34;
     $img_logo: "../img/cthulhu.jpg";
     $backgrundColorFalla: white;
     $img_hamburguesa: "../img/hamburger.png";
@@ -60,15 +60,8 @@ html {
             position: absolute;
             opacity: 0;
             height: 0px;
-
-            transition-property: height;
-            transition-duration: 3s ;
-            transition-timing-function: ease;
         }
-
-      
-    
-
+        
         //la parte del formulario de arriba
         #formulario {
             
@@ -86,157 +79,176 @@ html {
             }
         }
 
-        //donde se encuentran las fotos de las fallas junto a sus ubicaciones
-        #principal {
+            //donde se encuentran las fotos de las fallas junto a sus ubicaciones
+            #principal {
 
-            display: grid;
-            grid-template-columns: 1fr;
-            //el contenedor que tiene lo que hay en cada falla
-           
-
-            .falla {
-
-                width: 400px;
-                height:600px;
                 display: grid;
-                grid-template-rows: 50px 1fr 100px;
-                justify-content: center;
-                margin: 2%;
+                grid-template-columns: 1fr;
+                //el contenedor que tiene lo que hay en cada falla
+            
 
-                //el linear gradient hace que el color vaya cambiando gradualmente, por eso tienes que utilizar los porcentajes
-                background-color:$backgrundColorFalla; 
-                border: 2px solid black;
-                box-shadow: 9px 6px 13px -6px rgba(0, 0, 0, 0.75);
-                border-radius: 20px;
-                
-                //el apartado del titulo
-                .divTitulo {
+                .falla {
 
-                    font-family: "Comic Sans MS", cursive, sans-serif;
-                    font-size: 15px;
-                    font-weight: 700;
-                    text-decoration: rgb(68, 68, 68);
-                    font-style: italic;
-                    font-variant: small-caps;
-                    text-transform: uppercase;
-                    text-shadow: 3px 3px 1px rgba(150, 150, 150, 1);
+                    width: 400px;
+                    height:600px;
+                    display: grid;
+                    grid-template-rows: 50px 1fr 100px;
+                    justify-content: center;
+                    margin: 2%;
 
-                    p {
+                    //el linear gradient hace que el color vaya cambiando gradualmente, por eso tienes que utilizar los porcentajes
+                    background-color:$backgrundColorFalla; 
+                    border: 2px solid black;
+                    box-shadow: 9px 6px 13px -6px rgba(0, 0, 0, 0.75);
+                    border-radius: 20px;
+                    
+                    //el apartado del titulo
+                    .divTitulo {
 
-                        text-align: center;
-
-                    }
-
-                }
-
-                //la parte de la imagen
-                .divImg {
-
-                    width: 350px;
-                    height: 400px;
-                    margin-top: 1%;
-
-                    img {
-
-                        width: 100%;
-                        height: 100%;
-
-                    }
-
-                }
-
-                //la parte de las puntuaciones
-                .divPuntuacion {
-
-                    text-align: center;
-                    //el boton de la ubicacion
-                
-                    button {
-
-                        box-shadow: 0px 1px 0px 0px #fff6af;
-                        background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
-                        background-color: #ffec64;
-                        border-radius: 6px;
-                        border: 1px solid #ffaa22;
-                        display: inline-block;
-                        cursor: pointer;
-                        color: #333333;
-                        font-family: Arial;
+                        font-family: "Comic Sans MS", cursive, sans-serif;
                         font-size: 15px;
-                        font-weight: bold;
-                        padding: 6px 24px;
-                        text-decoration: none;
-                        text-shadow: 0px 1px 0px #ffee66;
-
-                    }
-
-                    button:hover {
-
-                        background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
-                        background-color: #ffab23;
-                         
-                    }
-
-                    button:active {
-
-                        position: relative;
-                        top: 1px;
-
-                    }
-
-                    //la parte de las estrellas
-                    form {
-                        
-                        width: 250px;
-                        margin: 0 auto;
-                        height: 50px;
+                        font-weight: 700;
+                        text-decoration: rgb(68, 68, 68);
+                        font-style: italic;
+                        font-variant: small-caps;
+                        text-transform: uppercase;
+                        text-shadow: 3px 3px 1px rgba(150, 150, 150, 1);
 
                         p {
 
                             text-align: center;
-                            direction: rtl;
-                            unicode-bidi: bidi-override;
 
-                            label {
+                        }
 
-                                font-size: 20px;
+                    }
 
+                    //la parte de la imagen
+                    .divImg {
+
+                        width: 350px;
+                        height: 400px;
+                        margin-top: 1%;
+
+                        img {
+
+                            width: 100%;
+                            height: 100%;
+
+                        }
+
+                    }
+
+                    //la parte de las puntuaciones
+                    .divPuntuacion {
+
+                        text-align: center;
+                        //el boton de la ubicacion
+                    
+                        button {
+
+                            box-shadow: 0px 1px 0px 0px #fff6af;
+                            background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+                            background-color: #ffec64;
+                            border-radius: 6px;
+                            border: 1px solid #ffaa22;
+                            display: inline-block;
+                            cursor: pointer;
+                            color: #333333;
+                            font-family: Arial;
+                            font-size: 15px;
+                            font-weight: bold;
+                            padding: 6px 24px;
+                            text-decoration: none;
+                            text-shadow: 0px 1px 0px #ffee66;
+
+                        }
+
+                        button:hover {
+
+                            background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+                            background-color: #ffab23;
+                            
+                        }
+
+                        button:active {
+
+                            position: relative;
+                            top: 1px;
+
+                        }
+
+                        //la parte de las estrellas
+                        form {
+                            
+                            width: 250px;
+                            margin: 0 auto;
+                            height: 50px;
+
+                            p {
+
+                                text-align: center;
+                                direction: rtl;
+                                unicode-bidi: bidi-override;
+
+                                label {
+
+                                    font-size: 20px;
+
+                                }
+
+                                input[type="radio"] {
+
+                                    display: none;
+                                }
+
+                                label {
+
+                                    color: grey;
+
+                                }
+
+                                label:hover,
+                                label:hover~label {
+
+                                    color: orange;
+                                    cursor: pointer;
+
+                                }
+
+                                input[type="radio"]:checked~label {
+
+                                    color: orange;
+                                    
                             }
-
-                            input[type="radio"] {
-
-                                display: none;
-                            }
-
-                            label {
-
-                                color: grey;
-
-                            }
-
-                            label:hover,
-                            label:hover~label {
-
-                                color: orange;
-                                cursor: pointer;
-
-                            }
-
-                            input[type="radio"]:checked~label {
-
-                                color: orange;
-                                
                         }
                     }
                 }
             }
+
+            .puntuacionEspecial{
+                border: 2px double $bordeEspecial;
+                background-color: $backgroundEspecial;
+            }
         }
-        .puntuacionEspecial{
-            border: 2px double $bordeEspecial;
-            background-color: $backgroundEspecial;
+
+        #mapa{
+
+            width: 50%;
+            height: 50%;
+            margin-top: 10%;
+            margin-left: 25%;
+    
+        }
+    
+        .fondoOpaco{
+    
+            height: 690px;
+            width: 500px;
+            background-color:rgb(245, 245, 245, 0.5);
+            position: absolute;
+            left: 0px;
         }
     }
-}
 }
 
 //****************Version Escritorio
@@ -259,7 +271,6 @@ html {
                 display: grid;
                 grid-template-columns: 1fr 2fr;
                 width: 80%;
-                
                 background-color: $backgroundColorFondo;
             
                 #logo {
@@ -279,14 +290,15 @@ html {
                 //la parte del formulario de arriba
                 #formulario {
         
-                    display: block;
-                    flex-direction: column;
+                    display: flex;
+                    flex-direction: row;
                     align-items: center;
-                    background-color: #EDEDED;
+                    flex-wrap: wrap;
+                    
                     border-radius: 5%;
                     border: 2px solid black;
                     box-shadow: 10px 10px 16px -9px rgba(0,0,0,0.75);;
-        
+                    margin-right: 31%;
                     input[type="text"] {
         
                         margin-bottom: 1%;
@@ -330,4 +342,25 @@ html {
             }
         }
    }
+
+    #mapa{
+
+        width: 50%;
+        height: 50%;
+        margin-top: 10%;
+        margin-left: 25%;
+
+    }
+
+    .fondoOpaco{
+
+        height: 790px;
+        width: 1600px;
+        background-color:rgb(245, 245, 245, 0.5);
+        position: absolute;
+        left: 0px;
+    }
+
+    
+
 }

@@ -9,18 +9,66 @@ function desplegarMenu() {
     let divFormulario = document.querySelector('#formulario');
     
     divFormulario.classList.toggle("esconderFormulario");
-    //divFormulario.classList.toggle("apareceFormulario");
+    
     
 }
 
+function salirMapa() {
+    
+    this.classList.remove("fondoOpaco");
+    this.innerHTML="";
+    document.querySelector("html").style.overflow = "scroll";
+
+}
+
+//crear el div del mapa
+function crearDivMapa() {
+
+    //cojo laparte superior del mapa
+    let parteSuperior = window.scrollY;
+
+    //creo los dos  divs para el fondo y el  mapa
+    let divMapa = document.createElement("div");
+    divMapa.setAttribute("id","mapa");
+
+    let divFondo = document.createElement("div");
+    divFondo.classList.add("fondoOpaco");
+    //y luego con el .style pongo el div siempre donde se encuentre mirando el usuario
+    divFondo.style.top = parteSuperior + "px";
+    divFondo.addEventListener("click", salirMapa);
+
+    divFondo.appendChild(divMapa);
+    document.querySelector("body").appendChild(divFondo);
+
+    //esto es para esconder la barra de scroll para evitar que se mueva cuando esta en el mapa
+    document.querySelector("html").style.overflow = "hidden";
+    
+    
+}
+
+// esto hace que aparezca el mapa, pero ni idea de como funciona
 function mostrarMapa(posicion){
 
     let ubicacionFalla = [posicion[1], posicion[0]];
+    
+    crearDivMapa();
+    
+    let map = L.map('mapa').
+        setView([ubicacionFalla[0], ubicacionFalla[1]],
+            14);
 
-    let divMapa = document.createElement("div");
+
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,' +
+            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+        maxZoom: 18
+    }).addTo(map);
+
+    L.marker([ubicacionFalla[0], ubicacionFalla[1]]).addTo(map);
+
+    L.control.scale().addTo(map);
 
     
-    console.log(ubicacionFalla);
 }
 
 function ubicacionFalla() {
@@ -29,13 +77,11 @@ function ubicacionFalla() {
     coordenadas[0] = parseFloat(this.getAttribute("x"));
     coordenadas[1] = parseFloat(this.getAttribute("y"));
     
-    
-
     var firstProjection = '+proj=utm +zone=30 +ellps=GRS80 +units=m +no_defs';
     var secondProjection = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs';
-    //I'm not going to redefine those two in latter examples.
+    
     let ubicacion = proj4(firstProjection,secondProjection, coordenadas);
-    console.log(ubicacion);
+    
     mostrarMapa(ubicacion);
 }
 
@@ -424,8 +470,11 @@ window.onload = init;
 window.addEventListener('scroll', () => {
     const scroll = window.scrollY;
     
-    if(scroll == 100){
-        document.querySelector('#cabecera').classList.toggle("scrollCabecera");
+    if(scroll >= 100){
+        document.querySelector('#cabecera').classList.add("scrollCabecera");
+
+    }else{
+        document.querySelector('#cabecera').classList.remove("scrollCabecera");
     }
     
 });

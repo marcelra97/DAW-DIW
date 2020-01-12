@@ -1,16 +1,16 @@
 html {
-  background-color: #098108;
+  background-color: #c61f46;
   margin-left: 5%;
 }
 html body #logo {
-  background-image: url("../img/cthulhu.jpg");
+  background-image: url("../img/evilcorp.png");
   background-size: contain;
   background-repeat: no-repeat;
   width: 100px;
   height: 100px;
 }
 html body #hamburguesa {
-  background-image: url("../img/hamburger.png");
+  background-image: url("../img/evilcorp.png");
   background-size: contain;
   background-repeat: no-repeat;
   height: 50px;
@@ -22,9 +22,6 @@ html body .esconderFormulario {
   position: absolute;
   opacity: 0;
   height: 0px;
-  transition-property: height;
-  transition-duration: 3s;
-  transition-timing-function: ease;
 }
 html body #formulario input[type=text] {
   margin-bottom: 1%;
@@ -126,28 +123,41 @@ html body #principal .falla .divPuntuacion form p input[type=radio]:checked ~ la
   color: orange;
 }
 html body #principal .puntuacionEspecial {
-  border: 2px double #29B0B3;
-  background-color: #CEFEFF;
+  border: 2px double #FF6B04;
+  background-color: white;
+}
+html body #mapa {
+  width: 50%;
+  height: 50%;
+  margin-top: 10%;
+  margin-left: 25%;
+}
+html body .fondoOpaco {
+  height: 690px;
+  width: 500px;
+  background-color: rgba(245, 245, 245, 0.5);
+  position: absolute;
+  left: 0px;
 }
 
 @media (min-width: 500px) {
   html {
-    background-color: #098108;
+    background-color: #c61f46;
     width: 80%;
     margin-left: 10%;
   }
   html body .scrollCabecera {
-    position: fixed;
+    position: static;
     top: 0;
   }
   html body #cabecera {
     display: grid;
     grid-template-columns: 1fr 2fr;
     width: 80%;
-    background-color: #098108;
+    background-color: #c61f46;
   }
   html body #cabecera #logo {
-    background-image: url("../img/cthulhu.jpg");
+    background-image: url("../img/evilcorp.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 200px;
@@ -157,13 +167,14 @@ html body #principal .puntuacionEspecial {
     display: none;
   }
   html body #cabecera #formulario {
-    display: block;
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    background-color: #EDEDED;
+    flex-wrap: wrap;
     border-radius: 5%;
     border: 2px solid black;
     box-shadow: 10px 10px 16px -9px rgba(0, 0, 0, 0.75);
+    margin-right: 31%;
   }
   html body #cabecera #formulario input[type=text] {
     margin-bottom: 1%;
@@ -187,8 +198,23 @@ html body #principal .puntuacionEspecial {
     border-radius: 20px;
   }
   html body #principal .puntuacionEspecial {
-    border: 2px double #29B0B3;
-    background-color: #CEFEFF;
+    border: 2px double #FF6B04;
+    background-color: white;
+  }
+
+  #mapa {
+    width: 50%;
+    height: 50%;
+    margin-top: 10%;
+    margin-left: 25%;
+  }
+
+  .fondoOpaco {
+    height: 790px;
+    width: 1600px;
+    background-color: rgba(245, 245, 245, 0.5);
+    position: absolute;
+    left: 0px;
   }
 }
 
