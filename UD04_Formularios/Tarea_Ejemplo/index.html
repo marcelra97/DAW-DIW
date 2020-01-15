@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>@import url("css/estilo.css");</style>
+    
+</head>
+<body>
+    <header>
+        <h1> Ejemplos de Canvas Básico - 01</h1>
+    </header>
+
+    <main>
+        <canvas width="400" height="400">
+        </canvas>
+    </main>
+
+    <script>
+        const canvas = document.querySelector("canvas");
+
+        let ctx = canvas.getContext("2d");
+
+         
+        let coordenadaX = 50;
+        let coordenadaY = 0;
+
+         for(let y =0; y < 8; y++){
+
+            for (let x = 0; x < 4; x++) {
+
+                ctx.fillRect(coordenadaX,coordenadaY,50,50);
+
+                coordenadaX+=100;
+            }
+
+            coordenadaY+=50;
+            
+            if(y%2!=0){
+
+                coordenadaX=50;
+
+            }else{
+
+            coordenadaX=0;
+            
+            }
+            
+            
+         }
+         
+
+    </script>
+</body>
+</html>
