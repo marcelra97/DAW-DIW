@@ -4,77 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ejemplos Básicos CANVAS - 01</title>
-    <link rel="stylesheet" href="canvas.css">
+    <title>Ejercicio Canvas - Formulario </title>
+    <link rel="stylesheet" type="text/css" href="graficos.css"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Michroma" />
+    <style>
+        @import url("css/canvas.css");
+    </style>
+    <script src="graficos.js"></script>
 </head>
 <body>
-    <header>
-        <h1> Ejemplos de Canvas Básico - 01</h1>
-    </header>
 
+    <header> <h1>Ejemplo de Graficas </h1></header>
     <main>
-        <canvas width="400" height="400">
-        </canvas>
+        <datos>
+            <p class="left"> Clave</p>  <p class="right">Valor</p>
+            <input class="left" type="text" name="key_1"><input class="right" type="text" name="value_1">
+            <input class="left" type="text" name="key_2"><input class="right" type="text" name="value_2">
+            <input class="left" type="text" name="key_3"><input class="right" type="text" name="value_3">
+            <input class="left" type="text" name="key_4"><input class="right" type="text" name="value_4">
+
+            <input type="button" name="grafiqueame" value="Grafiqueame">
+        </datos>
+        <canvas width="500" height="500"></canvas>
+              
     </main>
+    <footer></footer>
 
-    <script>
-        const canvas = document.querySelector("canvas");
-
-        // contexto -> ctx
-        let ctx = canvas.getContext("2d");
-
-        ctx.fillStyle="red";
-
-        //ctx.fillRect(10,10,100,200);
-        ctx.strokeStyle="purple";
-        ctx.lineWidth=1;
-        //ctx.strokeRect(10,10,100,200);
-
-        ctx.beginPath();
-        ctx.moveTo(100,100);
-        ctx.lineTo(50,50);
-        ctx.lineTo(50,100);
-        ctx.lineTo(100,100);
-        //ctx.fill();
-        ctx.stroke();
-
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-
-        ctx.moveTo(200,200);
-
-        // control, destino
-        //ctx.quadraticCurveTo(100,100,200,0);
-        //ctx.bezierCurveTo(100,100,70,70,200,0);
-
-        ctx.beginPath();
-
-        //ctx.arc(200,200,50,0.2,1 * Math.PI);
-
-
-
-        ctx.stroke();
-
-        const dioses = [
-        {nombre:"Cthulhu",poder:1000,color:"green"},
-        {nombre:"Nyarlatothep",poder:600,color:"red"},
-        {nombre:"Azazoth",poder:1400,color:"grey"},
-        {nombre:"Pepe",poder:800,color:"purple"}
-        ];
-        
-        //let anguloActual = -0.5 * Math.PI;
-
-        
-        
-
-        
-
-
-
-
-
-
-
-
-    </script>
+    
 </body>
 </html>
