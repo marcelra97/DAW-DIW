@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ejercicio Canvas - Formulario </title>
-    <link rel="stylesheet" type="text/css" href="graficos.css"/>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Michroma" />
     <style>
         @import url("css/canvas.css");
     </style>
-    <script src="graficos.js"></script>
+    <script src="js/graficos.js"></script>
 </head>
 <body>
 
@@ -24,6 +23,12 @@
             <input class="left" type="text" name="key_4"><input class="right" type="text" name="value_4">
 
             <input type="button" name="grafiqueame" value="Grafiqueame">
+             <select>
+             <option>--Elegir Grafico--</option>   
+             <option value="circular">Grafico Circular</option>
+             <option value="barras">Grafico Barras</option>
+             <option value="lineas">Grafico Lineal</option>
+            </select> 
         </datos>
         <canvas width="500" height="500"></canvas>
               
