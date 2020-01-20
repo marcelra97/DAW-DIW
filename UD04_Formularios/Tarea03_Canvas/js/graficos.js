@@ -35,9 +35,13 @@ function tipoGraficos(){
 
 //grafico circular
 function buildGraficoCircular() {
-    
+    //ángulo de rebanada = 2 * PI * valor de categoría / valor total
     console.log("circular");
-    let total;
+    
+    let totalPoder;
+    let anguloFinal;
+    let anguloPrincipio;  
+    let i = 0;
     const canvas = document.querySelector("canvas");
     let ctx = canvas.getContext("2d");
 
@@ -45,9 +49,29 @@ function buildGraficoCircular() {
 
     dioses.forEach(dios => {
         
-        total += dios.poder;
+        ctx.beginPath();
+
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = '#000000';
+
+        totalPoder += dios.poder;
+
+        anguloFinal = ((dios.poder / totalPoder) * Math.PI * 2) + anguloPrincipio;
+
+        //anguloQuesito = 2*Math.PI*dios.poder/totalPoder;
+
+        ctx.fillStyle = arrayColores[i];
+ 
+        ctx.moveTo(canvas.width/2,canvas.height/2);
+ 
+        ctx.arc(canvas.width/2, canvas.height/2, 100, anguloPrincipio, anguloFinal);
+ 
+        ctx.closePath();
+ 
+        ctx.fill();
+        i++;
     });
-    console.log(total)
+   
 
 }
 
