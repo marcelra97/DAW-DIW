@@ -50,3 +50,7 @@ pre {
   font-weight: 400;
   line-height: 18.5667px;
 }
+
+canvas {
+  margin-left:25%;
+}
