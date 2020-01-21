@@ -35,42 +35,50 @@ function tipoGraficos(){
 
 //grafico circular
 function buildGraficoCircular() {
-    //ángulo de rebanada = 2 * PI * valor de categoría / valor total
+   
     console.log("circular");
     
-    let totalPoder;
-    let anguloFinal;
-    let anguloPrincipio;  
-    let i = 0;
     const canvas = document.querySelector("canvas");
     let ctx = canvas.getContext("2d");
+    let total =0;
 
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
     dioses.forEach(dios => {
-        
-        ctx.beginPath();
+       total += dios.poder;
+    });
 
+    let anguloPrincipio = 0;
+    let radio = 120;
+    let centroX = canvas.width / 2;
+    let centroY = canvas.height / 2;
+    let i = 0;
+
+    dioses.forEach(dios => {
+
+        ctx.fillStyle = arrayColores[i];
         ctx.lineWidth = 1;
         ctx.strokeStyle = '#000000';
 
-        totalPoder += dios.poder;
+        ctx.beginPath();
 
-        anguloFinal = ((dios.poder / totalPoder) * Math.PI * 2) + anguloPrincipio;
+        let anguloFinal = ((dios.poder / total) * Math.PI * 2) + anguloPrincipio;
 
-        //anguloQuesito = 2*Math.PI*dios.poder/totalPoder;
-
-        ctx.fillStyle = arrayColores[i];
- 
-        ctx.moveTo(canvas.width/2,canvas.height/2);
- 
-        ctx.arc(canvas.width/2, canvas.height/2, 100, anguloPrincipio, anguloFinal);
- 
-        ctx.closePath();
- 
+        ctx.moveTo(centroX, centroY);
+        ctx.arc(centroX, centroY, radio, anguloPrincipio, anguloFinal, false);
+        ctx.lineTo(centroX, centroY);
         ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.closePath();
+
+        anguloPrincipio = anguloFinal;
         i++;
     });
+    
+    
    
 
 }
@@ -145,7 +153,7 @@ function buildGraficoLineal() {
 function dibujaMarcoGrafica(ctx){
  
     let x = 800;
-    let y = 480;
+    let y = 500;
 
     ctx.beginPath();
     ctx.strokeStyle = '#000000';
