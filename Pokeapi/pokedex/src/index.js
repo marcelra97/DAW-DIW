@@ -6,6 +6,7 @@ import './index.css';
 class BotonBusqueda extends React.Component{
     render(){
         return(
+            
             <button>Enviar</button>
         )
     }
@@ -15,23 +16,60 @@ class BotonBusqueda extends React.Component{
 class Select extends React.Component{
     render(){
         return(
-            <input type="select"></input>
+            <input type="text"></input>
         )
     }
 
 }
 
+class Buscador extends React.Component{
+    render(){
+        return(
+            <div className="buscador">
+                <h1></h1>
+                <Select />
+                <BotonBusqueda />
+            </div>
+        )
+    }
+}
 
+class Resultado extends React.Component{
+
+    render(){
+        return(
+           <div className="resultado">
+
+           </div>
+        )
+    }
+
+}
 
 class Pokedex extends React.Component{
+    
+    componentDidMount(){
+        
+        let url = "https://pokeapi.co/api/v2/pokedex/1";
+
+        fetch(url)
+        .then(response => response.json()) 
+        .then(myJson =>  console.log(myJson)) 
+         
+
+    }
+    
     render(){
 
         return(
-            <div className="Buscador">
-                <Select/>
-                <BotonBusqueda/>
+
+            <div className="Pokedex">
+
+                <Buscador />
+
+                <Resultado />
+                
             </div>
-           
 
             
         )
