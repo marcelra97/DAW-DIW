@@ -1,38 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-
-//boton de la busqueda de pokemons
-class BotonBusqueda extends React.Component{
-    render(){
-        return(
-            
-            <button>Enviar</button>
-        )
-    }
-}
-
-//buscador de pokemons
-class Select extends React.Component{
-    render(){
-        return(
-            <input type="text"></input>
-        )
-    }
-
-}
-
-class Buscador extends React.Component{
-    render(){
-        return(
-            <div className="buscador">
-                <h1></h1>
-                <Select />
-                <BotonBusqueda />
-            </div>
-        )
-    }
-}
+import './css/index.css';
+import Buscador from './lib/Buscador'
 
 class Resultado extends React.Component{
 
@@ -63,7 +32,7 @@ class Pokedex extends React.Component{
 
         return(
 
-            <div className="Pokedex">
+            <div className="pokedex">
 
                 <Buscador />
 
