@@ -3,6 +3,21 @@ import React from 'react';
 
 class Buscador extends React.Component{
     
+    constructor(props){
+        super(props);
+        this.refBuscar = React.createRef();
+
+    }
+
+
+    cogerValue =() =>{
+
+        let valor = this.refBuscar.current.value;
+        console.log(valor);
+        
+    }
+
+
 
     render(){
         return(
@@ -11,8 +26,8 @@ class Buscador extends React.Component{
                 <div id="logo"></div>
                 <div className="formulario">
 
-                    <input type="text" placeholder="Pokemon"></input>
-                    <button>Buscar</button>
+                    <input ref={this.refBuscar} type="text" placeholder="Pokemon"></input>
+                    <button onClick={this.cogerValue}>Buscar</button>
                     
                 </div>
             </div>

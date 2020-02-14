@@ -19,22 +19,26 @@ class Pokedex extends React.Component{
     
     componentDidMount(){
         
-        let url = "https://pokeapi.co/api/v2/pokedex/1";
+        let url = "https://pokeapi.co/api/v2/pokemon?limit=1000";
 
         fetch(url)
         .then(response => response.json()) 
-        .then(myJson =>  console.log(myJson)) 
+        .then(myJson =>  console.log(myJson.results)) 
          
 
     }
     
+    buscarPokemon(){
+        
+    }
+
     render(){
 
         return(
 
             <div className="pokedex">
 
-                <Buscador />
+                <Buscador onClick={this.buscarPokemon} />
 
                 <Resultado />
                 
