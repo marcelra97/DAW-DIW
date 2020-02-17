@@ -13,8 +13,8 @@ class Buscador extends React.Component{
     cogerValue =() =>{
 
         let valor = this.refBuscar.current.value;
-        console.log(valor);
         
+        this.props.onClick(valor);
     }
 
 
