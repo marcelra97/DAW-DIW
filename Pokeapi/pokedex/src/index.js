@@ -13,7 +13,8 @@ class Pokedex extends React.Component{
         this.state = {
 
             json: null,
-            busquedaPokemon:[]
+            busquedaPokemon:[],
+            valorInput: null
         }
     }
    
@@ -47,8 +48,17 @@ class Pokedex extends React.Component{
 
             pokemones.forEach(pokemon => {
                 
-                arrayPokemon.push(pokemon)
-                this.setState({busquedaPokemon: arrayPokemon}) 
+                
+                if(pokemon.name == valor){
+                    console.log(pokemon.name)
+                    arrayPokemon.push(pokemon)
+                    this.setState({busquedaPokemon: arrayPokemon}) 
+
+                }else{
+
+                    
+                }             
+               
                 
                 
             });

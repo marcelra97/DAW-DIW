@@ -3,22 +3,26 @@ import Pokemon from './Pokemon';
 
 
 class Resultado extends React.Component{
- 
+    
     
     crearDivs(){
 
       let vacio =  this.comprobarVacio();
 
         if(!vacio){
+            
+            // me guardo el array de resultados
            let tamañoArray = this.props.resultado.length;
 
-           
+         
             for (let i = 0; i < tamañoArray; i++) {
                
-               console.log( this.props.resultado[i].name);
+
+                return <Pokemon urlPokemon= {this.props.resultado[i].url} />;
+
                
             }
-            //return <Pokemon />
+            
         }
         
         
