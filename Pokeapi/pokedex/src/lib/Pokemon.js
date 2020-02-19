@@ -7,48 +7,94 @@ class Pokemon extends React.Component{
 
         this.state={
             nombre: null,
-            sprite: null
+            sprite: null,
+           
         }
     }
 
     crearPokemon(){
 
-        console.log(this.state.nombre);
-        
         return(
-        <div>
-            <h1>{this.state.nombre}</h1>
-        </div>
-        
 
+        <div className="pokemon">
+            <h1>{this.state.nombre}</h1>
+            <img src={this.state.sprite} ></img>
+        </div>
+    
         )
     }
 
-    
-    async componentDidMount(){
+    async recogerPokemon(){
 
+        console.log("recojo");
         const response = await fetch(this.props.urlPokemon);
         const estadisticas = await response.json();
+        
+        //me guardo el nombre del pokemon y me guardo el sprite
+        this.setState({nombre: estadisticas.name, sprite: estadisticas.sprites.front_default, primeraCarga: true});
+        
+      
+        prevProps  = this.props.urlPokemon
+       
 
-        //me guardo el nombre del pokemon
-        this.state.nombre = estadisticas.name;
-        //me guardo el sprite
-        this.state.sprite = estadisticas.sprites.front_default;
+    }
 
+    async componentDidMount(){
+
+        console.log("didMount");
+        
+        this.recogerPokemon();
+    
+    }
+
+    //esto mira si el componente ha sido actualizado
+    
+    shouldComponentUpdate(){
+       
+        
+        if(this.props.urlPokemon !== prevProps){
+    
+            console.log("comprobacion verdadera");
+
+            console.log(this.props.urlPokemon);
+
+            return true;
+
+        }else{
+
+            console.log("comprobacion falsa");
+
+            console.log(this.props.urlPokemon);
+            return false;
+        }
+    }
+
+    //si devuelve true entra
+    componentDidUpdate(){
+
+        console.log("Actualizado");
+        
+        if(this.state.primeraCarga){
+            this.recogerPokemon();
+        }
+       
         
     }
    
     render(){
-         return(
 
-            <div className="pokemon">
-                
+    
+        return(
+
+            <div className="divPokemon">
                 {this.crearPokemon()}
             </div>
 
          )
-    }
 
+    }
+    
 }
 
+let prevProps
 export default Pokemon;

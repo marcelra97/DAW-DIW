@@ -36,7 +36,7 @@ class Pokedex extends React.Component{
     
     buscarPokemon  = (valor) =>{
 
-        //console.log(valor);
+        console.log(valor);
 
         let pokemones = this.state.json.results;
 
@@ -49,8 +49,9 @@ class Pokedex extends React.Component{
             pokemones.forEach(pokemon => {
                 
                 
+                 
                 if(pokemon.name == valor){
-                    console.log(pokemon.name)
+                    
                     arrayPokemon.push(pokemon)
                     this.setState({busquedaPokemon: arrayPokemon}) 
 

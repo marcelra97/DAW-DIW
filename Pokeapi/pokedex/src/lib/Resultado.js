@@ -8,7 +8,7 @@ class Resultado extends React.Component{
     crearDivs(){
 
       let vacio =  this.comprobarVacio();
-
+        
         if(!vacio){
             
             // me guardo el array de resultados
@@ -16,10 +16,12 @@ class Resultado extends React.Component{
 
          
             for (let i = 0; i < tamañoArray; i++) {
+
                
 
-                return <Pokemon urlPokemon= {this.props.resultado[i].url} />;
-
+                return (<Pokemon urlPokemon= {this.props.resultado[i].url} />);
+                
+                
                
             }
             
