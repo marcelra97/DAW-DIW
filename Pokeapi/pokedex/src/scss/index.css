@@ -44,5 +44,13 @@ body {
         body .pokedex .buscador .formulario button:active {
           position: relative;
           top: 1px; }
+    body .pokedex .resultado .divPokemon {
+      width: 30%;
+      height: 60%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-self: center;
+      border: 1px solid black; }
 
 /*# sourceMappingURL=index.css.map */
